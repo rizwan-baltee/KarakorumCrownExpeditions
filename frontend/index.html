@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Ghanche - Discover Pakistan's Wild Beauty</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .carousel-item {
+            display: none;
+        }
+        
+        .carousel-item.active {
+            display: block;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .mega-menu {
+                width: 900px;
+                left: 0;
+            }
+        }
+        
+        .mega-menu-column-header {
+            color: #059669;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #10b981;
+            margin-bottom: 0.75rem;
+        }
+        
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+        }
+        
+        .nav-link:hover {
+            color: #10b981 !important;
+            transition: color 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .trek-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .trek-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .trek-card img {
+            transition: transform 0.5s ease;
+        }
+        
+        .trek-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Support Banner Scroll Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-33.333%);
+            }
+        }
+        
+        .support-scroll {
+            animation: scroll 15s linear infinite;
+        }
+        
+        .support-scroll:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Owl Carousel Custom Styles */
+        .owl-carousel .owl-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        
+        .treks-carousel {
+            position: relative;
+        }
+        
+        .owl-theme .owl-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            margin-top: 0 !important;
+            padding: 0 !important;
+        }
+        
+        .owl-theme .owl-nav [class*='owl-'] {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+            color: white !important;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            pointer-events: all;
+            position: absolute !important;
+        }
+        
+        .owl-theme .owl-nav .owl-prev {
+            top: -43px;
+            left: -25px;
+        }
+        
+        .owl-theme .owl-nav .owl-next {
+            top: -43px;
+            right: -25px;
+        }
+        
+        .owl-theme .owl-nav [class*='owl-']:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+        
+        .owl-theme .owl-dots .owl-dot span {
+            background: #d1d5db !important;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .owl-theme .owl-dots .owl-dot.active span {
+            background: #10b981 !important;
+            width: 30px;
+            border-radius: 6px;
+        }
+        
+        .trek-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 6px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 6px;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+        }
+        
+        .trek-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 30px 20px 20px;
+            color: white;
+            border-radius: 0 0 16px 16px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Contact Bar -->
+    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 text-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex flex-wrap gap-4 md:gap-6">
+                    <a href="tel:+923238312244" class="flex items-center gap-2 hover:text-emerald-200">
+                        <i class="fas fa-phone"></i>
+                        <span>+92 323 8312244</span>
+                    </a>
+                    <a href="mailto:info@mountaintiger.com.pk" class="flex items-center gap-2 hover:text-emerald-200">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@mountaintiger.com.pk</span>
+                    </a>
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jamia mosque road, Skardu</span>
+                    </span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs">License #2332</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="/" class="flex items-center py-3">
+                    <img src="assets/logo.jpeg" alt="Discover Ghanche" class="h-12 md:h-16">
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex items-center space-x-1">
+                    <li>
+                        <a href="/" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">Home</a>
+                    </li>
+
+                    <!-- Trending Treks Dropdown -->
+                    <li class="dropdown relative group">
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">
+                            Trending Treks <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="dropdown-menu absolute left-0 bg-white shadow-2xl rounded-lg mt-0 py-6 mega-menu">
+                            <div class="grid grid-cols-4 gap-6 px-6">
+                                <div>
+                                    <div class="mega-menu-column-header"><i class="fas fa-mountain text-emerald-600 mr-2"></i>Popular Treks</div>
+                                    <ul class="space-y-2">
+                                        <li><a href="/Pakistan/Trek/1/k2-base-camp-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">K2 Base camp trek</a></li>
+                                        <li><a href="/Pakistan/Trek/2/k2-base-camp-gondogoro-la-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">K2 Base camp Gondogoro la trek</a></li>
+                                        <li><a href="/Pakistan/Trek/6/charakusa-k7-base-camp-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Charakusa k7 Base Camp trek</a></li>
+                                        <li><a href="/Pakistan/Trek/7/four-8000m-base-camp-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Four 8000m Base Camp trek</a></li>
+                                        <li><a href="/Pakistan/Trek/10/nanga-parbat-base-camp-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Nanga Parbat Base Camp trek</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="mega-menu-column-header"><i class="fas fa-hiking text-emerald-600 mr-2"></i>Mountain Passes</div>
+                                    <ul class="space-y-2">
+                                        <li><a href="/Pakistan/Trek/11/rakaposhi-base-camp-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Rakaposhi Base camp trek</a></li>
+                                        <li><a href="/Pakistan/Trek/12/shimshal-pass-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Shimshal pass trek</a></li>
+                                        <li><a href="/Pakistan/Trek/27/chilinji-pass-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Chilinji Pass Trek</a></li>
+                                        <li><a href="/Pakistan/Trek/29/darkot-pass-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Darkot pass trek</a></li>
+                                        <li><a href="/Pakistan/Trek/30/naltar-ishkoman-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Naltar Ishkoman Trek</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="mega-menu-column-header"><i class="fas fa-snow-flake text-emerald-600 mr-2"></i>Glacier Treks</div>
+                                    <ul class="space-y-2">
+                                        <li><a href="/Pakistan/Trek/31/tirich-mir-base-camp-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Tirich mir base camp trek</a></li>
+                                        <li><a href="/Pakistan/Trek/32/biafo-hispar-and-snow-lake-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Biafo-Hispar and Snow Lake trek</a></li>
+                                        <li><a href="/Pakistan/Trek/33/iqbal-top-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Iqbal Top Trek</a></li>
+                                        <li><a href="/Pakistan/Trek/34/k2-ggla-pastore-basecamp-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">K2, GGLA & Pastore basecamp trek</a></li>
+                                        <li><a href="/Pakistan/Trek/35/khaney-brok-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Khaney Brok Trek</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="mega-menu-column-header"><i class="fas fa-campground text-emerald-600 mr-2"></i>Scenic Routes</div>
+                                    <ul class="space-y-2">
+                                        <li><a href="/Pakistan/Trek/36/trango-tower-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Trango Tower Trek</a></li>
+                                        <li><a href="/Pakistan/Trek/37/fairy-meadows" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Fairy Meadows</a></li>
+                                        <li><a href="/Pakistan/Trek/38/nangma-valley-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Nangma Valley trek</a></li>
+                                        <li><a href="/Pakistan/Trek/40/rush-lake-trek" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Rush lake trek</a></li>
+                                        <li><a href="/Pakistan/Trek/42/trek-to-shisper-khurdopin-glacier" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Trek to Shisper & Khurdopin Glacier</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Expeditions Dropdown -->
+                    <li class="dropdown relative group">
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">
+                            Expeditions <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="dropdown-menu absolute left-0 bg-white shadow-2xl rounded-lg mt-0 py-4 w-72">
+                            <div class="px-5">
+                                <div class="bg-gradient-to-r from-emerald-50 to-teal-50 px-3 py-2 rounded-lg mb-3">
+                                    <h4 class="font-bold text-emerald-700 text-xs uppercase tracking-wide"><i class="fas fa-mountain text-emerald-600 mr-2"></i>8000 Meters</h4>
+                                </div>
+                                <ul class="space-y-2 mb-4 pl-2">
+                                    <li><a href="/Pakistan/Expedition/3/k2-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">K2 Expedition</a></li>
+                                    <li><a href="/Pakistan/Expedition/4/broad-peak-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Broad Peak Expedition</a></li>
+                                    <li><a href="/Pakistan/Expedition/5/nanga-parbat-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Nanga Parbat Expedition</a></li>
+                                </ul>
+                                <div class="bg-gradient-to-r from-blue-50 to-cyan-50 px-3 py-2 rounded-lg mb-3">
+                                    <h4 class="font-bold text-blue-700 text-xs uppercase tracking-wide"><i class="fas fa-mountain text-blue-600 mr-2"></i>7000 Meters</h4>
+                                </div>
+                                <ul class="space-y-2 mb-4 pl-2">
+                                    <li><a href="/Pakistan/Expedition/62/rakaposhi-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Rakaposhi Expedition</a></li>
+                                    <li><a href="/Pakistan/Expedition/63/spantik-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Spantik Expedition</a></li>
+                                </ul>
+                                <div class="bg-gradient-to-r from-purple-50 to-pink-50 px-3 py-2 rounded-lg mb-3">
+                                    <h4 class="font-bold text-purple-700 text-xs uppercase tracking-wide"><i class="fas fa-mountain text-purple-600 mr-2"></i>6000 Meters</h4>
+                                </div>
+                                <ul class="space-y-2 pl-2">
+                                    <li><a href="/Pakistan/Expedition/14/bondit-peak-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Bondit Peak Expedition</a></li>
+                                    <li><a href="/Pakistan/Expedition/16/paju-peak-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Paju Peak Expedition</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Tours Dropdown -->
+                    <li class="dropdown relative group">
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">
+                            Tours <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="dropdown-menu absolute left-0 bg-white shadow-2xl rounded-lg mt-0 py-4 w-72">
+                            <div class="px-5">
+                                <div class="bg-gradient-to-r from-pink-50 to-rose-50 px-3 py-2 rounded-lg mb-3">
+                                    <h4 class="font-bold text-pink-700 text-xs uppercase tracking-wide"><i class="fas fa-leaf text-pink-600 mr-2"></i>Spring Tours</h4>
+                                </div>
+                                <ul class="space-y-2 mb-4 pl-2">
+                                    <li><a href="/Pakistan/Tour/49/hunza-valley-blossom-tour" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Hunza Valley Blossom Tour</a></li>
+                                    <li><a href="/Pakistan/Tour/51/skardu-valley-blossom-tour" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Skardu Valley Blossom Tour</a></li>
+                                </ul>
+                                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 px-3 py-2 rounded-lg mb-3">
+                                    <h4 class="font-bold text-orange-700 text-xs uppercase tracking-wide"><i class="fas fa-sun text-orange-600 mr-2"></i>Summer Tours</h4>
+                                </div>
+                                <ul class="space-y-2 mb-4 pl-2">
+                                    <li><a href="/Pakistan/Tour/43/hunza-panorama-tour" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Hunza Panorama Tour</a></li>
+                                    <li><a href="/Pakistan/Tour/52/deosai-plateau-tour" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Deosai Plateau Tour</a></li>
+                                    <li><a href="/Pakistan/Tour/53/fairy-meadow-tour" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Fairy meadow Tour</a></li>
+                                </ul>
+                                <div class="bg-gradient-to-r from-amber-50 to-orange-50 px-3 py-2 rounded-lg mb-3">
+                                    <h4 class="font-bold text-amber-700 text-xs uppercase tracking-wide"><i class="fas fa-tree text-amber-600 mr-2"></i>Autumn Tours</h4>
+                                </div>
+                                <ul class="space-y-2 pl-2">
+                                    <li><a href="/Pakistan/Tour/22/baltistan-autumn-tour" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Baltistan Autumn Tour</a></li>
+                                    <li><a href="/Pakistan/Tour/44/phander-autumn-tour" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Phander Autumn Tour</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Rock Climbing Dropdown -->
+                    <li class="dropdown relative group">
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">
+                            Rock Climbing <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="dropdown-menu absolute left-0 bg-white shadow-2xl rounded-lg mt-0 py-4 w-72">
+                            <div class="px-5">
+                                <div class="bg-gradient-to-r from-red-50 to-orange-50 px-3 py-2 rounded-lg mb-3">
+                                    <h4 class="font-bold text-red-700 text-xs uppercase tracking-wide"><i class="fas fa-hand-rock text-red-600 mr-2"></i>Climbing Destinations</h4>
+                                </div>
+                                <ul class="space-y-2 pl-2">
+                                    <li><a href="/Pakistan/rock-climbing/19/charakusa-valley" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Charakusa Valley</a></li>
+                                    <li><a href="/Pakistan/rock-climbing/20/nangma-valley-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Nangma Valley Expedition</a></li>
+                                    <li><a href="/Pakistan/rock-climbing/21/trango-tower-expedition" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Trango Tower Expedition</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="/about-us" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">About Us</a>
+                    </li>
+                    <li>
+                        <a href="/how-to-apply" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">How to Apply (Visa)</a>
+                    </li>
+                </ul>
+
+                <!-- Search Icon -->
+                <button class="hidden md:block text-white hover:text-emerald-400 ml-4">
+                    <i class="fas fa-search text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 pb-4 max-h-screen overflow-y-auto">
+            <ul class="space-y-1 px-4 py-2">
+                <li><a href="/" class="text-white block py-3 hover:text-emerald-400 hover:bg-gray-700 px-3 rounded">Home</a></li>
+                
+                <!-- Trending Treks Mobile -->
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn text-white w-full text-left py-3 hover:text-emerald-400 hover:bg-gray-700 px-3 rounded flex justify-between items-center">
+                        <span>Trending Treks</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <ul class="mobile-submenu hidden bg-gray-700 mt-1 rounded overflow-hidden">
+                        <li><a href="/Pakistan/Trek/1/k2-base-camp-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">K2 Base camp trek</a></li>
+                        <li><a href="/Pakistan/Trek/2/k2-base-camp-gondogoro-la-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">K2 Base camp Gondogoro la trek</a></li>
+                        <li><a href="/Pakistan/Trek/6/charakusa-k7-base-camp-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Charakusa k7 Base Camp trek</a></li>
+                        <li><a href="/Pakistan/Trek/7/four-8000m-base-camp-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Four 8000m Base Camp trek</a></li>
+                        <li><a href="/Pakistan/Trek/10/nanga-parbat-base-camp-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Nanga Parbat Base Camp trek</a></li>
+                        <li><a href="/Pakistan/Trek/11/rakaposhi-base-camp-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Rakaposhi Base camp trek</a></li>
+                        <li><a href="/Pakistan/Trek/12/shimshal-pass-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Shimshal pass trek</a></li>
+                        <li><a href="/Pakistan/Trek/27/chilinji-pass-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Chilinji Pass Trek</a></li>
+                        <li><a href="/Pakistan/Trek/29/darkot-pass-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Darkot pass trek</a></li>
+                        <li><a href="/Pakistan/Trek/30/naltar-ishkoman-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Naltar Ishkoman Trek</a></li>
+                        <li><a href="/Pakistan/Trek/31/tirich-mir-base-camp-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Tirich mir base camp trek</a></li>
+                        <li><a href="/Pakistan/Trek/32/biafo-hispar-and-snow-lake-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Biafo-Hispar and Snow Lake trek</a></li>
+                        <li><a href="/Pakistan/Trek/33/iqbal-top-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Iqbal Top Trek</a></li>
+                        <li><a href="/Pakistan/Trek/34/k2-ggla-pastore-basecamp-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">K2, GGLA & Pastore basecamp trek</a></li>
+                        <li><a href="/Pakistan/Trek/35/khaney-brok-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Khaney Brok Trek</a></li>
+                        <li><a href="/Pakistan/Trek/36/trango-tower-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Trango Tower Trek</a></li>
+                        <li><a href="/Pakistan/Trek/37/fairy-meadows" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Fairy Meadows</a></li>
+                        <li><a href="/Pakistan/Trek/38/nangma-valley-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Nangma Valley trek</a></li>
+                        <li><a href="/Pakistan/Trek/40/rush-lake-trek" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Rush lake trek</a></li>
+                        <li><a href="/Pakistan/Trek/42/trek-to-shisper-khurdopin-glacier" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Trek to Shisper & Khurdopin Glacier</a></li>
+                    </ul>
+                </li>
+
+                <!-- Expeditions Mobile -->
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn text-white w-full text-left py-3 hover:text-emerald-400 hover:bg-gray-700 px-3 rounded flex justify-between items-center">
+                        <span>Expeditions</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <ul class="mobile-submenu hidden bg-gray-700 mt-1 rounded overflow-hidden">
+                        <li class="bg-gray-600 px-4 py-2 text-xs font-bold text-emerald-400 uppercase">8000 Meters</li>
+                        <li><a href="/Pakistan/Expedition/3/k2-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">K2 Expedition</a></li>
+                        <li><a href="/Pakistan/Expedition/4/broad-peak-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Broad Peak Expedition</a></li>
+                        <li><a href="/Pakistan/Expedition/5/nanga-parbat-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Nanga Parbat Expedition</a></li>
+                        <li class="bg-gray-600 px-4 py-2 text-xs font-bold text-blue-400 uppercase">7000 Meters</li>
+                        <li><a href="/Pakistan/Expedition/62/rakaposhi-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Rakaposhi Expedition</a></li>
+                        <li><a href="/Pakistan/Expedition/63/spantik-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Spantik Expedition</a></li>
+                        <li class="bg-gray-600 px-4 py-2 text-xs font-bold text-purple-400 uppercase">6000 Meters</li>
+                        <li><a href="/Pakistan/Expedition/14/bondit-peak-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Bondit Peak Expedition</a></li>
+                        <li><a href="/Pakistan/Expedition/16/paju-peak-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Paju Peak Expedition</a></li>
+                    </ul>
+                </li>
+
+                <!-- Tours Mobile -->
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn text-white w-full text-left py-3 hover:text-emerald-400 hover:bg-gray-700 px-3 rounded flex justify-between items-center">
+                        <span>Tours</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <ul class="mobile-submenu hidden bg-gray-700 mt-1 rounded overflow-hidden">
+                        <li class="bg-gray-600 px-4 py-2 text-xs font-bold text-pink-400 uppercase">Spring Tours</li>
+                        <li><a href="/Pakistan/Tour/49/hunza-valley-blossom-tour" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Hunza Valley Blossom Tour</a></li>
+                        <li><a href="/Pakistan/Tour/51/skardu-valley-blossom-tour" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Skardu Valley Blossom Tour</a></li>
+                        <li class="bg-gray-600 px-4 py-2 text-xs font-bold text-orange-400 uppercase">Summer Tours</li>
+                        <li><a href="/Pakistan/Tour/43/hunza-panorama-tour" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Hunza Panorama Tour</a></li>
+                        <li><a href="/Pakistan/Tour/52/deosai-plateau-tour" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Deosai Plateau Tour</a></li>
+                        <li><a href="/Pakistan/Tour/53/fairy-meadow-tour" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Fairy meadow Tour</a></li>
+                        <li class="bg-gray-600 px-4 py-2 text-xs font-bold text-amber-400 uppercase">Autumn Tours</li>
+                        <li><a href="/Pakistan/Tour/22/baltistan-autumn-tour" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Baltistan Autumn Tour</a></li>
+                        <li><a href="/Pakistan/Tour/44/phander-autumn-tour" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Phander Autumn Tour</a></li>
+                    </ul>
+                </li>
+
+                <!-- Rock Climbing Mobile -->
+                <li class="mobile-dropdown">
+                    <button class="mobile-dropdown-btn text-white w-full text-left py-3 hover:text-emerald-400 hover:bg-gray-700 px-3 rounded flex justify-between items-center">
+                        <span>Rock Climbing</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <ul class="mobile-submenu hidden bg-gray-700 mt-1 rounded overflow-hidden">
+                        <li><a href="/Pakistan/rock-climbing/19/charakusa-valley" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Charakusa Valley</a></li>
+                        <li><a href="/Pakistan/rock-climbing/20/nangma-valley-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Nangma Valley Expedition</a></li>
+                        <li><a href="/Pakistan/rock-climbing/21/trango-tower-expedition" class="text-gray-200 block py-2 px-6 text-sm hover:bg-emerald-600">Trango Tower Expedition</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/about-us" class="text-white block py-3 hover:text-emerald-400 hover:bg-gray-700 px-3 rounded">About Us</a></li>
+                <li><a href="/how-to-apply" class="text-white block py-3 hover:text-emerald-400 hover:bg-gray-700 px-3 rounded">How to Apply (Visa)</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel Section -->
+    <section class="relative h-screen overflow-hidden">
+        <div class="carousel relative h-full">
+            <!-- Slide 1 -->
+            <div class="carousel-item active h-full relative">
+                <img src="assets/Front-banner-k2.webp" alt="K2 Mountain" class="w-full h-full object-cover">
+                <div class="hero-overlay absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h1 class="text-5xl md:text-7xl font-bold mb-4 animate-fade-in">Travel With Discover Ghanche</h1>
+                        <p class="text-xl md:text-2xl mb-8">Discover Pakistan's Wild Beauty With Trusted Local Experts</p>
+                        <a href="#book" class="btn-primary inline-block px-8 py-4 text-lg font-semibold rounded-full text-white">
+                            Plan Your Adventure
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item h-full relative">
+                <img src="assets/K2-&-Concordia.webp" alt="K2 & Concordia" class="w-full h-full object-cover">
+                <div class="hero-overlay absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h1 class="text-5xl md:text-7xl font-bold mb-4">K2 & Concordia Trek</h1>
+                        <p class="text-xl md:text-2xl mb-8">Experience the World's Most Spectacular Mountain Views</p>
+                        <a href="#book" class="btn-primary inline-block px-8 py-4 text-lg font-semibold rounded-full text-white">
+                            Explore Treks
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item h-full relative">
+                <img src="assets/shangrila-resort.webp" alt="Shangrila Resort" class="w-full h-full object-cover">
+                <div class="hero-overlay absolute inset-0 flex items-center justify-center">
+                    <div class="text-center text-white px-4">
+                        <h1 class="text-5xl md:text-7xl font-bold mb-4">Luxury Mountain Resorts</h1>
+                        <p class="text-xl md:text-2xl mb-8">Relax in Paradise After Your Adventure</p>
+                        <a href="#book" class="btn-primary inline-block px-8 py-4 text-lg font-semibold rounded-full text-white">
+                            Book Your Stay
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button id="prevSlide" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white p-4 rounded-full backdrop-blur-sm transition">
+                <i class="fas fa-chevron-left text-2xl"></i>
+            </button>
+            <button id="nextSlide" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white p-4 rounded-full backdrop-blur-sm transition">
+                <i class="fas fa-chevron-right text-2xl"></i>
+            </button>
+
+            <!-- Carousel Indicators -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3">
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="0"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="1"></button>
+                <button class="carousel-indicator w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="2"></button>
+            </div>
+        </div>
+
+        <!-- Booking Search Bar -->
+        <div class="absolute bottom-0 left-0 right-0 pb-8 px-4 hidden md:block">
+            <div class="container mx-auto max-w-6xl">
+                <div class="bg-white rounded-2xl shadow-2xl p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-gray-600 mb-2 text-sm"><i class="fas fa-map-marker-alt text-emerald-600 mr-2"></i>Location</label>
+                        <input type="text" placeholder="Where to?" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-gray-600 mb-2 text-sm"><i class="fas fa-hiking text-emerald-600 mr-2"></i>Booking Type</label>
+                        <select class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none">
+                            <option>Trek</option>
+                            <option>Expedition</option>
+                            <option>Tour</option>
+                            <option>Rock Climbing</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-600 mb-2 text-sm"><i class="fas fa-calendar text-emerald-600 mr-2"></i>Date</label>
+                        <input type="date" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-gray-600 mb-2 text-sm"><i class="fas fa-users text-emerald-600 mr-2"></i>Persons</label>
+                        <input type="number" placeholder="0" value="1" min="1" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none">
+                    </div>
+                    <div class="md:col-span-4">
+                        <button class="w-full btn-primary py-4 rounded-lg text-white font-semibold text-lg">
+                            <i class="fas fa-search mr-2"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Treks Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 text-white inline-block px-12 py-4 rounded-2xl shadow-2xl mb-4">
+                    Popular Treks in Pakistan
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">Explore the most breathtaking trekking routes in the heart of the Himalayas and Karakoram</p>
+            </div>
+
+            <!-- Owl Carousel -->
+            <div class="owl-carousel owl-theme treks-carousel" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                <!-- Trek 1 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer">
+                        <img src="assets/Front-banner-k2.webp" alt="Four 8000m Base Camp trek">
+                        <span class="trek-badge">TREK</span>
+                        <div class="trek-overlay">
+                            <h3 class="text-2xl font-bold mb-2">Four 8000m Base Camp trek</h3>
+                            <p class="text-gray-300 text-sm mb-3">Experience four of the world's highest peaks in one epic journey</p>
+                            <div class="flex items-center gap-4 text-sm">
+                                <span><i class="fas fa-clock mr-2"></i>18-21 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Difficult</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trek 2 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer">
+                        <img src="assets/K2-&-Concordia.webp" alt="K2 Base camp trek">
+                        <span class="trek-badge">TREK</span>
+                        <div class="trek-overlay">
+                            <h3 class="text-2xl font-bold mb-2">K2 Base camp trek</h3>
+                            <p class="text-gray-300 text-sm mb-3">Journey to the base of the world's second highest mountain</p>
+                            <div class="flex items-center gap-4 text-sm">
+                                <span><i class="fas fa-clock mr-2"></i>12-15 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Challenging</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trek 3 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer">
+                        <img src="assets/K2-&-Concordia.webp" alt="K2 Base camp Gondogoro la trek">
+                        <span class="trek-badge">TREK</span>
+                        <div class="trek-overlay">
+                            <h3 class="text-2xl font-bold mb-2">K2 Base camp Gondogoro la trek</h3>
+                            <p class="text-gray-300 text-sm mb-3">Ultimate adventure combining K2 Base Camp with Gondogoro La Pass</p>
+                            <div class="flex items-center gap-4 text-sm">
+                                <span><i class="fas fa-clock mr-2"></i>14-16 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Expert</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trek 4 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer">
+                        <img src="assets/Front-banner-k2.webp" alt="Charakusa k7 Base Camp trek">
+                        <span class="trek-badge">TREK</span>
+                        <div class="trek-overlay">
+                            <h3 class="text-2xl font-bold mb-2">Charakusa k7 Base Camp trek</h3>
+                            <p class="text-gray-300 text-sm mb-3">Remote valley trek with stunning granite spires and glaciers</p>
+                            <div class="flex items-center gap-4 text-sm">
+                                <span><i class="fas fa-clock mr-2"></i>10-12 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Moderate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trek 5 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer">
+                        <img src="assets/shangrila-resort.webp" alt="Nanga Parbat Base Camp trek">
+                        <span class="trek-badge">TREK</span>
+                        <div class="trek-overlay">
+                            <h3 class="text-2xl font-bold mb-2">Nanga Parbat Base Camp trek</h3>
+                            <p class="text-gray-300 text-sm mb-3">Stunning views of the Killer Mountain's massive Rupal Face</p>
+                            <div class="flex items-center gap-4 text-sm">
+                                <span><i class="fas fa-clock mr-2"></i>8-10 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Moderate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trek 6 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer">
+                        <img src="assets/K2-&-Concordia.webp" alt="Fairy Meadows">
+                        <span class="trek-badge">TREK</span>
+                        <div class="trek-overlay">
+                            <h3 class="text-2xl font-bold mb-2">Fairy Meadows</h3>
+                            <p class="text-gray-300 text-sm mb-3">Paradise on earth with breathtaking views of Nanga Parbat</p>
+                            <div class="flex items-center gap-4 text-sm">
+                                <span><i class="fas fa-clock mr-2"></i>5-7 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Easy</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <a href="#" class="inline-block px-10 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-2xl transform hover:scale-105">
+                    View All Treks <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Company Section -->
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side - Images -->
+                <div class="relative" data-aos="fade-right" data-aos-duration="1200">
+                    <!-- Main Mountain Image -->
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="assets/Front-banner-k2.webp" alt="Mountain View" class="w-full h-[500px] object-cover">
+                        <!-- Experience Badge -->
+                        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-white rounded-2xl shadow-2xl p-6 w-64" data-aos="zoom-in" data-aos-delay="400" data-aos-duration="1000">
+                            <div class="flex items-center gap-4">
+                                <div class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">
+                                    8
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-gray-800">Years of</div>
+                                    <div class="text-xl font-bold text-gray-800">Experience</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Small Badge Image -->
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 rounded-2xl overflow-hidden shadow-2xl border-8 border-white" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                        <img src="assets/logo.jpeg" alt="Discover Ghanche Badge" class="w-full h-full object-cover bg-white">
+                    </div>
+                </div>
+
+                <!-- Right Side - Content -->
+                <div class="space-y-8">
+                    <!-- Section Title -->
+                    <div data-aos="fade-left" data-aos-duration="1000">
+                        <span class="text-cyan-500 font-bold text-lg uppercase tracking-wide">About Company</span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mt-2 leading-tight">
+                            Great opportunity for adventure & travels
+                        </h2>
+                    </div>
+
+                    <!-- Features List -->
+                    <div class="space-y-6 relative">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-7 top-10 bottom-10 w-0.5 bg-gradient-to-b from-yellow-400 via-cyan-400 to-cyan-400 hidden md:block" data-aos="fade-down" data-aos-delay="200" data-aos-duration="1500"></div>
+
+                        <!-- Feature 1 -->
+                        <div class="flex gap-6 items-start" data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000">
+                            <div class="flex-shrink-0 relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300">
+                                    <i class="fas fa-route text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Customized Itineraries:</h3>
+                                <p class="text-gray-600">Offer's personalized experiences, allowing you to tailor your trip to match your interests and preferences.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 2 -->
+                        <div class="flex gap-6 items-start" data-aos="fade-left" data-aos-delay="400" data-aos-duration="1000">
+                            <div class="flex-shrink-0 relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300">
+                                    <i class="fas fa-hand-holding-usd text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Low price & friendly</h3>
+                                <p class="text-gray-600">Affordability meets warmth in our low-price, friendly service.</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature 3 -->
+                        <div class="flex gap-6 items-start" data-aos="fade-left" data-aos-delay="600" data-aos-duration="1000">
+                            <div class="flex-shrink-0 relative">
+                                <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg transform hover:scale-110 transition-all duration-300">
+                                    <i class="fas fa-map-marked-alt text-white text-2xl"></i>
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                                <h3 class="text-2xl font-bold text-gray-900 mb-2">Native travel guide</h3>
+                                <p class="text-gray-600">Embark on a journey rooted in heritage, guided by tradition, and enriched by the stories of our ancestors.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div data-aos="fade-up" data-aos-delay="800" data-aos-duration="1000">
+                        <a href="/about-us" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-2xl transform hover:scale-105">
+                            <span>Learn More About Us</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Trekking Price For <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Private / B2B Groups</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Competitive pricing for individual travelers and group bookings</p>
+            </div>
+
+            <!-- Pricing Table -->
+            <div class="max-w-6xl mx-auto" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                <!-- Desktop Table -->
+                <div class="hidden md:block bg-white rounded-3xl shadow-2xl overflow-hidden">
+                    <!-- Table Header -->
+                    <div class="grid grid-cols-12 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-lg">
+                        <div class="col-span-6 px-8 py-5">
+                            <i class="fas fa-mountain mr-3"></i>TREKS
+                        </div>
+                        <div class="col-span-3 px-8 py-5 text-center border-l border-emerald-500/30">
+                            <i class="fas fa-dollar-sign mr-2"></i>COST 7-12
+                        </div>
+                        <div class="col-span-3 px-8 py-5 text-center border-l border-emerald-500/30">
+                            <i class="fas fa-info-circle mr-2"></i>MORE INFO
+                        </div>
+                    </div>
+
+                    <!-- Table Rows -->
+                    <div class="divide-y divide-gray-200">
+                        <!-- Row 1 -->
+                        <div class="grid grid-cols-12 items-center hover:bg-emerald-50 transition-all duration-300 group" data-aos="fade-right" data-aos-delay="300">
+                            <div class="col-span-6 px-8 py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-hiking text-emerald-600 text-xl"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-semibold text-lg">K2 Base camp Gondogoro la trek</span>
+                                </div>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <span class="text-2xl font-bold text-emerald-600">2,300$</span>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    More info
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="grid grid-cols-12 items-center hover:bg-emerald-50 transition-all duration-300 group" data-aos="fade-right" data-aos-delay="350">
+                            <div class="col-span-6 px-8 py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-hiking text-emerald-600 text-xl"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-semibold text-lg">Charakusa k7 Base Camp trek</span>
+                                </div>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <span class="text-2xl font-bold text-emerald-600">2,500$</span>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    More info
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="grid grid-cols-12 items-center hover:bg-emerald-50 transition-all duration-300 group" data-aos="fade-right" data-aos-delay="400">
+                            <div class="col-span-6 px-8 py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-hiking text-emerald-600 text-xl"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-semibold text-lg">Four 8000m Base Camp trek</span>
+                                </div>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <span class="text-2xl font-bold text-emerald-600">2,599$</span>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    More info
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="grid grid-cols-12 items-center hover:bg-emerald-50 transition-all duration-300 group" data-aos="fade-right" data-aos-delay="450">
+                            <div class="col-span-6 px-8 py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-hiking text-emerald-600 text-xl"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-semibold text-lg">Nanga Parbat Base Camp trek</span>
+                                </div>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <span class="text-2xl font-bold text-emerald-600">1,500$</span>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    More info
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div class="grid grid-cols-12 items-center hover:bg-emerald-50 transition-all duration-300 group" data-aos="fade-right" data-aos-delay="500">
+                            <div class="col-span-6 px-8 py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-hiking text-emerald-600 text-xl"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-semibold text-lg">Rakaposhi Base camp trek</span>
+                                </div>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <span class="text-2xl font-bold text-emerald-600">1,500$</span>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    More info
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Row 6 -->
+                        <div class="grid grid-cols-12 items-center hover:bg-emerald-50 transition-all duration-300 group" data-aos="fade-right" data-aos-delay="550">
+                            <div class="col-span-6 px-8 py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-hiking text-emerald-600 text-xl"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-semibold text-lg">Shimshal pass trek</span>
+                                </div>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <span class="text-2xl font-bold text-emerald-600">1,500$</span>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    More info
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Row 7 -->
+                        <div class="grid grid-cols-12 items-center hover:bg-emerald-50 transition-all duration-300 group" data-aos="fade-right" data-aos-delay="600">
+                            <div class="col-span-6 px-8 py-6">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-12 h-12 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-hiking text-emerald-600 text-xl"></i>
+                                    </div>
+                                    <span class="text-gray-900 font-semibold text-lg">Nangma Valley trek</span>
+                                </div>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <span class="text-2xl font-bold text-emerald-600">1,500$</span>
+                            </div>
+                            <div class="col-span-3 px-8 py-6 text-center">
+                                <a href="#" class="inline-block px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-xl transform hover:scale-105">
+                                    More info
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Cards -->
+                <div class="md:hidden space-y-4">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
+                            <h3 class="text-white font-bold text-lg">K2 Base camp Gondogoro la trek</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-600">Price (7-12 persons)</span>
+                                <span class="text-2xl font-bold text-emerald-600">2,300$</span>
+                            </div>
+                            <a href="#" class="block w-full text-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition">
+                                More info
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="350">
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
+                            <h3 class="text-white font-bold text-lg">Charakusa k7 Base Camp trek</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-600">Price (7-12 persons)</span>
+                                <span class="text-2xl font-bold text-emerald-600">2,500$</span>
+                            </div>
+                            <a href="#" class="block w-full text-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition">
+                                More info
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
+                            <h3 class="text-white font-bold text-lg">Four 8000m Base Camp trek</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-600">Price (7-12 persons)</span>
+                                <span class="text-2xl font-bold text-emerald-600">2,599$</span>
+                            </div>
+                            <a href="#" class="block w-full text-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition">
+                                More info
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="450">
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
+                            <h3 class="text-white font-bold text-lg">Nanga Parbat Base Camp trek</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-600">Price (7-12 persons)</span>
+                                <span class="text-2xl font-bold text-emerald-600">1,500$</span>
+                            </div>
+                            <a href="#" class="block w-full text-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition">
+                                More info
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
+                            <h3 class="text-white font-bold text-lg">Rakaposhi Base camp trek</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-600">Price (7-12 persons)</span>
+                                <span class="text-2xl font-bold text-emerald-600">1,500$</span>
+                            </div>
+                            <a href="#" class="block w-full text-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition">
+                                More info
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="550">
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
+                            <h3 class="text-white font-bold text-lg">Shimshal pass trek</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-600">Price (7-12 persons)</span>
+                                <span class="text-2xl font-bold text-emerald-600">1,500$</span>
+                            </div>
+                            <a href="#" class="block w-full text-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition">
+                                More info
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 7 -->
+                    <div class="bg-white rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="600">
+                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-4">
+                            <h3 class="text-white font-bold text-lg">Nangma Valley trek</h3>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-gray-600">Price (7-12 persons)</span>
+                                <span class="text-2xl font-bold text-emerald-600">1,500$</span>
+                            </div>
+                            <a href="#" class="block w-full text-center px-6 py-3 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold rounded-full hover:from-emerald-700 hover:to-teal-700 transition">
+                                More info
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Note -->
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-delay="700">
+                <p class="text-gray-600 text-lg mb-6">Need a custom quote for your group? <span class="font-bold text-emerald-600">Contact us for personalized pricing!</span></p>
+                <a href="tel:+923238312244" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-2xl transform hover:scale-105">
+                    <i class="fas fa-phone"></i>
+                    <span>Get Custom Quote</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expeditions Section -->
+    <section class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 text-white inline-block px-12 py-4 rounded-2xl shadow-2xl mb-4">
+                    Expeditions In Pakistan
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto mt-6">Conquer the world's highest peaks with expert guidance and support</p>
+            </div>
+
+            <!-- Owl Carousel -->
+            <div class="owl-carousel owl-theme expeditions-carousel" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                <!-- Expedition 1 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                        <img src="assets/Front-banner-k2.webp" alt="Gasherbrum-II Expedition" class="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute top-6 left-6">
+                            <span class="expedition-badge bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-xs font-bold uppercase rounded-lg shadow-lg">
+                                EXPEDITION
+                            </span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <h3 class="text-3xl font-bold text-white mb-3 transform group-hover:translate-y-[-8px] transition-transform duration-300">Gasherbrum-II Expedition</h3>
+                            <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Challenge yourself on the 13th highest mountain in the world at 8,035m</p>
+                            <div class="flex items-center gap-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span><i class="fas fa-mountain mr-2"></i>8,035m</span>
+                                <span><i class="fas fa-calendar mr-2"></i>45-60 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Extreme</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expedition 2 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                        <img src="assets/K2-&-Concordia.webp" alt="Broad Peak Expedition" class="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute top-6 left-6">
+                            <span class="expedition-badge bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-xs font-bold uppercase rounded-lg shadow-lg">
+                                EXPEDITION
+                            </span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <h3 class="text-3xl font-bold text-white mb-3 transform group-hover:translate-y-[-8px] transition-transform duration-300">Broad Peak Expedition</h3>
+                            <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Climb the 12th highest peak in the world with stunning panoramic views</p>
+                            <div class="flex items-center gap-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span><i class="fas fa-mountain mr-2"></i>8,051m</span>
+                                <span><i class="fas fa-calendar mr-2"></i>45-60 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Extreme</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expedition 3 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                        <img src="assets/shangrila-resort.webp" alt="Nanga Parbat Expedition" class="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute top-6 left-6">
+                            <span class="expedition-badge bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-xs font-bold uppercase rounded-lg shadow-lg">
+                                EXPEDITION
+                            </span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <h3 class="text-3xl font-bold text-white mb-3 transform group-hover:translate-y-[-8px] transition-transform duration-300">Nanga Parbat Expedition</h3>
+                            <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">The Killer Mountain - One of the most dangerous 8000m peaks to climb</p>
+                            <div class="flex items-center gap-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span><i class="fas fa-mountain mr-2"></i>8,126m</span>
+                                <span><i class="fas fa-calendar mr-2"></i>50-65 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Extreme</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expedition 4 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                        <img src="assets/Front-banner-k2.webp" alt="Gasherbrum-I Expedition" class="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute top-6 left-6">
+                            <span class="expedition-badge bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-xs font-bold uppercase rounded-lg shadow-lg">
+                                EXPEDITION
+                            </span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <h3 class="text-3xl font-bold text-white mb-3 transform group-hover:translate-y-[-8px] transition-transform duration-300">Gasherbrum-I Expedition</h3>
+                            <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Hidden Peak - The 11th highest mountain offering technical challenges</p>
+                            <div class="flex items-center gap-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span><i class="fas fa-mountain mr-2"></i>8,080m</span>
+                                <span><i class="fas fa-calendar mr-2"></i>45-60 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Extreme</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expedition 5 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                        <img src="assets/K2-&-Concordia.webp" alt="K2 Expedition" class="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute top-6 left-6">
+                            <span class="expedition-badge bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-xs font-bold uppercase rounded-lg shadow-lg">
+                                EXPEDITION
+                            </span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <h3 class="text-3xl font-bold text-white mb-3 transform group-hover:translate-y-[-8px] transition-transform duration-300">K2 Expedition</h3>
+                            <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">The Savage Mountain - World's second highest and most dangerous peak</p>
+                            <div class="flex items-center gap-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span><i class="fas fa-mountain mr-2"></i>8,611m</span>
+                                <span><i class="fas fa-calendar mr-2"></i>60-75 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Extreme</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expedition 6 -->
+                <div class="item">
+                    <div class="relative group cursor-pointer rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500">
+                        <img src="assets/shangrila-resort.webp" alt="Rakaposhi Expedition" class="w-full h-[500px] object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                        <div class="absolute top-6 left-6">
+                            <span class="expedition-badge bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-xs font-bold uppercase rounded-lg shadow-lg">
+                                EXPEDITION
+                            </span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <h3 class="text-3xl font-bold text-white mb-3 transform group-hover:translate-y-[-8px] transition-transform duration-300">Rakaposhi Expedition</h3>
+                            <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">Beautiful 7000m peak with uninterrupted rise from base to summit</p>
+                            <div class="flex items-center gap-4 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span><i class="fas fa-mountain mr-2"></i>7,788m</span>
+                                <span><i class="fas fa-calendar mr-2"></i>30-40 days</span>
+                                <span><i class="fas fa-signal mr-2"></i>Very Hard</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                <a href="#" class="inline-block px-10 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-2xl transform hover:scale-105">
+                    View All Expeditions <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Hiking Trips Section -->
+    <section class="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Top Hiking Trips In Pakistan
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Discover the most scenic and rewarding hiking adventures across Pakistan's mountains</p>
+            </div>
+
+            <!-- Hiking Trips Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Trip 1 - Khaney Broq -->
+                <div class="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <img src="assets/Front-banner-k2.webp" alt="Khaney Broq" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                            11 Days
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <p class="text-gray-300 text-sm mb-2">Travel To</p>
+                        <h3 class="text-2xl font-bold text-white transform group-hover:translate-y-[-4px] transition-transform duration-300">Khaney Broq</h3>
+                    </div>
+                </div>
+
+                <!-- Trip 2 - Gondogoro La -->
+                <div class="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer md:col-span-2" data-aos="fade-up" data-aos-delay="150">
+                    <img src="assets/K2-&-Concordia.webp" alt="Gondogoro La" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                            20 Days
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <p class="text-gray-300 text-sm mb-2">Travel To</p>
+                        <h3 class="text-2xl font-bold text-white transform group-hover:translate-y-[-4px] transition-transform duration-300">Gondogoro La</h3>
+                    </div>
+                </div>
+
+                <!-- Trip 3 - Charakusa k7 -->
+                <div class="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                    <img src="assets/shangrila-resort.webp" alt="Charakusa k7" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                            14 Days
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <p class="text-gray-300 text-sm mb-2">Travel To</p>
+                        <h3 class="text-2xl font-bold text-white transform group-hover:translate-y-[-4px] transition-transform duration-300">Charakusa k7</h3>
+                    </div>
+                </div>
+
+                <!-- Trip 4 - Rush Lake -->
+                <div class="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" data-aos="fade-up" data-aos-delay="250">
+                    <img src="assets/Front-banner-k2.webp" alt="Rush Lake" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                            13 Days
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <p class="text-gray-300 text-sm mb-2">Travel To</p>
+                        <h3 class="text-2xl font-bold text-white transform group-hover:translate-y-[-4px] transition-transform duration-300">Rush Lake</h3>
+                    </div>
+                </div>
+
+                <!-- Trip 5 - Nangma Valley -->
+                <div class="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" data-aos="fade-up" data-aos-delay="300">
+                    <img src="assets/K2-&-Concordia.webp" alt="Nangma Valley" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                            12 Days
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <p class="text-gray-300 text-sm mb-2">Travel To</p>
+                        <h3 class="text-2xl font-bold text-white transform group-hover:translate-y-[-4px] transition-transform duration-300">Nangma Valley</h3>
+                    </div>
+                </div>
+
+                <!-- Trip 6 - Naltar Askomen -->
+                <div class="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" data-aos="fade-up" data-aos-delay="350">
+                    <img src="assets/shangrila-resort.webp" alt="Naltar Askomen" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                            16 Days
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <p class="text-gray-300 text-sm mb-2">Travel To</p>
+                        <h3 class="text-2xl font-bold text-white transform group-hover:translate-y-[-4px] transition-transform duration-300">Naltar Askomen</h3>
+                    </div>
+                </div>
+
+                <!-- Trip 7 - Snow Lake -->
+                <div class="relative group rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer" data-aos="fade-up" data-aos-delay="400">
+                    <img src="assets/Front-banner-k2.webp" alt="Snow Lake" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                            21 Days
+                        </span>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 p-6">
+                        <p class="text-gray-300 text-sm mb-2">Travel To</p>
+                        <h3 class="text-2xl font-bold text-white transform group-hover:translate-y-[-4px] transition-transform duration-300">Snow Lake</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Button -->
+            <div class="text-center mt-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="450">
+                <a href="#" class="inline-block px-10 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold rounded-full hover:from-emerald-700 hover:to-teal-700 transition shadow-lg hover:shadow-2xl transform hover:scale-105">
+                    Explore More Hiking Trips <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Testimonial Section -->
+    <section class="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 relative overflow-hidden">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side - Heading -->
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-block mb-6">
+                        <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-2 rounded-lg font-semibold text-sm uppercase tracking-wider">
+                            Destination
+                        </span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                        What they're talking about our policy
+                    </h2>
+                </div>
+
+                <!-- Right Side - Testimonial Card -->
+                <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <!-- Decorative Quote Circle -->
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-full flex items-center justify-center shadow-2xl z-10">
+                        <svg class="w-16 h-16 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+                        </svg>
+                    </div>
+
+                    <!-- Testimonial Card -->
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-10 relative">
+                        <!-- 5 Stars Rating -->
+                        <div class="flex gap-1 mb-6">
+                            <i class="fas fa-star text-yellow-400 text-xl"></i>
+                            <i class="fas fa-star text-yellow-400 text-xl"></i>
+                            <i class="fas fa-star text-yellow-400 text-xl"></i>
+                            <i class="fas fa-star text-yellow-400 text-xl"></i>
+                            <i class="fas fa-star text-yellow-400 text-xl"></i>
+                        </div>
+
+                        <!-- Testimonial Text -->
+                        <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-6">
+                            As the CEO of Discover Ghanche, I'm proud to offer unforgettable, sustainable adventures that blend culture and excitement creating memories that last a lifetime.
+                        </p>
+
+                        <!-- Decorative Wave Line -->
+                        <div class="mt-8">
+                            <svg class="w-full h-12" viewBox="0 0 600 60" preserveAspectRatio="none">
+                                <path d="M0,30 Q150,10 300,30 T600,30" stroke="url(#gradient)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#0d9488;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Blog Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <!-- Section Header -->
+            <div class="mb-16" data-aos="fade-up" data-aos-duration="1000">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+                    Amazing News & Blog For<br>Every Single Update
+                </h2>
+            </div>
+
+            <!-- Blog Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 - Diran Peak -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/Front-banner-k2.webp" alt="Diran Peak expedition" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                                50 Days
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="bg-yellow-400 text-gray-900 px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                                Expedition
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-gray-500 text-sm mb-3">
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-user-circle text-emerald-600"></i> Admin
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-comments text-emerald-600"></i> Comments
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
+                            Diran Peak expedition
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Diran Peak, at a height of 7,266m from sea level, is located in the Karakoram Range in the Gilgit-Baltistan region of Pakistan...
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-2 text-emerald-600 font-semibold hover:gap-3 transition-all">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 - Fairy Meadow Tour -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/K2-&-Concordia.webp" alt="Fairy meadow Tour" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                                15 Days
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="bg-yellow-400 text-gray-900 px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                                Tour
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-gray-500 text-sm mb-3">
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-user-circle text-emerald-600"></i> Admin
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-comments text-emerald-600"></i> Comments
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
+                            Fairy meadow Tour
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Fairy Meadows, standing at an altitude of 3300 meters from the sea level, is nestled among the mighty Himalayas in northern Pakistan...
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-2 text-emerald-600 font-semibold hover:gap-3 transition-all">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 - K2 Expedition -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/shangrila-resort.webp" alt="K2 Expedition" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                                49 Days
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="bg-yellow-400 text-gray-900 px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                                Expedition
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-gray-500 text-sm mb-3">
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-user-circle text-emerald-600"></i> Admin
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-comments text-emerald-600"></i> Comments
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
+                            K2 Expedition
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            K2 or Mount Godwin-Austen, also known as Chogho Ree among the locals and Savage Mountain among climbers, is the second highest mountain...
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-2 text-emerald-600 font-semibold hover:gap-3 transition-all">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4 - Kolpin Peak Expedition -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative overflow-hidden">
+                        <img src="assets/Front-banner-k2.webp" alt="Kolpin peak Expedition" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                                30 Days
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="bg-yellow-400 text-gray-900 px-4 py-2 text-sm font-bold rounded-lg shadow-lg">
+                                Expedition
+                            </span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-4 text-gray-500 text-sm mb-3">
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-user-circle text-emerald-600"></i> Admin
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-comments text-emerald-600"></i> Comments
+                            </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
+                            Kolpin peak Expedition
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Kolpin Peak is Located in the Karakoram Mountain Ranges in the Region of Gilgit Baltistan, Pakistan. The altitude of Kolpin Peak is 6,040...
+                        </p>
+                        <a href="#" class="inline-flex items-center gap-2 text-emerald-600 font-semibold hover:gap-3 transition-all">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Banner -->
+    <div class="bg-gray-900 py-6 overflow-hidden">
+        <div class="support-scroll flex items-center gap-8 whitespace-nowrap">
+            <div class="flex items-center gap-4 text-white text-xl font-medium">
+                Need any support for tour & travels ?
+                <span class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full">
+                    <i class="fas fa-phone-alt text-white"></i>
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-white text-xl font-medium">
+                Need any support for tour & travels ?
+                <span class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full">
+                    <i class="fas fa-phone-alt text-white"></i>
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-white text-xl font-medium">
+                Need any support for tour & travels ?
+                <span class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full">
+                    <i class="fas fa-phone-alt text-white"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Column 1 - Logo & Social Media -->
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <div class="mb-6">
+                        <img src="assets/logo.jpeg" alt="Discover Ghanche" class="h-16 mb-4">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                            DISCOVER GHANCHE
+                        </h3>
+                        <p class="text-gray-400 text-sm mt-2">TREKS & TOURS</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2 - Pages -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <h4 class="text-xl font-bold mb-6">Pages</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                Apply Now
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 - Affiliated with -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h4 class="text-xl font-bold mb-6">Affiliated with</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white rounded-lg p-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-emerald-600 font-bold text-2xl">PATO</div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-shield-alt text-gray-700 text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-emerald-600 font-bold text-xl">NADRA</div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-certificate text-gray-700 text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4 - Contact -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <h4 class="text-xl font-bold mb-6">Contact</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-400 text-sm mb-2">Drop a Line</p>
+                            <a href="tel:+923238312244" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2">
+                                <i class="fas fa-phone-alt text-emerald-600"></i>
+                                +92 323 8312244
+                            </a>
+                            <a href="tel:+923358411291" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2 mt-1">
+                                <i class="fas fa-phone-alt text-emerald-600"></i>
+                                +92 335 8411291
+                            </a>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm mb-2">Email Address</p>
+                            <a href="mailto:info@discoverghanche.com" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2 break-all">
+                                <i class="fas fa-envelope text-emerald-600"></i>
+                                info@discoverghanche.com
+                            </a>
+                            <a href="mailto:discoverghanche@gmail.com" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2 mt-1 break-all">
+                                <i class="fas fa-envelope text-emerald-600"></i>
+                                discoverghanche@gmail.com
+                            </a>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm mb-2">Visit office</p>
+                            <p class="text-white flex items-start gap-2">
+                                <i class="fas fa-map-marker-alt text-emerald-600 mt-1"></i>
+                                <span>Jamia mosque road near doctor hospital skardu.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright Bar -->
+    <div class="bg-black text-gray-400 py-4 text-center text-sm">
+        <div class="container mx-auto px-4">
+            © 2024 Copyrights by Discover Ghanche. All Rights Reserved
+        </div>
+    </div>
+
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/923238312244" target="_blank" class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl shadow-2xl hover:bg-green-600 transition z-50">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Mobile Submenu Toggle
+        const mobileDropdownBtns = document.querySelectorAll('.mobile-dropdown-btn');
+        
+        mobileDropdownBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const submenu = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                
+                // Close other submenus
+                document.querySelectorAll('.mobile-submenu').forEach(menu => {
+                    if (menu !== submenu) {
+                        menu.classList.add('hidden');
+                        const otherIcon = menu.previousElementSibling.querySelector('i');
+                        otherIcon.classList.remove('rotate-180');
+                    }
+                });
+                
+                // Toggle current submenu
+                submenu.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Carousel Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('bg-white');
+            indicators[currentSlide].classList.add('bg-white/50');
+            
+            currentSlide = (n + totalSlides) % totalSlides;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.remove('bg-white/50');
+            indicators[currentSlide].classList.add('bg-white');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Auto-play carousel
+        let autoPlay = setInterval(nextSlide, 5000);
+
+        // Carousel controls
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            nextSlide();
+            clearInterval(autoPlay);
+            autoPlay = setInterval(nextSlide, 5000);
+        });
+
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            prevSlide();
+            clearInterval(autoPlay);
+            autoPlay = setInterval(nextSlide, 5000);
+        });
+
+        // Indicator controls
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                showSlide(index);
+                clearInterval(autoPlay);
+                autoPlay = setInterval(nextSlide, 5000);
+            });
+        });
+
+        // Initialize first indicator
+        indicators[0].classList.add('bg-white');
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+    </script>
+
+    <!-- jQuery (required for Owl Carousel) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Initialize Owl Carousel and AOS -->
+    <script>
+        // Initialize AOS Animation
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Initialize Owl Carousels
+        $(document).ready(function(){
+            // Treks Carousel
+            $('.treks-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    640: {
+                        items: 2
+                    },
+                    1024: {
+                        items: 3
+                    },
+                    1280: {
+                        items: 4
+                    }
+                }
+            });
+
+            // Expeditions Carousel
+            $('.expeditions-carousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    640: {
+                        items: 2
+                    },
+                    1024: {
+                        items: 3
+                    },
+                    1280: {
+                        items: 4
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

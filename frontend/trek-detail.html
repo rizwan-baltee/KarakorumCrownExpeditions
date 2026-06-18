@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K2 Base Camp Trek - Discover Ghanche</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .mega-menu {
+                width: 900px;
+                left: 0;
+            }
+        }
+        
+        .mega-menu-column-header {
+            color: #059669;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #10b981;
+            margin-bottom: 0.75rem;
+        }
+        
+        .nav-link:hover {
+            color: #10b981 !important;
+            transition: color 0.3s ease;
+        }
+
+        /* Support Banner Scroll Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-33.333%);
+            }
+        }
+        
+        .support-scroll {
+            animation: scroll 15s linear infinite;
+        }
+        
+        .support-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        /* Gallery Slider Styles */
+        .gallery-container {
+            display: flex;
+            gap: 1rem;
+            overflow: hidden;
+        }
+
+        .gallery-container img {
+            width: 100%;
+            flex-shrink: 0;
+            transition: transform 0.5s ease;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-container img {
+                width: 25%;
+            }
+        }
+
+        .gallery-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        @media (min-width: 768px) {
+            .gallery-nav-btn {
+                display: flex;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .gallery-nav-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-prev {
+            left: 20px;
+        }
+
+        .gallery-next {
+            right: 20px;
+        }
+
+        /* Accordion Animation */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+            padding: 0 1.5rem;
+        }
+
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Top Contact Bar -->
+    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-2 text-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex flex-wrap gap-4 md:gap-6">
+                    <a href="tel:+923238312244" class="flex items-center gap-2 hover:text-emerald-200">
+                        <i class="fas fa-phone"></i>
+                        <span>+92 323 8312244</span>
+                    </a>
+                    <a href="mailto:info@discoverghanche.com" class="flex items-center gap-2 hover:text-emerald-200">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@discoverghanche.com</span>
+                    </a>
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Jamia mosque road, Skardu</span>
+                    </span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs">License #2332</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center py-3">
+                    <img src="assets/logo.jpeg" alt="Discover Ghanche" class="h-12 md:h-16">
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+
+                <!-- Desktop Menu -->
+                <ul class="hidden md:flex items-center space-x-1">
+                    <li>
+                        <a href="index.html" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">Home</a>
+                    </li>
+
+                    <!-- Trending Treks Dropdown -->
+                    <li class="dropdown relative group">
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">
+                            Trending Treks <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="dropdown-menu absolute left-0 bg-white shadow-2xl rounded-lg mt-0 py-6 mega-menu">
+                            <div class="grid grid-cols-4 gap-6 px-6">
+                                <div>
+                                    <div class="mega-menu-column-header"><i class="fas fa-mountain text-emerald-600 mr-2"></i>Popular Treks</div>
+                                    <ul class="space-y-2">
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">K2 Base camp trek</a></li>
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">K2 Base camp Gondogoro la trek</a></li>
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Charakusa k7 Base Camp trek</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="mega-menu-column-header"><i class="fas fa-hiking text-emerald-600 mr-2"></i>Mountain Passes</div>
+                                    <ul class="space-y-2">
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Rakaposhi Base camp trek</a></li>
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Shimshal pass trek</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="mega-menu-column-header"><i class="fas fa-snow-flake text-emerald-600 mr-2"></i>Glacier Treks</div>
+                                    <ul class="space-y-2">
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Biafo-Hispar and Snow Lake trek</a></li>
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Khaney Brok Trek</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="mega-menu-column-header"><i class="fas fa-campground text-emerald-600 mr-2"></i>Scenic Routes</div>
+                                    <ul class="space-y-2">
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Fairy Meadows</a></li>
+                                        <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Rush lake trek</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Expeditions Dropdown -->
+                    <li class="dropdown relative group">
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">
+                            Expeditions <i class="fas fa-chevron-down text-xs ml-1"></i>
+                        </a>
+                        <div class="dropdown-menu absolute left-0 bg-white shadow-2xl rounded-lg mt-0 py-4 w-72">
+                            <div class="px-5">
+                                <ul class="space-y-2">
+                                    <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">K2 Expedition</a></li>
+                                    <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Broad Peak Expedition</a></li>
+                                    <li><a href="#" class="text-gray-700 hover:text-emerald-600 hover:pl-2 block py-1 text-sm transition-all">Nanga Parbat Expedition</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">Tours</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link text-white px-4 py-6 block hover:bg-gray-800">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Search Icon -->
+                <button class="hidden md:block text-white hover:text-emerald-400 ml-4">
+                    <i class="fas fa-search text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-white block py-2 hover:text-emerald-400">Home</a></li>
+                    <li><a href="#" class="text-white block py-2 hover:text-emerald-400">Trending Treks</a></li>
+                    <li><a href="#" class="text-white block py-2 hover:text-emerald-400">Expeditions</a></li>
+                    <li><a href="#" class="text-white block py-2 hover:text-emerald-400">Tours</a></li>
+                    <li><a href="#" class="text-white block py-2 hover:text-emerald-400">About Us</a></li>
+                    <li><a href="#" class="text-white block py-2 hover:text-emerald-400">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <section class="bg-white">
+        <div class="gallery-slider relative">
+            <div class="gallery-container">
+                <img src="assets/Front-banner-k2.webp" alt="K2 Base Camp 1" class="h-[250px] md:h-[450px] object-cover">
+                <img src="assets/K2-&-Concordia.webp" alt="K2 Base Camp 2" class="h-[250px] md:h-[450px] object-cover">
+                <img src="assets/shangrila-resort.webp" alt="K2 Base Camp 3" class="h-[250px] md:h-[450px] object-cover">
+                <img src="assets/Front-banner-k2.webp" alt="K2 Base Camp 4" class="h-[250px] md:h-[450px] object-cover">
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="gallery-nav-btn gallery-prev" onclick="scrollGallery(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="gallery-nav-btn gallery-next" onclick="scrollGallery(1)">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trek Info Section -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <!-- Title & Location -->
+                <div class="mb-8">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        K2 Base camp trek
+                    </h1>
+                    <div class="flex items-center gap-2 text-gray-600">
+                        <i class="fas fa-map-marker-alt text-cyan-500"></i>
+                        <span class="text-lg">K2 Base camp trek</span>
+                    </div>
+                </div>
+
+                <!-- Info Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Share Card -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-share-alt text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Share</p>
+                            <p class="text-gray-900 font-bold text-lg">Post</p>
+                        </div>
+                    </div>
+
+                    <!-- Price Card -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-hand-holding-usd text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">From</p>
+                            <p class="text-gray-900 font-bold text-lg">0</p>
+                        </div>
+                    </div>
+
+                    <!-- Duration Card -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-clock text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Duration</p>
+                            <p class="text-gray-900 font-bold text-lg">21 days</p>
+                        </div>
+                    </div>
+
+                    <!-- Type Card -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-mountain text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-sm">Type</p>
+                            <p class="text-gray-900 font-bold text-lg">Trek</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview & Booking Section -->
+    <section class="bg-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Left Column - Overview Content -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Overview</h2>
+                    
+                    <div class="space-y-4 text-gray-600 leading-relaxed">
+                        <p>
+                            K2 or Mount Godwin-Austen, also known as Chogho Ree among the locals. The world's second-highest peak with a height of 8611m from the sea level. A perfect adventure for mountaineers and climbers.
+                        </p>
+                        <p>
+                            But, before thinking about K2, it is highly recommended that an adventurous trip up to the K2 base camp must be made. It will help you understand what difficulties you may face if you make your determination towards K2. Trekking up to the K2 base camp gives a great experience of trekking in the extreme weather conditions and deadly routes of the Karakoram range. And you can unearth this experience with us.
+                        </p>
+                        <p>
+                            The base camp is located at about 5100m in height from the sea level. The duration of this trekking usually ranges from two to three weeks. The base camp is not the highest point. You have to travel through more heights before reaching the base camp.
+                        </p>
+                        <p>
+                            The journey usually begins from the village of Askole Shigar. Till Askoli, it is accessible by road. The road goes along with the Braldu River and goes through scenic landscapes, enchanting meadows, dense forests, and rocky terrains. This route covers Paju, an aesthetic campsite with breathtaking views of Paju Peak; Urdukas, A panoramic location enclosed by sky-high peaks and stunning views; Concordia, an immense glacial junction from where you can have spectacular views of K2, broad peak and other surrounding peaks; Baltoro Glacier and K2 base camp and then again to Islamabad following the same route.
+                        </p>
+                        <p>
+                            1. Flight from Islamabad to Skardu and Skardu to Islamabad. .2. Drive by Jeep Skardu to Askoli and return Askoli to Skardu. .3. Porters/ Mule to carry luggage where the jeep cannot reach. .4. Pick and drop from the airport to the Hotel and vice versa. .5. 2 nights stay at 3*/4* Hotel in Islamabad (bed & breakfast). .6. Welcome Dinner will be served restaurant in Islamabad. .7. Payment of all Government taxes in Pakistan. .8. Map for Trekking. .9. 3 meals a day along with comfortable accommodation in a hotel/ lodge/ tents. .10. All Necessary equipment for Camping during the trek. .11. Experienced and well-trained Cook & Kitchen Helpers. .12. Separate Tents for each member. .13. Heating system in the dining tent and other necessary tents. .14. Solar panel/ electricity generator. .15. Satellite Phone/walkie-talkie transmission. .16. Medical and first aid kit. .17. Taxes and fees required for necessary tools. .18. Farewell dinner.
+                        </p>
+                    </div>
+
+                    <!-- Trek Price Section -->
+                    <div class="mt-12">
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                            Trek Price For Private / B2B Groups
+                        </h3>
+
+                        <!-- Pricing Table -->
+                        <div class="overflow-x-auto mb-8">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+                                        <th class="px-6 py-4 text-left font-bold">Solo</th>
+                                        <th class="px-6 py-4 text-left font-bold">2 to 6 Person</th>
+                                        <th class="px-6 py-4 text-left font-bold">7 to 12 Person</th>
+                                        <th class="px-6 py-4 text-left font-bold">9 to 20 Person</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b">
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">2300$</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">2200$</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">1900$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Schedule Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+                                        <th class="px-6 py-4 text-left font-bold">Start</th>
+                                        <th class="px-6 py-4 text-left font-bold">End</th>
+                                        <th class="px-6 py-4 text-left font-bold">Price (USD)</th>
+                                        <th class="px-6 py-4 text-left font-bold">Availability</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white">
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">10 June 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">30 June 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">18 June 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">08 July 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">26 June 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">16 July 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">05 July 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">25 July 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">12 July 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">01 August 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">20 July 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">09 August 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">27 July 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">16 August 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">05 August 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">25 August 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">12 August 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">01 September 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">20 August 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">08 September 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="px-6 py-4 text-gray-700">27 August 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">16 September 2026</td>
+                                        <td class="px-6 py-4 text-gray-700">0</td>
+                                        <td class="px-6 py-4 text-gray-900 font-semibold">Available</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Itinerary Section -->
+                        <div class="mt-12">
+                            <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                                Itinerary
+                            </h3>
+
+                            <div class="space-y-4">
+                                <!-- Day 1 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 01: Arrival at Islamabad:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">After the member arrives in Islamabad from their places, they will be transferred to the hotel and allowed to rest and prepare for further travel on the next day.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 2 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 02: Islamabad to Skardu:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">In the morning flight from Islamabad to Skardu, we will leave. From the flight, we will reach Skardu by noon. In case of cancellation of a flight due to weather conditions or any other reason, we have arrangements to drive by road. We will reach Skardu in the next two days in case of travel by road. Our itinerary will be one day ahead if this case.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 3 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 03: Free day in Skardu for sightseeing:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">A day free for sightseeing in Skardu. We will visit some nearby places in Skardu and will have a glimpse of the beauty of Skardu.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 4 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 4: Skardu to Askoli:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">The journey goes alongside the Braldu River in the Shigar Valley. Then, we will start walking towards Askole.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 5 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 5: Trekking from Askoli to Jhola:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Start trekking towards Jhola. We have to cross the river Braldu by bridge. Jhola is also located near the Braldu River.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 6 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 6: Exploring Paju:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">A break day for exploring the Paju peak base camp. The team makes the preparations during the day.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 7 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 7: Trek from Paju to Liligo:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Trekking to Liligo starting from the morning, involves beautiful panoramas and landscapes throughout the trek. It also includes a river crossing midway.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 8 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 8: Trek from Liligo to Urdukas:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Day 8 is going to be a tough trekking day as we have to climb and descend the glacial moraine. After crossing the Trango Tower and Uli Biaho, we will reach Urdukas and camp for the night.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 9 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 9: Trek from Urdukas to Goro II:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Trekking continues again towards Goro II. This time we will be trekking through the glacier. The view of Masherbrum and Muztagh Tower is visible from Goro II.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 10 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 10: Reaching Concordia:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">We will reach Concordia by day 10. From Concordia, we can have a beautiful view of high snowcapped peaks such as Broad Peak, Mitre Peak, Gasherbrum and Sia Kangri as well as the aesthetic view of the Great K2.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 11 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 11: Reaching and camping at K2 Base Camp:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Trekking day towards K2 from Concordia. Tonight, we will spend at the base camp of K2.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 12 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 12: Returning to Concordia:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">After spending a night at K2 Base Camp, our journey moves back to Concordia.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 13 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 13: Exploring Ali Camp:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Instead of following the previous route, we will take a slightly different route and move towards Ali camp. We will camp at Ali camp and here, the instructions will be given for crossing Gondogoro La.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 14 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 14: A day at Gondogoro La Base:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">We will spend this day at the Gondogoro La base, and prepare to cross the challenging Gondogoro La crossing.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 15 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 15: Ascending to Gondogoro la:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Starting early in the morning, we will climb up the Gondogoro La. All members will be roped together. The views of K2, G1, Broad Peak, and G2 can be taken in the Baltoro region.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 16 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 16: Descending from Gondogoro La:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Descending from the Gondogoro pass needs more caution. Using fixed ropes and crampons, we will be coming down from rocky terrain, but the trek becomes easier as we move forward. By reaching Khuspang we will set our camp.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 17 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 17: Trekking to Hushe Valley:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">As we descend, the rocky terrain becomes lush green landscapes. By reaching Hushe Valley, we will set up our camp at Saicho.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 18 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 18: Hushe to Skardu:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">Early in the morning, we will be coming back to Skardu by using the Jeep service.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 19 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 19: Skardu to Islamabad:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">The flight typically occurs in the morning. So we will reach Islamabad by noon on day 19. After reaching Islamabad, you are allowed to take a rest in the hotel.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 20 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 20: A free day at Islamabad:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">In case of any flight cancellation due to weather issues or any other issue, we will reach Islamabad this day. Otherwise, we can utilize this day to explore Islamabad. We will be having a farewell dinner in Skardu or Islamabad as well.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Day 21 -->
+                                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                                    <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 cursor-pointer flex items-center justify-between accordion-header" onclick="toggleAccordion(this)">
+                                        <h4 class="font-bold text-lg">Day 21: Towards own destination:</h4>
+                                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                                    </div>
+                                    <div class="bg-white accordion-content">
+                                        <p class="text-gray-700">All members are free to go to their places. Our staff will transfer you all to the airport.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms & Conditions Section -->
+                        <div class="mt-12">
+                            <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-4 rounded-t-lg cursor-pointer flex justify-between items-center" onclick="toggleTerms()">
+                                <h3 class="text-2xl font-bold">Terms & Conditions</h3>
+                                <i id="terms-icon" class="fas fa-chevron-down transition-transform duration-300"></i>
+                            </div>
+                            <div id="terms-content" class="bg-white border border-gray-200 rounded-b-lg p-8 max-h-[600px] overflow-y-auto hidden">
+                                <div class="space-y-6 text-gray-700">
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">1. Early Bird Discount:</h4>
+                                        <p>The given prices are the discount offers for holidays and are limited. These prices may be changed accordingly. The local services providers and airlines as well as hotels increase prices in the season. So early reservation cost us less price.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">2. Limited Space in Peak Months:</h4>
+                                        <p>The peak months of the year attract a great amount of national and international tourists and hence sold out earlier. We will have a maximum of 15 travellers in one group. Our registration is on a first come first serve basis.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">3. Limited Flight Seats:</h4>
+                                        <p>We use the deposit to book your domestic flight in advance because domestic flight seats for the Himalayas and the Karakoram sell out very quickly in the peak season. Another reason is that there are only two flights in a day.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">4. Pay Balance after arrival in Pakistan:</h4>
+                                        <p>You may have concerns regarding paying your final balance. According to our policy, we receive your final balance only once you arrive in Pakistan. Deposit is the only Payment before arriving in Pakistan.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">5. Pay Minimum Deposit:</h4>
+                                        <p>The advance payment for the holidays also incorporates early bird discounts and may change automatically based on the late deposit schedule. The same dates in the schedule will be applicable for the next season's deposit as well.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">Advance Deposit for Pakistani Nationals:</h4>
+                                        <p>The advance deposit for Pakistani Nationals is PKR 100,000 or 30 % of the total price whichever is greater. The deposit amount is nonrefundable.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">Extra Stays at Base Camp:</h4>
+                                        <ul class="list-disc list-inside space-y-2 ml-4">
+                                            <li>For Extra Stays at base camp, extra charges will be charged.</li>
+                                            <li>01-04 pax US $ 130/. Per person per day</li>
+                                            <li>04-06 pax US $ 100/. Per person per day</li>
+                                            <li>06-08 pax US $ 90/. Per person per day</li>
+                                            <li>If Government of Pakistan demands for any fee or new condition ensuing extra, the same will be charged in addition to normal Package offer.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">Reservations and Advance Payments:</h4>
+                                        <p class="mb-3">For the confirmation of your reservation, you have to pay your advance into our account 50 days before the arrival of the group/ client in Pakistan. The rest of amount will be received once you arrived in Pakistan.</p>
+                                        <ul class="list-disc list-inside space-y-2 ml-4">
+                                            <li>Mountain Tigers Treks and tours reserves the right to deduct, in respect of hotel reservation, confirmation of airline ticket, documentation and other necessary works which are being done before the arrival of client.</li>
+                                            <li>25% of the total amount will be deducted in case of cancellation in less than 15 days before the arrival date. If cancellation is made in less than 30 days, 10% of the amount will be deducted as in shape of paper works. Mountain Tigers trek and tours reserves this right.</li>
+                                            <li>Anyone deciding to abandon after arrival, or may want to leave the trip during the expedition or tour, due to health issue or any other issue, will not be eligible for any refund. The same policy is applicable in case of entire group. If the group abandons or completes the trip early than the itinerary. No money will be refunded.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">Refund Policy for All Deposit:</h4>
+                                        <p>The deposited amount is non-refundable once it is paid. Because this amount will be spent in making all the arrangements. This deposited amount is also nonrefundable in case of Pakistani clients.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">Balance:</h4>
+                                        <p>Only pay the balance on the first day after arrival in Pakistan according to the Payment guidelines which will be shared later.</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">Currency:</h4>
+                                        <p>International clients have the option to pay in US Dollar (USD). Or they may also pay in Euros (EUR) or Pound Sterling (GBP). Pakistani clients have the option to pay the equivalent amount in Pakistani Rupees (PKR).</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">Single Supplement:</h4>
+                                        <p>Separate rooms will cost extra charge of 290 USD. This includes all hotel nights.</p>
+                                        <p class="mt-2">For separate tents, it will cost the extra charge of 180 USD including additional porterage cost. Both the payments must be made with the balance upon arrival</p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-xl font-bold text-gray-900 mb-3">LIABILITIES:</h4>
+                                        <p>Mountain tiger treks and tour endeavors to ensure comfort and safety during tours. However, the company is not liable for injury, damage, death, loss, accidents, delays, public disturbances, or any other unforeseeable circumstances beyond our control.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Booking Form -->
+                <div class="lg:col-span-1">
+                    <div class="space-y-6">
+                        <!-- Booking Form -->
+                        <div class="bg-white rounded-2xl shadow-2xl p-4 md:p-8 lg:sticky lg:top-24">
+                            <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-6">Book Tour</h3>
+                            
+                            <form class="space-y-4">
+                                <!-- Name Input -->
+                                <div>
+                                    <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                                </div>
+
+                                <!-- Email Input -->
+                                <div>
+                                    <input type="email" placeholder="Email Address" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                                </div>
+
+                                <!-- Phone Input -->
+                                <div>
+                                    <input type="tel" placeholder="Phone Number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                                </div>
+
+                                <!-- Date Inputs -->
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <input type="date" placeholder="mm/dd/yyyy" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <input type="date" placeholder="mm/dd/yyyy" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                                    </div>
+                                </div>
+
+                                <!-- Guests Input -->
+                                <div>
+                                    <input type="number" placeholder="Guests" min="1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+                                </div>
+
+                                <!-- Comment Textarea -->
+                                <div>
+                                    <textarea placeholder="Write Your Comment" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"></textarea>
+                                </div>
+
+                                <!-- Book Tour Button -->
+                                <button type="submit" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-lg font-bold text-lg hover:from-emerald-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                                    <i class="fas fa-calendar-check"></i>
+                                    Book Tour
+                                </button>
+
+                                <!-- WhatsApp Button -->
+                                <a href="https://wa.me/923238312244" target="_blank" class="w-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-4 rounded-lg font-bold text-lg hover:from-emerald-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg flex items-center justify-center gap-2">
+                                    <i class="fab fa-whatsapp text-xl"></i>
+                                    Contact Us on WhatsApp
+                                </a>
+                            </form>
+                        </div>
+
+                        <!-- Tour Information Card -->
+                        <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl shadow-lg p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-6">Tour Information</h3>
+                            
+                            <div class="space-y-6">
+                                <!-- Max Guests -->
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-users text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">Max Guests</p>
+                                        <p class="text-gray-900 font-bold text-lg">7</p>
+                                    </div>
+                                </div>
+
+                                <!-- Min Age -->
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-user text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">Min Age</p>
+                                        <p class="text-gray-900 font-bold text-lg">18</p>
+                                    </div>
+                                </div>
+
+                                <!-- Tour Location -->
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-map-marked-alt text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">Tour Location</p>
+                                        <p class="text-gray-900 font-bold text-lg">K2 Base camp trek</p>
+                                    </div>
+                                </div>
+
+                                <!-- Languages Support -->
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-globe text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-gray-500 text-sm">Languages Support</p>
+                                        <p class="text-gray-900 font-bold text-lg">All</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Banner -->
+    <div class="bg-gray-900 py-6 overflow-hidden">
+        <div class="support-scroll flex items-center gap-8 whitespace-nowrap">
+            <div class="flex items-center gap-4 text-white text-xl font-medium">
+                Need any support for tour & travels ?
+                <span class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full">
+                    <i class="fas fa-phone-alt text-white"></i>
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-white text-xl font-medium">
+                Need any support for tour & travels ?
+                <span class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full">
+                    <i class="fas fa-phone-alt text-white"></i>
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-white text-xl font-medium">
+                Need any support for tour & travels ?
+                <span class="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-full">
+                    <i class="fas fa-phone-alt text-white"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Section -->
+    <div class="relative bg-gradient-to-b from-gray-50 to-white py-20 overflow-hidden">
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 left-0 w-96 h-96 bg-emerald-100 rounded-full filter blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-teal-100 rounded-full filter blur-3xl opacity-30 translate-x-1/2 translate-y-1/2"></div>
+        
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <span class="inline-block px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-full text-sm font-semibold mb-4">
+                        <i class="fas fa-map-marked-alt mr-2"></i>Trek Location
+                    </span>
+                    <h2 class="text-5xl font-bold text-gray-900 mb-4">
+                        Explore the <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">Location</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto">Discover the breathtaking journey through the heart of Karakoram mountains</p>
+                </div>
+
+                <!-- Map Container with Enhanced Design -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                    <!-- Map -->
+                    <div class="lg:col-span-2" data-aos="fade-right" data-aos-delay="100">
+                        <div class="relative group">
+                            <!-- Decorative Border -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+                            
+                            <div class="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52438.36876183706!2d75.6029889!3d36.0926283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38e6550d0c5c4b8b%3A0x9c5e0c5c0c5c0c5c!2sChillinji%20Pass!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" 
+                                    width="100%" 
+                                    height="600" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    class="w-full">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Info Cards -->
+                    <div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
+                        <!-- Main Location Card -->
+                        <div class="bg-white rounded-2xl shadow-xl p-6 transform hover:scale-105 transition-all duration-300 border border-gray-100">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="w-14 h-14 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                                    <i class="fas fa-map-marker-alt text-white text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-bold text-gray-900 mb-2">Chillinji Pass</h3>
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <div class="flex items-center gap-1">
+                                            <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                            <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                            <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                            <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                            <i class="fas fa-star text-yellow-400 text-sm"></i>
+                                        </div>
+                                        <span class="text-gray-700 text-sm font-bold">5.0</span>
+                                        <span class="text-gray-400 text-xs">(3 reviews)</span>
+                                    </div>
+                                    <p class="text-gray-600 text-sm leading-relaxed">A stunning high-altitude pass in the Karakoram range, offering spectacular views of surrounding peaks.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="https://www.google.com/maps/place/Chillinji+Pass" target="_blank" 
+                                   class="flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-600 rounded-lg font-semibold text-sm hover:from-blue-100 hover:to-blue-200 transition-all transform hover:scale-105">
+                                    <i class="fas fa-external-link-alt text-xs"></i>
+                                    View Map
+                                </a>
+                                <a href="https://www.google.com/maps/dir//Chillinji+Pass" target="_blank" 
+                                   class="flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg font-semibold text-sm hover:from-emerald-700 hover:to-teal-700 transition-all transform hover:scale-105 shadow-lg">
+                                    <i class="fas fa-directions"></i>
+                                    Directions
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Location Stats -->
+                        <div class="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl shadow-xl p-6 text-white">
+                            <h4 class="text-lg font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-mountain"></i>
+                                Trek Highlights
+                            </h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between pb-3 border-b border-white/20">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-arrow-up"></i>
+                                        </div>
+                                        <span class="text-sm">Max Altitude</span>
+                                    </div>
+                                    <span class="font-bold">5,151m</span>
+                                </div>
+                                <div class="flex items-center justify-between pb-3 border-b border-white/20">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-route"></i>
+                                        </div>
+                                        <span class="text-sm">Total Distance</span>
+                                    </div>
+                                    <span class="font-bold">125 km</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                                            <i class="fas fa-compass"></i>
+                                        </div>
+                                        <span class="text-sm">Region</span>
+                                    </div>
+                                    <span class="font-bold">Baltistan</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Info -->
+                        <div class="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+                            <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                <i class="fas fa-info-circle text-emerald-600"></i>
+                                Quick Info
+                            </h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-emerald-600 mt-0.5"></i>
+                                    <span class="text-gray-600">Best season: June to September</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-emerald-600 mt-0.5"></i>
+                                    <span class="text-gray-600">Permit required from authorities</span>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-check-circle text-emerald-600 mt-0.5"></i>
+                                    <span class="text-gray-600">Professional guide mandatory</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- Column 1 - Logo & Social Media -->
+                <div data-aos="fade-up" data-aos-duration="1000">
+                    <div class="mb-6">
+                        <img src="assets/logo.jpeg" alt="Discover Ghanche" class="h-16 mb-4">
+                        <h3 class="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                            DISCOVER GHANCHE
+                        </h3>
+                        <p class="text-gray-400 text-sm mt-2">TREKS & TOURS</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 rounded-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Column 2 - Pages -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <h4 class="text-xl font-bold mb-6">Pages</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                Apply Now
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                Privacy Policy
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group">
+                                <i class="fas fa-chevron-right text-xs text-emerald-600 group-hover:translate-x-1 transition-transform"></i>
+                                Contact Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 - Affiliated with -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <h4 class="text-xl font-bold mb-6">Affiliated with</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-white rounded-lg p-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-emerald-600 font-bold text-2xl">PATO</div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-shield-alt text-gray-700 text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-emerald-600 font-bold text-xl">NADRA</div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-certificate text-gray-700 text-3xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 4 - Contact -->
+                <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <h4 class="text-xl font-bold mb-6">Contact</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-400 text-sm mb-2">Drop a Line</p>
+                            <a href="tel:+923238312244" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2">
+                                <i class="fas fa-phone-alt text-emerald-600"></i>
+                                +92 323 8312244
+                            </a>
+                            <a href="tel:+923358411291" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2 mt-1">
+                                <i class="fas fa-phone-alt text-emerald-600"></i>
+                                +92 335 8411291
+                            </a>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm mb-2">Email Address</p>
+                            <a href="mailto:info@discoverghanche.com" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2 break-all">
+                                <i class="fas fa-envelope text-emerald-600"></i>
+                                info@discoverghanche.com
+                            </a>
+                            <a href="mailto:discoverghanche@gmail.com" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2 mt-1 break-all">
+                                <i class="fas fa-envelope text-emerald-600"></i>
+                                discoverghanche@gmail.com
+                            </a>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-sm mb-2">Visit office</p>
+                            <p class="text-white flex items-start gap-2">
+                                <i class="fas fa-map-marker-alt text-emerald-600 mt-1"></i>
+                                <span>Jamia mosque road near doctor hospital skardu.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Copyright Bar -->
+    <div class="bg-black text-gray-400 py-4 text-center text-sm">
+        <div class="container mx-auto px-4">
+            © 2024 Copyrights by Discover Ghanche. All Rights Reserved
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/923238312244" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition-all hover:scale-110 z-50">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Gallery Scroll
+        let scrollPosition = 0;
+        const galleryContainer = document.querySelector('.gallery-container');
+        const isMobile = window.innerWidth < 768;
+        const imageWidth = isMobile ? 100 : 25; // 100% on mobile, 25% on desktop
+
+        function scrollGallery(direction) {
+            const currentImageWidth = window.innerWidth < 768 ? 100 : 25;
+            scrollPosition += direction * currentImageWidth;
+            
+            const maxScroll = window.innerWidth < 768 ? 300 : 75; // 4 images - 1
+            
+            // Loop around
+            if (scrollPosition < 0) {
+                scrollPosition = 0;
+            } else if (scrollPosition > maxScroll) {
+                scrollPosition = maxScroll;
+            }
+            
+            const images = galleryContainer.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.transform = `translateX(-${scrollPosition}%)`;
+            });
+        }
+
+        // Auto-scroll gallery
+        setInterval(() => {
+            const currentImageWidth = window.innerWidth < 768 ? 100 : 25;
+            const maxScroll = window.innerWidth < 768 ? 300 : 75;
+            
+            scrollPosition += currentImageWidth;
+            if (scrollPosition > maxScroll) {
+                scrollPosition = 0;
+            }
+            const images = galleryContainer.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.transform = `translateX(-${scrollPosition}%)`;
+            });
+        }, 5000);
+
+        // Accordion Toggle Function
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const icon = header.querySelector('i');
+            
+            // Toggle current accordion with animation
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Terms & Conditions Toggle Function
+        function toggleTerms() {
+            const content = document.getElementById('terms-content');
+            const icon = document.getElementById('terms-icon');
+            
+            content.classList.toggle('hidden');
+            
+            if (content.classList.contains('hidden')) {
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
