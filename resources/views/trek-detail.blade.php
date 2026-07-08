@@ -320,17 +320,18 @@
                                 <i class="fas fa-calendar-check mr-2"></i> Book This Tour
                             </a>
 
-                            <a href="https://wa.me/923131562859?text=Hi!%20I'm%20interested%20in%20the%20{{ urlencode($trek->title) }}%20trek." target="_blank"
+                            <a href="https://wa.me/923425343629?text=Hi!%20I'm%20interested%20in%20the%20{{ urlencode($trek->title) }}%20trek." target="_blank"
                                class="block w-full text-center py-4 mt-3 rounded-xl bg-[#25D366] text-white font-semibold hover:bg-[#1fb855] transition-colors">
                                 <i class="fab fa-whatsapp mr-2 text-lg"></i> Book via WhatsApp
                             </a>
 
-                            <a href="mailto:info@discoverghanche.com?subject=Booking%20Inquiry%20–%20{{ urlencode($trek->title) }}"
+                            <a href="mailto:karakorumcrownexpeditions@gmail.com
+?subject=Booking%20Inquiry%20–%20{{ urlencode($trek->title) }}"
                                class="block w-full text-center py-4 mt-3 rounded-xl border-2 border-slate-200 text-slate-700 font-semibold hover:border-brand-500 hover:text-brand-700 transition-colors">
                                 <i class="fas fa-envelope mr-2"></i> Email Inquiry
                             </a>
 
-                            <a href="tel:+923131562859"
+                            <a href="tel:+923425343629"
                                class="block w-full text-center py-3 mt-3 rounded-xl border border-slate-200 text-slate-500 font-medium hover:border-brand-500 hover:text-brand-700 transition-colors text-sm">
                                 <i class="fas fa-phone-alt mr-2"></i> Call Us
                             </a>
@@ -373,10 +374,11 @@
                 <h2 class="font-display text-3xl md:text-4xl">Ready to start this adventure?</h2>
                 <p class="mt-4 text-white/60">Tell us your travel dates and we'll put together a plan that fits your pace, fitness level, and interests.</p>
                 <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://wa.me/923131562859" target="_blank" class="btn-primary inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
+                    <a href="https://wa.me/923425343629" target="_blank" class="btn-primary inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
                         <i class="fab fa-whatsapp mr-2 text-lg"></i> WhatsApp Us
                     </a>
-                    <a href="mailto:info@discoverghanche.com" class="btn-outline-light inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
+                    <a href="mailto:karakorumcrownexpeditions@gmail.com
+" class="btn-outline-light inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
                         <i class="fas fa-envelope mr-2"></i> Email Inquiry
                     </a>
                 </div>

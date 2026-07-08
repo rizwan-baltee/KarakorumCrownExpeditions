@@ -69,7 +69,8 @@
                             <i class="fas fa-map-marker-alt text-brand-400 text-xs"></i>
                         </div>
                         <div>
-                            <p class="text-white/50 text-sm">Jamia Mosque Road,<br>near Doctor Hospital, Skardu</p>
+                            <p class="text-white/50 text-sm">Satpara Road, Zhye Thang 1, Near Hispar Hotel
+,<br>Skardu, Shigar, Skardu, Gilgit-Baltistan, Pakistan</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
@@ -77,7 +78,7 @@
                             <i class="fas fa-phone-alt text-brand-400 text-xs"></i>
                         </div>
                         <div>
-                            <a href="tel:+923131562859" class="text-white/50 hover:text-brand-400 transition-colors text-sm block">+92 313 1562859</a>
+                            <a href="tel:+923131562859" class="text-white/50 hover:text-brand-400 transition-colors text-sm block">+92 3425343629</a>
                             <a href="tel:+923358411291" class="text-white/50 hover:text-brand-400 transition-colors text-sm block">+92 335 8411291</a>
                         </div>
                     </div>
@@ -86,7 +87,8 @@
                             <i class="fas fa-envelope text-brand-400 text-xs"></i>
                         </div>
                         <div>
-                            <a href="mailto:info@discoverghanche.com" class="text-white/50 hover:text-brand-400 transition-colors text-sm block break-all">info@discoverghanche.com</a>
+                            <a href="mailto:karakorumcrownexpeditions@gmail.com" class="text-white/50 hover:text-brand-400 transition-colors text-sm block break-all">karakorumcrownexpeditions@gmail.com
+</a>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
@@ -143,7 +145,7 @@
 </footer>
 
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/923131562859" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 z-50 group" aria-label="Chat on WhatsApp">
+<a href="https://wa.me/923425343629" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all duration-300 z-50 group" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp text-2xl"></i>
     <span class="absolute right-16 bg-navy-900 text-white text-xs px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap font-medium shadow-xl">
         Chat with us

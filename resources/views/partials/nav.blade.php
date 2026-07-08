@@ -5,20 +5,21 @@
             <div class="flex items-center gap-6">
                 <a href="tel:+923131562859" class="flex items-center gap-1.5 hover:text-white transition-colors">
                     <i class="fas fa-phone text-brand-400"></i>
-                    <span>+92 313 1562859</span>
+                    <span>+92 3425343629</span>
                 </a>
-                <a href="mailto:info@discoverghanche.com" class="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
+                <a href="mailto:karakorumcrownexpeditions@gmail.com" class="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
                     <i class="fas fa-envelope text-brand-400"></i>
-                    <span>info@discoverghanche.com</span>
+                    <span>karakorumcrownexpeditions@gmail.com</span>
                 </a>
                 <span class="hidden md:flex items-center gap-1.5">
                     <i class="fas fa-map-marker-alt text-brand-400"></i>
-                    <span>Skardu, Gilgit-Baltistan</span>
+                    <span>Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Shigar, Skardu, Gilgit-Baltistan, Pakistan</span>
                 </span>
             </div>
             <div class="flex items-center gap-4">
                 <span class="hidden sm:inline text-white/40">|</span>
-                <span class="hidden sm:inline text-white/50">Licensed Tour Operator #2332</span>
+                <span class="hidden sm:inline text-white/50">Licensed Tour Operator CUIN: 0343091
+</span>
                 <div class="flex items-center gap-3 ml-2">
                     <a href="#" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
@@ -50,13 +51,13 @@
             <!-- Desktop Menu -->
             <ul class="hidden lg:flex items-center space-x-0.5">
                 <li>
-                    <a href="/" class="nav-link text-white/80 hover:text-white px-4 py-7 block text-sm font-medium tracking-wide">Home</a>
+                    <a href="/" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide">Home</a>
                 </li>
 
                 {{-- Dynamic Type-Based Navigation --}}
                 @foreach($navTypes as $navType)
                     <li class="dropdown relative">
-                        <a href="{{ route('type.index', $navType->slug) }}" class="nav-link text-white/80 hover:text-white px-4 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide">
+                        <a href="{{ route('type.index', $navType->slug) }}" class="nav-link text-white/80 hover:text-white px-2 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide">
                             {{ $navType->name }} <i class="fas fa-chevron-down text-[10px] opacity-50"></i>
                         </a>
                         <div class="dropdown-menu absolute left-0 bg-white shadow-2xl rounded-xl mt-0 py-4 w-72 border border-gray-100">
@@ -85,10 +86,30 @@
                 @endforeach
 
                 <li>
-                    <a href="/about-us" class="nav-link text-white/80 hover:text-white px-4 py-7 block text-sm font-medium tracking-wide">About</a>
+                    <a href="/about-us" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide">About</a>
                 </li>
                 <li>
-                    <a href="/how-to-apply" class="nav-link text-white/80 hover:text-white px-4 py-7 block text-sm font-medium tracking-wide">Visa Guide</a>
+                    <a href="/how-to-apply" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide">Visa Guide</a>
+                </li>
+                <li>
+                    <a href="/salajeet" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide">Salajeet</a>
+                </li>
+                <li class="dropdown relative">
+                    <a href="#" class="nav-link text-white/80 hover:text-white px-2 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide">
+                        <i class="fas fa-globe text-brand-400"></i> Language <i class="fas fa-chevron-down text-[10px] opacity-50"></i>
+                    </a>
+                    <div class="dropdown-menu absolute right-0 left-auto md:left-0 md:right-auto bg-white shadow-2xl rounded-xl mt-0 py-2 w-48 border border-gray-100">
+                        <div class="px-2" id="desktop-language-list">
+                            <a href="#" onclick="doGTranslate('en|en'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors">🇺🇸 English</a>
+                            <a href="#" onclick="doGTranslate('en|ms'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors font-semibold text-brand-600">🇲🇾 Bahasa Melayu</a>
+                            <a href="#" onclick="doGTranslate('en|zh-CN'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors">🇨🇳 中文 (Chinese)</a>
+                            <a href="#" onclick="doGTranslate('en|es'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors">🇪🇸 Español (Spanish)</a>
+                            <a href="#" onclick="doGTranslate('en|fr'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors">🇫🇷 Français (French)</a>
+                            <a href="#" onclick="doGTranslate('en|de'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors">🇩🇪 Deutsch (German)</a>
+                            <a href="#" onclick="doGTranslate('en|ar'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors">🇸🇦 العربية (Arabic)</a>
+                            <a href="#" onclick="doGTranslate('en|ja'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors">🇯🇵 日本語 (Japanese)</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
 
@@ -135,6 +156,26 @@
             
             <li><a href="/about-us" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">About Us</a></li>
             <li><a href="/how-to-apply" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Visa Guide</a></li>
+            <li><a href="/salajeet" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Salajeet</a></li>
+            
+            <!-- Language Selection -->
+            <li>
+                <div class="flex items-center justify-between py-3 px-3">
+                    <span class="text-white/80 text-sm font-medium flex items-center gap-2">
+                        <i class="fas fa-globe text-brand-400 text-xs"></i> Language
+                    </span>
+                </div>
+                <div class="pl-4 pb-2 space-y-1" id="mobile-language-list">
+                    <a href="#" onclick="doGTranslate('en|en'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇺🇸 English</a>
+                    <a href="#" onclick="doGTranslate('en|ms'); return false;" class="text-brand-400 font-semibold block py-2 px-3 text-sm hover:text-white">🇲🇾 Bahasa Melayu</a>
+                    <a href="#" onclick="doGTranslate('en|zh-CN'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇨🇳 中文 (Chinese)</a>
+                    <a href="#" onclick="doGTranslate('en|es'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇪🇸 Español (Spanish)</a>
+                    <a href="#" onclick="doGTranslate('en|fr'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇫🇷 Français (French)</a>
+                    <a href="#" onclick="doGTranslate('en|de'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇩🇪 Deutsch (German)</a>
+                    <a href="#" onclick="doGTranslate('en|ar'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇸🇦 العربية (Arabic)</a>
+                    <a href="#" onclick="doGTranslate('en|ja'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇯🇵 日本語 (Japanese)</a>
+                </div>
+            </li>
             
             <!-- Mobile CTA -->
             <li class="pt-4 pb-2">

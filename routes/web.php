@@ -20,6 +20,14 @@ Route::get('/about-us', function () {
     return view('about');
 })->name('about');
 
+Route::get('/salajeet', function () {
+    return view('salajeet');
+})->name('salajeet');
+
+Route::get('/how-to-apply', function () {
+    return view('visa-guide');
+})->name('visa-guide');
+
 Route::get('/trek/{slug}', [FrontendTrekController::class, 'show'])->name('trek.show');
 
 // Dynamic Type Pages (Trending Treks, Expeditions, Tours, etc.)
