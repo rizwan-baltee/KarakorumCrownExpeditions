@@ -227,6 +227,31 @@
                     </div>
                 </div>
 
+                <!-- Team Member 3 -->
+                <div class="group relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 bg-slate-50 transition-all hover:shadow-2xl hover:-translate-y-2 duration-500">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="{{ asset('assets/rizwan.jpeg') }}" alt="Rizwan - Professional Tour Guide" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    
+                    <!-- Social Icons -->
+                    <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
+                        <a href="https://www.instagram.com/baltee__?igsh=a2t5OThlNjM1bnB0&utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@baltee00" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-75">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/14h5yAM17Ge/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-150">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-950 via-navy-900/80 to-transparent p-8 pt-24 opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <h3 class="font-display text-3xl text-white">Rizwan Ali</h3>
+                        <p class="text-brand-400 text-xs font-bold uppercase tracking-[0.2em] mt-2">Director & Professional Tour Guide</p>
+                    </div>
+                </div>
+
                 <!-- Team Member 1 -->
                 <div class="group relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 bg-slate-50 transition-all hover:shadow-2xl hover:-translate-y-2 duration-500">
                     <div class="aspect-[4/5] overflow-hidden">
@@ -259,31 +284,6 @@
 
                     <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-950 via-navy-900/80 to-transparent p-8 pt-24 opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                         <h3 class="font-display text-3xl text-white">Muhammad Kamran</h3>
-                        <p class="text-brand-400 text-xs font-bold uppercase tracking-[0.2em] mt-2">Professional Tour Guide</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 3 -->
-                <div class="group relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 bg-slate-50 transition-all hover:shadow-2xl hover:-translate-y-2 duration-500">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="{{ asset('assets/rizwan.jpeg') }}" alt="Rizwan - Professional Tour Guide" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    
-                    <!-- Social Icons -->
-                    <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                        <a href="https://www.instagram.com/baltee__?igsh=a2t5OThlNjM1bnB0&utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@baltee00" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-75">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/14h5yAM17Ge/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-150">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-950 via-navy-900/80 to-transparent p-8 pt-24 opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                        <h3 class="font-display text-3xl text-white">Rizwan Ali</h3>
                         <p class="text-brand-400 text-xs font-bold uppercase tracking-[0.2em] mt-2">Professional Tour Guide</p>
                     </div>
                 </div>

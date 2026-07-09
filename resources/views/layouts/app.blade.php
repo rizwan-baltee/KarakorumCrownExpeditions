@@ -405,9 +405,9 @@
         document.querySelectorAll('.mobile-dropdown-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                const submenu = btn.nextElementSibling;
+                const submenu = btn.parentElement.nextElementSibling;
                 const icon = btn.querySelector('i');
-                submenu.classList.toggle('hidden');
+                if (submenu) submenu.classList.toggle('hidden');
                 if (icon) icon.classList.toggle('rotate-180');
             });
         });
@@ -508,12 +508,28 @@
                 }, 500);
             } else {
                 teCombo.value = lang;
-                if (document.createEvent) {
+                if (typeof Event === 'function') {
+                    teCombo.dispatchEvent(new Event('change', { bubbles: true }));
+                } else if (document.createEvent) {
                     var event = document.createEvent('HTMLEvents');
                     event.initEvent('change', true, true);
                     teCombo.dispatchEvent(event);
                 } else {
                     teCombo.fireEvent('onchange');
+                }
+                
+                // Close mobile menu if it's open
+                var mobileMenu = document.getElementById('mobile-menu');
+                var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    if (mobileMenuBtn) {
+                        var icon = mobileMenuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.add('fa-bars');
+                            icon.classList.remove('fa-times');
+                        }
+                    }
                 }
             }
         }

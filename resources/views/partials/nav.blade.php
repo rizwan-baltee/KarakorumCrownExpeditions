@@ -12,8 +12,8 @@
                     <span>karakorumcrownexpeditions@gmail.com</span>
                 </a>
                 <span class="hidden md:flex items-center gap-1.5">
-                    <i class="fas fa-map-marker-alt text-brand-400"></i>
-                    <span>Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Shigar, Skardu, Gilgit-Baltistan, Pakistan</span>
+                    <i class="fas fa-map-marker-alt text-brand-400 min-w-max"></i>
+                    <span class="truncate max-w-[200px] lg:max-w-[300px] xl:max-w-[400px]">Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Shigar, Skardu, Gilgit-Baltistan, Pakistan</span>
                 </span>
             </div>
             <div class="flex items-center gap-4">
@@ -44,23 +44,23 @@
             </a>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none p-2">
+            <button id="mobile-menu-btn" class="lg:hidden text-white focus:outline-none p-2">
                 <i class="fas fa-bars text-xl"></i>
             </button>
 
             <!-- Desktop Menu -->
             <ul class="hidden lg:flex items-center space-x-0.5">
                 <li>
-                    <a href="/" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide">Home</a>
+                    <a href="/" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">Home</a>
                 </li>
 
                 {{-- Dynamic Type-Based Navigation --}}
                 @foreach($navTypes as $navType)
                     <li class="dropdown relative">
-                        <a href="{{ route('type.index', $navType->slug) }}" class="nav-link text-white/80 hover:text-white px-2 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide">
+                        <a href="{{ route('type.index', $navType->slug) }}" class="nav-link text-white/80 hover:text-white px-2 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide whitespace-nowrap">
                             {{ $navType->name }} <i class="fas fa-chevron-down text-[10px] opacity-50"></i>
                         </a>
-                        <div class="dropdown-menu absolute left-0 bg-white shadow-2xl rounded-xl mt-0 py-4 w-72 border border-gray-100">
+                        <div class="dropdown-menu absolute top-full z-50 left-0 bg-white shadow-2xl rounded-xl mt-0 py-4 w-72 border border-gray-100">
                             <div class="px-5">
                                 <a href="{{ route('type.index', $navType->slug) }}" class="bg-brand-50 px-3 py-2 rounded-lg mb-3 block hover:bg-brand-100 transition-colors">
                                     <h4 class="font-bold text-brand-700 text-xs uppercase tracking-wider">
@@ -86,19 +86,19 @@
                 @endforeach
 
                 <li>
-                    <a href="/about-us" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide">About</a>
+                    <a href="/about-us" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">About</a>
                 </li>
                 <li>
-                    <a href="/how-to-apply" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide">Visa Guide</a>
+                    <a href="/how-to-apply" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">Visa Guide</a>
                 </li>
                 <li>
-                    <a href="/salajeet" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide">Salajeet</a>
+                    <a href="/salajeet" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">Salajeet</a>
                 </li>
                 <li class="dropdown relative">
-                    <a href="#" class="nav-link text-white/80 hover:text-white px-2 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide">
+                    <a href="#" class="nav-link text-white/80 hover:text-white px-2 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide whitespace-nowrap">
                         <i class="fas fa-globe text-brand-400"></i> Language <i class="fas fa-chevron-down text-[10px] opacity-50"></i>
                     </a>
-                    <div class="dropdown-menu absolute right-0 left-auto md:left-0 md:right-auto bg-white shadow-2xl rounded-xl mt-0 py-2 w-48 border border-gray-100">
+                    <div class="dropdown-menu absolute top-full z-50 right-0 left-auto md:left-0 md:right-auto bg-white shadow-2xl rounded-xl mt-0 py-2 w-48 border border-gray-100">
                         <div class="px-2" id="desktop-language-list">
                             <a href="#" onclick="doGTranslate('en|en'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors">🇺🇸 English</a>
                             <a href="#" onclick="doGTranslate('en|ms'); return false;" class="block px-3 py-2 text-sm text-gray-600 hover:text-brand-600 hover:bg-brand-50 rounded-lg transition-colors font-semibold text-brand-600">🇲🇾 Bahasa Melayu</a>
@@ -164,8 +164,11 @@
                     <span class="text-white/80 text-sm font-medium flex items-center gap-2">
                         <i class="fas fa-globe text-brand-400 text-xs"></i> Language
                     </span>
+                    <button class="mobile-dropdown-btn text-white/60 p-1">
+                        <i class="fas fa-chevron-down text-xs transition-transform"></i>
+                    </button>
                 </div>
-                <div class="pl-4 pb-2 space-y-1" id="mobile-language-list">
+                <div class="hidden pl-4 pb-2 space-y-1" id="mobile-language-list">
                     <a href="#" onclick="doGTranslate('en|en'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇺🇸 English</a>
                     <a href="#" onclick="doGTranslate('en|ms'); return false;" class="text-brand-400 font-semibold block py-2 px-3 text-sm hover:text-white">🇲🇾 Bahasa Melayu</a>
                     <a href="#" onclick="doGTranslate('en|zh-CN'); return false;" class="text-white/60 block py-2 px-3 text-sm hover:text-white">🇨🇳 中文 (Chinese)</a>
