@@ -28,6 +28,14 @@ Route::get('/how-to-apply', function () {
     return view('visa-guide');
 })->name('visa-guide');
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
+
+Route::get('/terms-of-service', function () {
+    return view('terms-of-service');
+})->name('terms-of-service');
+
 Route::get('/trek/{slug}', [FrontendTrekController::class, 'show'])->name('trek.show');
 
 // Dynamic Type Pages (Trending Treks, Expeditions, Tours, etc.)

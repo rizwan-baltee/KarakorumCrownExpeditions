@@ -38,8 +38,8 @@
                     <li><a href="/" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Home</a></li>
                     <li><a href="/about-us" class="text-white/50 hover:text-brand-400 transition-colors text-sm">About Us</a></li>
                     <li><a href="/how-to-apply" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Visa Guide</a></li>
-                    <li><a href="#" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Privacy Policy</a></li>
-                    <li><a href="#" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Terms & Conditions</a></li>
+                    <li><a href="{{ route('privacy-policy') }}" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Privacy Policy</a></li>
+                    <li><a href="{{ route('terms-of-service') }}" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Terms & Conditions</a></li>
                     <li><a href="#" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Cancellation Policy</a></li>
                 </ul>
             </div>
@@ -135,9 +135,9 @@
                     &copy; {{ date('Y') }} Karakorum Crown Expeditions. All rights reserved. Licensed Tour Operator, Gilgit-Baltistan, Pakistan.
                 </p>
                 <div class="flex items-center gap-4">
-                    <a href="#" class="text-white/30 hover:text-white/60 transition-colors text-xs">Privacy Policy</a>
+                    <a href="{{ route('privacy-policy') }}" class="text-white/30 hover:text-white/60 transition-colors text-xs">Privacy Policy</a>
                     <span class="text-white/10">|</span>
-                    <a href="#" class="text-white/30 hover:text-white/60 transition-colors text-xs">Terms of Service</a>
+                    <a href="{{ route('terms-of-service') }}" class="text-white/30 hover:text-white/60 transition-colors text-xs">Terms of Service</a>
                 </div>
             </div>
         </div>

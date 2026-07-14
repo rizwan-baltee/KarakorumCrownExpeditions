@@ -216,7 +216,10 @@
 
                 <!-- Social Icons -->
                     <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                        <a href="https://www.facebook.com/share/p/17iuJ5e7GJ/" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
+                        <a href="https://www.instagram.com/jaffar_kabiri?utm_source=qr&igsh=dDNrejNiOHd0OWZ4" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/p/17iuJ5e7GJ/" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-75">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
@@ -257,6 +260,20 @@
                     <div class="aspect-[4/5] overflow-hidden">
                         <img src="{{ asset('assets/imran.jpg') }}" alt="Imran - Professional Tour Guide" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
+                    
+                    <!-- Social Icons -->
+                    <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
+                        <a href="https://www.instagram.com/imranali_129?igsh=MWNxZDZoOXBudTBjdg%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@baltistan_vlog?_r=1&_t=ZS-97tG3uqM9NE" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-75">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/19G6SuYcdr/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-150">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+
                     <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-950 via-navy-900/80 to-transparent p-8 pt-24 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                         <h3 class="font-display text-3xl text-white">Imran Ali</h3>
                         <p class="text-brand-400 text-xs font-bold uppercase tracking-[0.2em] mt-2">Professional Tour Guide</p>

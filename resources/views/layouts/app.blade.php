@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Karakorum Crown Expeditions - Premium Gilgit-Baltistan Travel Experiences')</title>
-    <meta name="description" content="Karakorum Crown Expeditions offers premium guided treks, expeditions, and cultural tours in Gilgit-Baltistan and Northern Pakistan. Trusted by international travelers from 30+ countries.">
+    <title>@yield('title', 'Karakorum Crown Expeditions | Top Karakorum Treks & Tours')</title>
+    <meta name="description" content="Karakorum Crown Expeditions offers the best premium guided treks, K2 expeditions, and cultural tours in Karakorum, Gilgit-Baltistan and Northern Pakistan. Top rated travel agency.">
+    <meta name="keywords" content="Karakorum, Karakorum Crown Expeditions, top Karakorum tours, K2 base camp trek, Gilgit-Baltistan travel, Pakistan expeditions, best Karakorum treks">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
