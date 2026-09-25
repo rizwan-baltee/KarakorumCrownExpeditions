@@ -6,6 +6,10 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1222912317094699"
+             crossorigin="anonymous"></script>
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />

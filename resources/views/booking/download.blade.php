@@ -107,35 +107,39 @@
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             @if($booking->trendingTrek)
-                            <div class="bg-brand-50 rounded-xl p-4 border border-brand-100">
-                                <p class="text-brand-600 text-xs mb-1">Package</p>
+                            <div class="bg-brand-50 rounded-xl p-4 border border-brand-100 md:col-span-2">
+                                <p class="text-brand-600 text-xs mb-1 font-semibold uppercase tracking-wider">Tour / Trek</p>
                                 <p class="text-navy-900 font-bold text-lg">{{ $booking->trendingTrek->title }}</p>
+                                <p class="text-xs text-slate-500 mt-1">{{ $booking->trendingTrek->duration_days }} Days · {{ $booking->trendingTrek->location }}</p>
                             </div>
                             @endif
                             <div class="bg-gray-50 rounded-xl p-4">
-                                <p class="text-gray-400 text-xs mb-1">Number of Travelers</p>
-                                <p class="text-gray-900 font-semibold text-lg">{{ $booking->guests }}</p>
+                                <p class="text-gray-400 text-xs mb-1">Travelers</p>
+                                <p class="text-gray-900 font-semibold text-base">
+                                    {{ $booking->guests }} Total
+                                    <span class="text-xs text-gray-500 font-normal">({{ $booking->adults ?: $booking->guests }} Adults{{ $booking->children > 0 ? ', ' . $booking->children . ' Children' : '' }})</span>
+                                </p>
+                            </div>
+                            <div class="bg-gray-50 rounded-xl p-4">
+                                <p class="text-gray-400 text-xs mb-1">Package Tier</p>
+                                <p class="text-gray-900 font-semibold text-base">{{ $booking->package_tier ?: 'Standard' }} ({{ $booking->trip_type ?: 'Group' }})</p>
                             </div>
                             @if($booking->start_date)
                             <div class="bg-gray-50 rounded-xl p-4">
-                                <p class="text-gray-400 text-xs mb-1">Start Date</p>
-                                <p class="text-gray-900 font-semibold">{{ $booking->start_date->format('d M Y') }}</p>
+                                <p class="text-gray-400 text-xs mb-1">Travel Date</p>
+                                <p class="text-gray-900 font-semibold">{{ $booking->start_date->format('d F Y') }}</p>
                             </div>
                             @endif
-                            @if($booking->end_date)
+                            @if($booking->total_amount && $booking->total_amount > 0)
                             <div class="bg-gray-50 rounded-xl p-4">
-                                <p class="text-gray-400 text-xs mb-1">End Date</p>
-                                <p class="text-gray-900 font-semibold">{{ $booking->end_date->format('d M Y') }}</p>
+                                <p class="text-gray-400 text-xs mb-1">Estimated Amount</p>
+                                <p class="text-gray-900 font-bold text-lg text-brand-700">{{ $booking->formatted_total }}</p>
                             </div>
                             @endif
                             <div class="bg-gray-50 rounded-xl p-4">
-                                <p class="text-gray-400 text-xs mb-1">Request Type</p>
-                                <p class="text-gray-900 font-semibold">{{ ucfirst($booking->type) }}</p>
-                            </div>
-                            <div class="bg-gray-50 rounded-xl p-4">
-                                <p class="text-gray-400 text-xs mb-1">Status</p>
-                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700">
-                                    <i class="fas fa-circle text-[6px] mr-1.5"></i> Received
+                                <p class="text-gray-400 text-xs mb-1">Booking Status</p>
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold {{ $booking->status_color }}">
+                                    {{ $booking->status }}
                                 </span>
                             </div>
                         </div>

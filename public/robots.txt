@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /booking/track
+Disallow: /*?*
+
+Sitemap: https://karakorumcrownexpeditions.com/sitemap.xml

@@ -1,49 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Karakorum Crown Expeditions | Top Karakorum Treks & Tours')</title>
-    <meta name="description" content="Karakorum Crown Expeditions offers the best premium guided treks, K2 expeditions, and cultural tours in Karakorum, Gilgit-Baltistan and Northern Pakistan. Top rated travel agency.">
-    <meta name="keywords" content="Karakorum, Karakorum Crown Expeditions, top Karakorum tours, K2 base camp trek, Gilgit-Baltistan travel, Pakistan expeditions, best Karakorum treks">
+    @include('partials.seo')
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            200: '#bbf7d0',
-                            300: '#86efac',
-                            400: '#4ade80',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
-                        },
-                        navy: {
-                            800: '#1e293b',
-                            900: '#0f172a',
-                            950: '#020617',
-                        },
-                        gold: {
-                            400: '#d4a853',
-                            500: '#c9952e',
-                        }
-                    },
-                    fontFamily: {
-                        display: ['Playfair Display', 'Georgia', 'serif'],
-                        body: ['Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1222912317094699"
+         crossorigin="anonymous"></script>
+    
+    <!-- Vite CSS & JS -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Fonts: Playfair Display (luxury headings) + Inter (clean body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,6 +28,10 @@
         /* ============================================
            GLOBAL PREMIUM STYLES
            ============================================ */
+        .container {
+            max-width: 1536px !important; /* Forces container to be fluid up to 1536px */
+        }
+        
         * {
             font-family: 'Inter', system-ui, sans-serif;
         }
@@ -122,11 +93,33 @@
             color: #22c55e !important;
         }
         
-        /* Navbar glass effect on scroll */
+        /* Navbar solid effect on scroll (GPU optimized) */
         .nav-scrolled {
-            background: rgba(15, 23, 42, 0.95) !important;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 1px 20px rgba(0, 0, 0, 0.3);
+            background: #0b1120 !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Lenis Smooth Scrolling */
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-smooth iframe {
+            pointer-events: none;
+        }
+
+        /* Hardware acceleration for scroll performance */
+        .trek-card, .category-card, article {
+            transform: translateZ(0);
+            backface-visibility: hidden;
         }
         
         /* ============================================
@@ -385,8 +378,29 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Owl Carousel JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
 
     <script>
+        // Initialize Lenis Silky Smooth Momentum Scroll
+        let lenis = null;
+        if (typeof Lenis !== 'undefined') {
+            lenis = new Lenis({
+                duration: 1.15,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smoothWheel: true,
+                smoothTouch: false,
+                wheelMultiplier: 1.0,
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+            window.lenis = lenis;
+        }
+
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -413,25 +427,32 @@
             });
         });
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('main-nav');
-            if (nav) {
-                if (window.scrollY > 50) {
-                    nav.classList.add('nav-scrolled');
-                } else {
-                    nav.classList.remove('nav-scrolled');
+        // High-performance throttled navbar scroll listener (passive)
+        let isNavScrolled = false;
+        const mainNav = document.getElementById('main-nav');
+        function updateNavScroll() {
+            const scrolled = window.scrollY > 40;
+            if (scrolled !== isNavScrolled) {
+                isNavScrolled = scrolled;
+                if (mainNav) {
+                    mainNav.classList.toggle('nav-scrolled', isNavScrolled);
                 }
             }
-        });
+        }
+        window.addEventListener('scroll', updateNavScroll, { passive: true });
+        updateNavScroll();
         
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
+                const target = this.getAttribute('href');
+                if (target && target !== '#' && document.querySelector(target)) {
                     e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (lenis) {
+                        lenis.scrollTo(target, { offset: -70 });
+                    } else {
+                        document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
         });
@@ -485,11 +506,12 @@
             }, 'google_translate_element');
         }
 
-        // Forcefully remove Google Translate UI elements from the DOM just to be sure
-        setInterval(function() {
-            document.querySelectorAll('.goog-te-banner-frame, .skiptranslate > iframe, #goog-gt-tt').forEach(el => el.remove());
-            document.body.style.top = '0px';
-        }, 1000);
+        // Cleanup Google Translate UI elements safely after load without layout thrashing
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelectorAll('.goog-te-banner-frame, .skiptranslate > iframe, #goog-gt-tt').forEach(el => el.remove());
+            }, 1200);
+        });
 
         function doGTranslate(lang_pair) {
             if(lang_pair == '') return;

@@ -71,6 +71,13 @@
                     @error('height_meters')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
                 </div>
 
+                <!-- Starting Price (USD) -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Starting Base Price (USD)</label>
+                    <input type="number" name="starting_price" value="{{ old('starting_price') }}" step="0.01" min="0" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="2499">
+                    @error('starting_price')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+                </div>
+
                 <!-- Min Age -->
                 <div>
                     <label class="block text-gray-700 font-medium mb-2">Minimum Age *</label>
@@ -111,6 +118,126 @@
                     <label class="block text-gray-700 font-medium mb-2">Detailed Overview</label>
                     <textarea name="overview" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="Detailed information about the trek...">{{ old('overview') }}</textarea>
                     @error('overview')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+                </div>
+
+                <!-- Distance -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Distance</label>
+                    <input type="text" name="distance" value="{{ old('distance') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. 90 km">
+                </div>
+
+                <!-- Best Season -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Best Season</label>
+                    <input type="text" name="best_season" value="{{ old('best_season') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. June to September">
+                </div>
+
+                <!-- Starting Point -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Starting Point</label>
+                    <input type="text" name="starting_point" value="{{ old('starting_point') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. Skardu / Askole">
+                    @error('starting_point')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+                </div>
+
+                <!-- Ending Point -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Ending Point</label>
+                    <input type="text" name="ending_point" value="{{ old('ending_point') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. Hushe / Skardu">
+                    @error('ending_point')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+                </div>
+
+                <!-- Accommodation Type -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Accommodation Type</label>
+                    <input type="text" name="accommodation_type" value="{{ old('accommodation_type') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. Alpine Tents & Mountain Lodges">
+                    @error('accommodation_type')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+                </div>
+
+                <!-- Transport Type -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Transport Type</label>
+                    <input type="text" name="transport_type" value="{{ old('transport_type') }}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. 4x4 Mountain Jeeps & Domestic Flight">
+                    @error('transport_type')<p class="text-red-500 text-sm mt-1">{{ $message }}</p>@enderror
+                </div>
+
+                <!-- Included Items -->
+                <div class="md:col-span-2" x-data="{ items: [''] }">
+                    <label class="block text-gray-700 font-medium mb-2">Included Items</label>
+                    <template x-for="(item, index) in items" :key="index">
+                        <div class="flex gap-2 mb-2">
+                            <input type="text" :name="'included[]'" x-model="items[index]" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. Professional guide">
+                            <button type="button" @click="items.splice(index, 1)" class="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </template>
+                    <button type="button" @click="items.push('')" class="text-emerald-600 text-sm font-semibold mt-1">+ Add Included Item</button>
+                </div>
+
+                <!-- Excluded Items -->
+                <div class="md:col-span-2" x-data="{ items: [''] }">
+                    <label class="block text-gray-700 font-medium mb-2">Excluded Items</label>
+                    <template x-for="(item, index) in items" :key="index">
+                        <div class="flex gap-2 mb-2">
+                            <input type="text" :name="'excluded[]'" x-model="items[index]" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. International flights">
+                            <button type="button" @click="items.splice(index, 1)" class="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </template>
+                    <button type="button" @click="items.push('')" class="text-emerald-600 text-sm font-semibold mt-1">+ Add Excluded Item</button>
+                </div>
+
+                <!-- Packing List -->
+                <div class="md:col-span-2" x-data="{ items: [''] }">
+                    <label class="block text-gray-700 font-medium mb-2">Packing List</label>
+                    <template x-for="(item, index) in items" :key="index">
+                        <div class="flex gap-2 mb-2">
+                            <input type="text" :name="'packing_list[]'" x-model="items[index]" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" placeholder="e.g. Trekking boots">
+                            <button type="button" @click="items.splice(index, 1)" class="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </template>
+                    <button type="button" @click="items.push('')" class="text-emerald-600 text-sm font-semibold mt-1">+ Add Packing Item</button>
+                </div>
+
+                <!-- Itinerary -->
+                <div class="md:col-span-2" x-data="{ items: [{day: 1, title: '', description: ''}] }">
+                    <label class="block text-gray-700 font-medium mb-2">Itinerary</label>
+                    <template x-for="(item, index) in items" :key="index">
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-3 relative">
+                            <button type="button" @click="items.splice(index, 1)" class="absolute top-4 right-4 text-red-500 hover:text-red-700"><i class="fas fa-times"></i></button>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-3">
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-500 uppercase">Day</label>
+                                    <input type="number" :name="'itinerary['+index+'][day]'" x-model="item.day" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md outline-none">
+                                </div>
+                                <div class="md:col-span-3">
+                                    <label class="block text-xs font-medium text-gray-500 uppercase">Title</label>
+                                    <input type="text" :name="'itinerary['+index+'][title]'" x-model="item.title" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md outline-none" placeholder="e.g. Arrival in Skardu">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-500 uppercase">Description</label>
+                                <textarea :name="'itinerary['+index+'][description]'" x-model="item.description" rows="2" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md outline-none"></textarea>
+                            </div>
+                        </div>
+                    </template>
+                    <button type="button" @click="items.push({day: items.length + 1, title: '', description: ''})" class="text-emerald-600 text-sm font-semibold mt-1">+ Add Itinerary Day</button>
+                </div>
+
+                <!-- FAQs -->
+                <div class="md:col-span-2" x-data="{ items: [{question: '', answer: ''}] }">
+                    <label class="block text-gray-700 font-medium mb-2">FAQs</label>
+                    <template x-for="(item, index) in items" :key="index">
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-3 relative">
+                            <button type="button" @click="items.splice(index, 1)" class="absolute top-4 right-4 text-red-500 hover:text-red-700"><i class="fas fa-times"></i></button>
+                            <div class="mb-3">
+                                <label class="block text-xs font-medium text-gray-500 uppercase">Question</label>
+                                <input type="text" :name="'faqs['+index+'][question]'" x-model="item.question" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-500 uppercase">Answer</label>
+                                <textarea :name="'faqs['+index+'][answer]'" x-model="item.answer" rows="2" class="w-full mt-1 px-3 py-2 border border-gray-300 rounded-md outline-none"></textarea>
+                            </div>
+                        </div>
+                    </template>
+                    <button type="button" @click="items.push({question: '', answer: ''})" class="text-emerald-600 text-sm font-semibold mt-1">+ Add FAQ</button>
                 </div>
 
                 <!-- Checkboxes -->

@@ -10,11 +10,15 @@ use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\TrekController as FrontendTrekController;
 use App\Http\Controllers\TypePageController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\BlogTagController;
+use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SitemapController;
 
 // Frontend Routes
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about-us', function () {
     return view('about');
@@ -52,6 +56,14 @@ Route::get('/booking/{id}/download', [BookingController::class, 'download'])->na
 // Chatbot Route
 Route::post('/chatbot/ask', [ChatbotController::class, 'chat'])->name('chatbot.ask');
 
+// Blog Routes
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
+Route::get('/blog/tag/{slug}', [BlogController::class, 'tag'])->name('blog.tag');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+// Sitemap
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Admin Routes
 Route::prefix('admin')->group(function () {
@@ -84,5 +96,10 @@ Route::prefix('admin')->group(function () {
         Route::patch('bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])->name('admin.bookings.update-status');
         Route::delete('bookings/{booking}', [AdminBookingController::class, 'destroy'])->name('admin.bookings.destroy');
         Route::get('bookings/export/csv', [AdminBookingController::class, 'export'])->name('admin.bookings.export');
+
+        // Blog Management
+        Route::resource('blog/categories', BlogCategoryController::class)->names('admin.blog.categories')->except(['show']);
+        Route::resource('blog/tags', BlogTagController::class)->names('admin.blog.tags')->except(['show']);
+        Route::resource('blog/posts', BlogPostController::class)->names('admin.blog.posts')->except(['show']);
     });
 });

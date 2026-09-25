@@ -45,6 +45,24 @@
                 <span>Treks</span>
             </a>
 
+            <!-- Blog -->
+            <div class="sidebar-section text-gray-500 uppercase mt-6 mb-2 px-3">Blog</div>
+
+            <a href="{{ route('admin.blog.categories.index') }}" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-sm {{ request()->routeIs('admin.blog.categories.*') ? 'bg-emerald-600 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }}">
+                <i class="fas fa-folder w-5 text-center mr-3"></i>
+                <span>Categories</span>
+            </a>
+
+            <a href="{{ route('admin.blog.tags.index') }}" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-sm {{ request()->routeIs('admin.blog.tags.*') ? 'bg-emerald-600 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }}">
+                <i class="fas fa-hashtag w-5 text-center mr-3"></i>
+                <span>Tags</span>
+            </a>
+
+            <a href="{{ route('admin.blog.posts.index') }}" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-sm {{ request()->routeIs('admin.blog.posts.*') ? 'bg-emerald-600 text-white' : 'text-gray-400 hover:bg-gray-800 hover:text-white' }}">
+                <i class="fas fa-newspaper w-5 text-center mr-3"></i>
+                <span>Posts</span>
+            </a>
+
             <!-- Operations -->
             <div class="sidebar-section text-gray-500 uppercase mt-6 mb-2 px-3">Operations</div>
 

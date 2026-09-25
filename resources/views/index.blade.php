@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Karakorum Crown Expeditions - Premium Treks & Tours in Gilgit-Baltistan')
+@section('title', 'Karakorum Crown Expeditions - Premium Adventure Travel in Gilgit-Baltistan')
 
 @push('styles')
     .hero-glow {
         background: radial-gradient(circle at top, rgba(212, 168, 83, 0.18), transparent 42%);
     }
 
-    .premium-card {
-        transition: transform 0.35s ease, box-shadow 0.35s ease;
+    .category-card {
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
     }
 
-    .premium-card:hover {
+    .category-card:hover {
         transform: translateY(-6px);
-        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+        box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
     }
 
     .faq-panel[hidden] {
@@ -22,50 +22,79 @@
 @endpush
 
 @section('content')
-    <section class="relative min-h-[92vh] flex items-end overflow-hidden bg-navy-950">
+
+    {{-- ═══════════════════════════════════════════════
+         1. HERO SECTION & LIVE STATISTICS
+    ═══════════════════════════════════════════════ --}}
+    <section class="relative min-h-[94vh] flex items-end overflow-hidden bg-navy-950 pt-28 pb-16 md:pb-24">
         <div class="absolute inset-0">
-            <img src="{{ asset('assets/Front-banner-k2.webp') }}" alt="Gilgit-Baltistan mountains" class="h-full w-full object-cover opacity-80">
-            <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/75 to-navy-950/35"></div>
+            <img src="{{ asset('assets/Front-banner-k2.webp') }}"
+                 alt="Gilgit-Baltistan Karakoram Mountains"
+                 decoding="async"
+                 class="h-full w-full object-cover opacity-80 scale-100 animate-fade-in">
+            <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/80 to-navy-950/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
             <div class="absolute inset-0 hero-glow"></div>
         </div>
 
-        <div class="relative w-full pb-14 md:pb-20">
+        <div class="relative w-full">
             <div class="container mx-auto px-4 lg:px-8">
                 <div class="max-w-4xl text-white">
-                    <div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white/80 backdrop-blur-md">
-                        <span class="h-2 w-2 rounded-full bg-brand-400"></span>
+                    <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-white/90 backdrop-blur-md shadow-sm">
+                        <span class="h-2 w-2 rounded-full bg-brand-400 animate-pulse"></span>
                         Premium adventures in Gilgit-Baltistan
                     </div>
 
-                    <h1 class="mt-6 max-w-3xl font-display text-5xl leading-tight md:text-7xl text-balance">
+                    <h1 class="mt-6 font-display text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] text-balance">
                         Discover the wild, luxury side of northern Pakistan.
                     </h1>
 
-                    <p class="mt-6 max-w-2xl text-lg md:text-xl text-white/78 leading-relaxed">
-                        Curated treks, cultural journeys, and mountain experiences designed for international travelers who expect comfort, safety, and unforgettable scenery.
+                    <p class="mt-6 max-w-2xl text-base sm:text-xl text-white/80 leading-relaxed font-light">
+                        Curated treks, mountaineering expeditions, and cultural journeys tailored for international travelers seeking world-class safety, native expertise, and extraordinary mountain scenery.
                     </p>
 
                     <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                        <a href="#experiences" class="btn-primary inline-flex items-center justify-center rounded-xl px-7 py-4 text-base font-semibold text-white">
-                            Explore Experiences
+                        <a href="#experiences" class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-xl hover:shadow-2xl transition-all">
+                            <span>Explore Experiences</span>
+                            <i class="fas fa-arrow-down text-xs"></i>
                         </a>
-                        <a href="tel:+923131562859" class="btn-outline-light inline-flex items-center justify-center rounded-xl px-7 py-4 text-base font-semibold text-white">
-                            Talk to a Travel Expert
+                        <a href="{{ route('booking.create') }}" class="btn-gold inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-xl hover:shadow-2xl transition-all">
+                            <i class="fas fa-calendar-check text-sm"></i>
+                            <span>Book a Tour</span>
+                        </a>
+                        <a href="https://wa.me/923425343629?text={{ urlencode('Hello Karakorum Crown Expeditions! I would like to consult with a travel expert.') }}"
+                           target="_blank"
+                           class="btn-outline-light inline-flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-base font-semibold text-white backdrop-blur-md">
+                            <i class="fab fa-whatsapp text-lg text-[#25D366]"></i>
+                            <span>Chat with Expert</span>
                         </a>
                     </div>
 
-                    <div class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-3 max-w-3xl">
-                        <div class="rounded-2xl border border-white/10 bg-white/8 p-4 backdrop-blur-md">
-                            <div class="text-2xl font-display text-white">30+</div>
-                            <p class="text-sm text-white/70 mt-1">Countries served</p>
+                    {{-- Live Statistics Badges --}}
+                    <div class="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-4xl" id="stats-section">
+                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 backdrop-blur-md text-center">
+                            <div class="text-3xl lg:text-4xl font-display text-brand-400 font-bold">
+                                {{ number_format($stats['happy_travelers']) }}+
+                            </div>
+                            <p class="text-[11px] text-white/70 mt-1 uppercase tracking-wider font-medium">Happy Travelers</p>
                         </div>
-                        <div class="rounded-2xl border border-white/10 bg-white/8 p-4 backdrop-blur-md">
-                            <div class="text-2xl font-display text-white">Licensed</div>
-                            <p class="text-sm text-white/70 mt-1">Certified local operator</p>
+                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 backdrop-blur-md text-center">
+                            <div class="text-3xl lg:text-4xl font-display text-brand-400 font-bold">
+                                {{ $stats['total_trips'] }}+
+                            </div>
+                            <p class="text-[11px] text-white/70 mt-1 uppercase tracking-wider font-medium">Treks & Expeditions</p>
                         </div>
-                        <div class="rounded-2xl border border-white/10 bg-white/8 p-4 backdrop-blur-md">
-                            <div class="text-2xl font-display text-white">24/7</div>
-                            <p class="text-sm text-white/70 mt-1">Support for travelers</p>
+                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 backdrop-blur-md text-center">
+                            <div class="text-3xl lg:text-4xl font-display text-brand-400 font-bold">
+                                {{ $stats['expert_guides'] }}+
+                            </div>
+                            <p class="text-[11px] text-white/70 mt-1 uppercase tracking-wider font-medium">Certified Local Guides</p>
+                        </div>
+                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 backdrop-blur-md text-center">
+                            <div class="text-3xl lg:text-4xl font-display text-brand-400 font-bold">
+                                {{ $stats['satisfaction_rate'] }}%
+                            </div>
+                            <p class="text-[11px] text-white/70 mt-1 uppercase tracking-wider font-medium">Client Satisfaction</p>
                         </div>
                     </div>
                 </div>
@@ -73,348 +102,569 @@
         </div>
     </section>
 
+    {{-- Trusted Organizations Strip --}}
     <section class="border-b border-slate-200 bg-white">
-        <div class="container mx-auto px-4 lg:px-8 py-6">
-            <div class="grid grid-cols-2 gap-4 md:grid-cols-4 text-center">
-                <div>
-                    <p class="text-sm font-semibold tracking-[0.2em] uppercase text-slate-500">Licensed</p>
-                    <p class="mt-2 text-slate-900 font-semibold">Government registered</p>
+        <div class="container mx-auto px-4 lg:px-8 py-7">
+            <p class="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-slate-400 mb-5">
+                Officially Licensed & Internationally Recognized
+            </p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-2.5">
+                    <i class="fas fa-shield-alt text-2xl text-slate-800"></i>
+                    <span class="font-display font-bold text-lg text-slate-800">SECP Licensed</span>
                 </div>
-                <div>
-                    <p class="text-sm font-semibold tracking-[0.2em] uppercase text-slate-500">Safety</p>
-                    <p class="mt-2 text-slate-900 font-semibold">Guides, permits, rescue planning</p>
+                <div class="flex items-center gap-2.5">
+                    <i class="fas fa-mountain text-2xl text-slate-800"></i>
+                    <span class="font-display font-bold text-lg text-slate-800">PATO Member</span>
                 </div>
-                <div>
-                    <p class="text-sm font-semibold tracking-[0.2em] uppercase text-slate-500">Local Experts</p>
-                    <p class="mt-2 text-slate-900 font-semibold">Born in the region</p>
+                <div class="flex items-center gap-2.5">
+                    <i class="fas fa-map-marked-alt text-2xl text-slate-800"></i>
+                    <span class="font-display font-bold text-lg text-slate-800">Tourism Dept. GB</span>
                 </div>
-                <div>
-                    <p class="text-sm font-semibold tracking-[0.2em] uppercase text-slate-500">Fast Response</p>
-                    <p class="mt-2 text-slate-900 font-semibold">Clear WhatsApp support</p>
+                <div class="flex items-center gap-2.5">
+                    <i class="fab fa-tripadvisor text-2xl text-slate-800"></i>
+                    <span class="font-display font-bold text-lg text-slate-800">TripAdvisor Verified</span>
                 </div>
             </div>
         </div>
     </section>
 
+    {{-- ═══════════════════════════════════════════════
+         2. FEATURED TREKS / EXPERIENCES CARDS
+    ═══════════════════════════════════════════════ --}}
     <section id="experiences" class="py-20 bg-slate-50">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="max-w-2xl">
-                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-600">Featured Experiences</p>
-                <h2 class="mt-3 font-display text-4xl md:text-5xl text-slate-900">Choose the journey that fits your style.</h2>
-                <p class="mt-4 text-lg leading-relaxed text-slate-600">We keep the homepage focused on the experiences that matter most to first-time visitors: trekking, culture, and scenic touring.</p>
-            </div>
-
-            <div class="mt-10 grid gap-6 lg:grid-cols-3">
-                <article class="premium-card overflow-hidden rounded-3xl bg-white shadow-lg border border-slate-100">
-                    <img src="{{ asset('assets/K2-&-Concordia.webp') }}" alt="K2 and Concordia trek" class="h-64 w-full object-cover">
-                    <div class="p-7">
-                        <span class="inline-flex rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">Trek</span>
-                        <h3 class="mt-4 font-display text-2xl text-slate-900">K2 Base Camp & Concordia</h3>
-                        <p class="mt-3 text-slate-600">The signature Karakoram experience for serious adventure travelers seeking the world’s most iconic mountain scenery.</p>
-                        <a href="{{ route('trek.show', 'k2-base-camp-trek') }}" class="mt-6 inline-flex items-center gap-2 font-semibold text-brand-700 hover:text-brand-800">
-                            View trek <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="premium-card overflow-hidden rounded-3xl bg-white shadow-lg border border-slate-100">
-                    <img src="{{ asset('assets/Rushlake.webp') }}" alt="Scenic lakes and valleys" class="h-64 w-full object-cover">
-                    <div class="p-7">
-                        <span class="inline-flex rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">Tour</span>
-                        <h3 class="mt-4 font-display text-2xl text-slate-900">Hunza, Skardu & Deosai</h3>
-                        <p class="mt-3 text-slate-600">A polished route for travelers who want premium comfort, lakes, valleys, and dramatic viewpoints without unnecessary complexity.</p>
-                        <a href="{{ route('trek.show', 'hunza-panorama-tour') }}" class="mt-6 inline-flex items-center gap-2 font-semibold text-brand-700 hover:text-brand-800">
-                            Plan a tour <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="premium-card overflow-hidden rounded-3xl bg-white shadow-lg border border-slate-100">
-                    <img src="{{ asset('assets/shangrila-resort.webp') }}" alt="Luxury mountain hospitality" class="h-64 w-full object-cover">
-                    <div class="p-7">
-                        <span class="inline-flex rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-700">Comfort</span>
-                        <h3 class="mt-4 font-display text-2xl text-slate-900">Cultural Stays & Hospitality</h3>
-                        <p class="mt-3 text-slate-600">Handpicked accommodation, local guidance, and calmer itineraries for photographers, couples, and premium leisure travelers.</p>
-                        <a href="/about-us" class="mt-6 inline-flex items-center gap-2 font-semibold text-brand-700 hover:text-brand-800">
-                            Learn more <i class="fas fa-arrow-right text-sm"></i>
-                        </a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="bg-white py-20">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
                 <div>
-                    <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-600">Why Travelers Book With Us</p>
-                    <h2 class="mt-3 font-display text-4xl md:text-5xl text-slate-900">Simple, transparent, and built for confidence.</h2>
-                    <p class="mt-4 text-lg leading-relaxed text-slate-600">International guests need clarity. We focus on clear communication, realistic itineraries, and a calm booking experience that feels trustworthy from the first click.</p>
-
-                    <div class="mt-8 space-y-4">
-                        <div class="flex gap-4 rounded-2xl bg-slate-50 p-5 shadow-sm border border-slate-100">
-                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700"><i class="fas fa-shield-alt"></i></div>
-                            <div>
-                                <h3 class="font-semibold text-slate-900">Safety-led planning</h3>
-                                <p class="mt-1 text-sm text-slate-600">Permits, weather awareness, rescue readiness, and trained local support.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4 rounded-2xl bg-slate-50 p-5 shadow-sm border border-slate-100">
-                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700"><i class="fas fa-language"></i></div>
-                            <div>
-                                <h3 class="font-semibold text-slate-900">Clear communication</h3>
-                                <p class="mt-1 text-sm text-slate-600">Fast responses in English for international travelers and planning assistance before arrival.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4 rounded-2xl bg-slate-50 p-5 shadow-sm border border-slate-100">
-                            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700"><i class="fas fa-map-marked-alt"></i></div>
-                            <div>
-                                <h3 class="font-semibold text-slate-900">Curated local knowledge</h3>
-                                <p class="mt-1 text-sm text-slate-600">The itineraries highlight the best scenic, cultural, and adventure moments without unnecessary filler.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 uppercase tracking-widest">
+                        <i class="fas fa-star text-[10px]"></i> Handpicked Journeys
+                    </span>
+                    <h2 class="mt-3 font-display text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
+                        Featured Experiences
+                    </h2>
+                    <p class="mt-3 text-slate-600 max-w-xl text-base">
+                        Iconic routes into the heart of the Karakoram, crafted for safety, authentic culture, and breathtaking wilderness.
+                    </p>
                 </div>
-
-                <div class="grid gap-4 sm:grid-cols-2">
-                    <div class="rounded-3xl bg-navy-900 p-7 text-white shadow-xl sm:mt-12">
-                        <div class="text-4xl font-display text-brand-400">24/7</div>
-                        <p class="mt-3 text-white/70">Support for trip coordination and urgent travel questions.</p>
-                    </div>
-                    <div class="rounded-3xl bg-slate-50 p-7 shadow-xl border border-slate-100">
-                        <div class="text-4xl font-display text-slate-900">100%</div>
-                        <p class="mt-3 text-slate-600">Focus on transparency, realistic expectations, and traveler comfort.</p>
-                    </div>
-                    <div class="rounded-3xl bg-slate-50 p-7 shadow-xl border border-slate-100">
-                        <div class="text-4xl font-display text-slate-900">Local</div>
-                        <p class="mt-3 text-slate-600">Guides who understand the terrain, culture, and remote mountain logistics.</p>
-                    </div>
-                    <div class="rounded-3xl bg-brand-600 p-7 text-white shadow-xl">
-                        <div class="text-4xl font-display">Trusted</div>
-                        <p class="mt-3 text-white/85">Premium travel support for Europe, North America, Australia, and beyond.</p>
-                    </div>
-                </div>
-            </div>
-    </div>
-    </section>
-
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="max-w-2xl text-center mx-auto md:text-left md:mx-0">
-                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-600">Our Experts</p>
-                <h2 class="mt-3 font-display text-4xl md:text-5xl text-slate-900">Meet the local experts.</h2>
-                <p class="mt-4 text-lg text-slate-600">Our professional tour guides ensure you have a safe, memorable, and deeply authentic experience in Gilgit-Baltistan.</p>
+                <a href="#categories" class="inline-flex items-center gap-2 text-sm font-bold text-brand-700 hover:text-brand-800 self-start md:self-auto bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm hover:shadow transition-all">
+                    <span>Explore All Categories</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
+                </a>
             </div>
 
-            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                <!-- Team Member (CEO) -->
-                <div class="group relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 bg-slate-50 transition-all hover:shadow-2xl hover:-translate-y-2 duration-500">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="{{ asset('assets/chacha.jpeg') }}" alt="Chacha - CEO & Founder" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                @forelse($featuredTreks as $trek)
+                    <x-trip-card :trek="$trek" />
+                @empty
+                    <div class="col-span-3 py-12 text-center text-slate-400">
+                        <p>No featured treks available at the moment.</p>
                     </div>
-
-                <!-- Social Icons -->
-                    <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                        <a href="https://www.instagram.com/jaffar_kabiri?utm_source=qr&igsh=dDNrejNiOHd0OWZ4" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/p/17iuJ5e7GJ/" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-75">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-950 via-navy-900/80 to-transparent p-8 pt-24 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="font-display text-3xl text-white">Muhammad Jaffar</h3>
-                        <p class="text-brand-400 text-xs font-bold uppercase tracking-[0.2em] mt-2">CEO & Founder</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 3 -->
-                <div class="group relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 bg-slate-50 transition-all hover:shadow-2xl hover:-translate-y-2 duration-500">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="{{ asset('assets/rizwan.jpeg') }}" alt="Rizwan - Professional Tour Guide" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    
-                    <!-- Social Icons -->
-                    <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                        <a href="https://www.instagram.com/baltee__?igsh=a2t5OThlNjM1bnB0&utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@baltee00" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-75">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/14h5yAM17Ge/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-150">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-950 via-navy-900/80 to-transparent p-8 pt-24 opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                        <h3 class="font-display text-3xl text-white">Rizwan Ali</h3>
-                        <p class="text-brand-400 text-xs font-bold uppercase tracking-[0.2em] mt-2">Director & Professional Tour Guide</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 1 -->
-                <div class="group relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 bg-slate-50 transition-all hover:shadow-2xl hover:-translate-y-2 duration-500">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="{{ asset('assets/imran.jpg') }}" alt="Imran - Professional Tour Guide" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    
-                    <!-- Social Icons -->
-                    <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                        <a href="https://www.instagram.com/imranali_129?igsh=MWNxZDZoOXBudTBjdg%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@baltistan_vlog?_r=1&_t=ZS-97tG3uqM9NE" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-75">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/19G6SuYcdr/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-150">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-950 via-navy-900/80 to-transparent p-8 pt-24 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="font-display text-3xl text-white">Imran Ali</h3>
-                        <p class="text-brand-400 text-xs font-bold uppercase tracking-[0.2em] mt-2">Professional Tour Guide</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 2 -->
-                <div class="group relative rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 bg-slate-50 transition-all hover:shadow-2xl hover:-translate-y-2 duration-500">
-                    <div class="aspect-[4/5] overflow-hidden">
-                        <img src="{{ asset('assets/kami.jpeg') }}" alt="Kamran - Professional Tour Guide" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    
-                    <!-- Social Icons -->
-                    <div class="absolute top-4 right-4 flex flex-col gap-2 z-10">
-                        <a href="https://www.instagram.com/muhammad_kamran321?igsh=MWRteTAwMm52czFucA%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@muhammad_kamran321" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-75">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                        <a href="https://www.facebook.com/share/14h3iR4rF7G/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 hover:scale-110 transition-all delay-150">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                    </div>
-
-                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-navy-950 via-navy-900/80 to-transparent p-8 pt-24 opacity-90 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                        <h3 class="font-display text-3xl text-white">Muhammad Kamran</h3>
-                        <p class="text-brand-400 text-xs font-bold uppercase tracking-[0.2em] mt-2">Professional Tour Guide</p>
-                    </div>
-                </div>
+                @endforelse
             </div>
         </div>
     </section>
 
+    {{-- ═══════════════════════════════════════════════
+         3. EXPLORE BY CATEGORY
+    ═══════════════════════════════════════════════ --}}
+    <section id="categories" class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 uppercase tracking-widest">
+                    <i class="fas fa-th-large text-[10px]"></i> Product Categories
+                </span>
+                <h2 class="mt-3 font-display text-3xl md:text-5xl font-bold text-slate-900">
+                    Explore By Category
+                </h2>
+                <p class="mt-3 text-slate-600 text-base">
+                    Find the exact style of adventure that matches your physical fitness, timeline, and comfort preferences.
+                </p>
+            </div>
+
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                @foreach($categories as $cat)
+                    @php
+                        // Pick category image thumbnail
+                        $catImage = match(strtolower($cat->slug)) {
+                            'trekking', 'trending-treks' => asset('assets/K2-&-Concordia.webp'),
+                            'expeditions' => asset('assets/Front-banner-k2.webp'),
+                            'tours' => asset('assets/Rushlake.webp'),
+                            'rock-climbing' => asset('assets/charakusa.jpg'),
+                            default => asset('assets/SnowLake.webp'),
+                        };
+                    @endphp
+                    <a href="{{ route('type.index', $cat->slug) }}"
+                       class="category-card group relative h-80 rounded-3xl overflow-hidden shadow-md flex flex-col justify-end p-6 border border-slate-200">
+                        <img src="{{ $catImage }}"
+                             alt="{{ $cat->name }}"
+                             class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/60 to-transparent"></div>
+
+                        <div class="relative z-10 text-white">
+                            <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-brand-400 mb-4 group-hover:bg-brand-500 group-hover:text-white transition-colors">
+                                <i class="{{ $cat->icon ?: 'fas fa-mountain' }} text-xl"></i>
+                            </div>
+                            <h3 class="font-display text-2xl font-bold group-hover:text-brand-300 transition-colors">
+                                {{ $cat->name }}
+                            </h3>
+                            <p class="mt-1 text-xs text-white/70">
+                                {{ $cat->trending_treks_count }} {{ \Str::plural('Experience', $cat->trending_treks_count) }} Available
+                            </p>
+                            <div class="mt-4 flex items-center gap-2 text-xs font-semibold text-brand-400 group-hover:text-brand-300">
+                                <span>Discover routes</span>
+                                <i class="fas fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════
+         4. POPULAR / TRENDING TRIPS
+    ═══════════════════════════════════════════════ --}}
     <section class="py-20 bg-slate-50">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="max-w-2xl">
-                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-600">Social Proof</p>
-                <h2 class="mt-3 font-display text-4xl md:text-5xl text-slate-900">What international travelers value most.</h2>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3.5 py-1 text-xs font-semibold text-amber-700 uppercase tracking-widest">
+                        <i class="fas fa-fire-alt text-[10px]"></i> Top Booked
+                    </span>
+                    <h2 class="mt-3 font-display text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
+                        Trending Adventures
+                    </h2>
+                    <p class="mt-3 text-slate-600 max-w-xl text-base">
+                        Our highest-rated expeditions booked by travelers worldwide for the upcoming trekking season.
+                    </p>
+                </div>
+                <a href="{{ route('booking.create') }}" class="btn-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold text-white shadow-md self-start md:self-auto">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Book Your Dates</span>
+                </a>
             </div>
 
-            <div class="mt-10 grid gap-6 lg:grid-cols-3">
-                <article class="rounded-3xl border border-slate-100 bg-white p-7 shadow-sm">
-                    <div class="flex gap-1 text-gold-500"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="mt-5 text-slate-700 leading-relaxed">“The communication was excellent and the whole trip felt organized and safe. The mountains were beyond expectations.”</p>
-                    <div class="mt-6 text-sm text-slate-500">Anna, Germany · K2 Base Camp</div>
-                </article>
-                <article class="rounded-3xl border border-slate-100 bg-white p-7 shadow-sm">
-                    <div class="flex gap-1 text-gold-500"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="mt-5 text-slate-700 leading-relaxed">“A beautiful balance of adventure and comfort. I felt guided by people who truly know the region.”</p>
-                    <div class="mt-6 text-sm text-slate-500">Daniel, Canada · Hunza Tour</div>
-                </article>
-                <article class="rounded-3xl border border-slate-100 bg-white p-7 shadow-sm">
-                    <div class="flex gap-1 text-gold-500"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="mt-5 text-slate-700 leading-relaxed">“Professional, responsive, and trustworthy. Exactly the kind of operator we were looking for.”</p>
-                    <div class="mt-6 text-sm text-slate-500">Emma, Australia · Skardu & Deosai</div>
-                </article>
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                @foreach($trendingTreks as $trek)
+                    <x-trip-card :trek="$trek" />
+                @endforeach
             </div>
         </div>
     </section>
 
+    {{-- ═══════════════════════════════════════════════
+         5. WHY TRAVEL WITH KARAKORUM CROWN EXPEDITIONS
+    ═══════════════════════════════════════════════ --}}
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="max-w-2xl">
-                <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-600">Frequently Asked Questions</p>
-                <h2 class="mt-3 font-display text-4xl md:text-5xl text-slate-900">Quick answers before you book.</h2>
-                <p class="mt-4 text-lg text-slate-600">These are the questions most travelers ask before planning a trip to Gilgit-Baltistan.</p>
-            </div>
+            <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 uppercase tracking-widest">
+                        <i class="fas fa-shield-alt text-[10px]"></i> The KCE Standard
+                    </span>
+                    <h2 class="font-display text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
+                        Simple, transparent, and built for traveler confidence.
+                    </h2>
+                    <p class="text-slate-600 text-base md:text-lg leading-relaxed">
+                        International guests traveling to northern Pakistan deserve absolute clarity. We specialize in safety-certified mountain logistics, authentic local guides, and zero hidden costs.
+                    </p>
 
-            <div class="mt-10 max-w-4xl space-y-4" id="faq-accordion">
-                <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
-                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
-                        <span class="font-semibold text-slate-900">Do you help with itinerary planning and booking?</span>
-                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
-                    </button>
-                    <div class="faq-panel px-6 pb-6 text-slate-600" hidden>
-                        Yes. We help you choose the right trek, route, or tour based on your travel dates, fitness level, and comfort preferences.
+                    <div class="grid sm:grid-cols-2 gap-5 pt-4">
+                        {{-- Trust Pillar 1 --}}
+                        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-xs">
+                            <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center text-lg mb-3">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">Govt. Licensed Operator</h3>
+                            <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                                SECP registered & certified with Department of Tourism Services Gilgit-Baltistan.
+                            </p>
+                        </div>
+
+                        {{-- Trust Pillar 2 --}}
+                        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-xs">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg mb-3">
+                                <i class="fas fa-hiking"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">Native Skardu Guides</h3>
+                            <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                                Born in the valleys of Karakoram with multi-generational high-altitude trekking wisdom.
+                            </p>
+                        </div>
+
+                        {{-- Trust Pillar 3 --}}
+                        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-xs">
+                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg mb-3">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">Ethical Porter Treatment</h3>
+                            <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                                Fair wages, full insurance, quality cold-weather gear, and strict weight limit enforcement.
+                            </p>
+                        </div>
+
+                        {{-- Trust Pillar 4 --}}
+                        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-xs">
+                            <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg mb-3">
+                                <i class="fas fa-satellite-dish"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-base">Satellite Comms & Rescue</h3>
+                            <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
+                                Satellite communication devices on all remote treks with rapid helicopter evacuation coverage.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
-                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
-                        <span class="font-semibold text-slate-900">Is it safe for foreign travelers?</span>
-                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
-                    </button>
-                    <div class="faq-panel px-6 pb-6 text-slate-600" hidden>
-                        We focus on safe routes, experienced local guides, realistic pacing, and clear coordination throughout the journey.
+                {{-- Visual Image Grid with Badges --}}
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-lg bg-navy-950 relative">
+                            <img src="{{ asset('assets/chacha.jpeg') }}" alt="CEO & Founder Muhammad Jaffar" class="h-full w-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white text-xs">
+                                <p class="font-bold text-sm">Muhammad Jaffar</p>
+                                <p class="text-brand-300">Founder & Expedition Leader</p>
+                            </div>
+                        </div>
+                        <div class="rounded-3xl bg-navy-950 p-6 text-white text-center shadow-lg">
+                            <div class="font-display text-4xl font-bold text-brand-400">15+</div>
+                            <p class="text-xs uppercase tracking-wider text-white/70 mt-1">Years Operating in Karakoram</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
-                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
-                        <span class="font-semibold text-slate-900">Can I book a private trip instead of a group tour?</span>
-                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
-                    </button>
-                    <div class="faq-panel px-6 pb-6 text-slate-600" hidden>
-                        Yes. Private trips are available and are often the best option for couples, photographers, families, and premium travelers.
-                    </div>
-                </div>
-
-                <div class="overflow-hidden rounded-3xl border border-slate-200 bg-slate-50 shadow-sm">
-                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left">
-                        <span class="font-semibold text-slate-900">What should I pack for a Gilgit-Baltistan trip?</span>
-                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
-                    </button>
-                    <div class="faq-panel px-6 pb-6 text-slate-600" hidden>
-                        We share a practical packing list after booking, including clothing, footwear, and weather-based recommendations.
+                    <div class="space-y-4 pt-8">
+                        <div class="rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 p-6 text-white text-center shadow-lg">
+                            <div class="font-display text-4xl font-bold">100%</div>
+                            <p class="text-xs uppercase tracking-wider text-white/90 mt-1">Guaranteed Departure Rates</p>
+                        </div>
+                        <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-lg bg-navy-950 relative">
+                            <img src="{{ asset('assets/shangrila-resort.webp') }}" alt="Shangrila Resort Skardu" class="h-full w-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-4 left-4 right-4 text-white text-xs">
+                                <p class="font-bold text-sm">Luxury Mountain Hospitality</p>
+                                <p class="text-white/70">Handpicked boutique stays</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-navy-950 py-20 text-white">
+    {{-- ═══════════════════════════════════════════════
+         6. FEATURED DESTINATIONS
+    ═══════════════════════════════════════════════ --}}
+    <section class="py-20 bg-slate-50">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="rounded-3xl border border-white/10 bg-white/5 p-8 md:p-12 backdrop-blur">
-                <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
-                    <div>
-                        <p class="text-sm font-semibold uppercase tracking-[0.24em] text-brand-400">Plan Your Trip</p>
-                        <h2 class="mt-3 font-display text-4xl md:text-5xl">Ready to explore northern Pakistan with confidence?</h2>
-                        <p class="mt-4 max-w-xl text-white/70 leading-relaxed">Tell us your dates and interests. We’ll suggest the right route and help you turn it into a premium travel experience.</p>
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 uppercase tracking-widest">
+                    <i class="fas fa-map-pin text-[10px]"></i> Crown Jewels
+                </span>
+                <h2 class="mt-3 font-display text-3xl md:text-5xl font-bold text-slate-900">
+                    Featured Destinations
+                </h2>
+                <p class="mt-3 text-slate-600 text-base">
+                    From 8,000-meter giants to lush alpine plateaus, discover the iconic regions we call home.
+                </p>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {{-- Destination 1 --}}
+                <div class="group relative h-96 rounded-3xl overflow-hidden shadow-md">
+                    <img src="{{ asset('assets/K2-&-Concordia.webp') }}" alt="Concordia & K2" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-400 bg-white/10 px-2.5 py-1 rounded-full backdrop-blur-md">Baltoro Glacier</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Concordia & K2</h3>
+                        <p class="text-xs text-white/75 mt-1 line-clamp-2">The throne room of mountain gods, surrounded by four 8,000m peaks.</p>
                     </div>
-                    <div class="flex flex-col sm:flex-row gap-4 lg:justify-end">
-                        <a href="https://wa.me/923425343629" target="_blank" class="btn-primary inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
-                            WhatsApp Us
-                        </a>
-                        <a href="mailto:karakorumcrownexpeditions@gmail.com
-" class="btn-outline-light inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
-                            Email Inquiry
-                        </a>
+                </div>
+
+                {{-- Destination 2 --}}
+                <div class="group relative h-96 rounded-3xl overflow-hidden shadow-md">
+                    <img src="{{ asset('assets/Rushlake.webp') }}" alt="Deosai & Rush Lake" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-400 bg-white/10 px-2.5 py-1 rounded-full backdrop-blur-md">High Altitude Plateau</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Deosai National Park</h3>
+                        <p class="text-xs text-white/75 mt-1 line-clamp-2">The world's second-highest alpine plateau with wild brown bears & wildflowers.</p>
+                    </div>
+                </div>
+
+                {{-- Destination 3 --}}
+                <div class="group relative h-96 rounded-3xl overflow-hidden shadow-md">
+                    <img src="{{ asset('assets/Nagmavalley.webp') }}" alt="Nagma Valley & Hushe" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-400 bg-white/10 px-2.5 py-1 rounded-full backdrop-blur-md">Granite Spires</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Nagma Valley</h3>
+                        <p class="text-xs text-white/75 mt-1 line-clamp-2">World-renowned granite rock climbing and pristine mountain streams.</p>
+                    </div>
+                </div>
+
+                {{-- Destination 4 --}}
+                <div class="group relative h-96 rounded-3xl overflow-hidden shadow-md">
+                    <img src="{{ asset('assets/SnowLake.webp') }}" alt="Snow Lake & Hispar" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 text-white">
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-400 bg-white/10 px-2.5 py-1 rounded-full backdrop-blur-md">Glacial Traverse</span>
+                        <h3 class="font-display text-2xl font-bold mt-2">Snow Lake (Lukpe La)</h3>
+                        <p class="text-xs text-white/75 mt-1 line-clamp-2">A legendary high-altitude ice basin connecting Baltistan and Nagar.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    {{-- ═══════════════════════════════════════════════
+         7. SIMPLE "HOW BOOKING WORKS" (4-STEP VISUAL)
+    ═══════════════════════════════════════════════ --}}
+    <section class="py-20 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 uppercase tracking-widest">
+                    <i class="fas fa-check-circle text-[10px]"></i> Seamless Experience
+                </span>
+                <h2 class="mt-3 font-display text-3xl md:text-5xl font-bold text-slate-900">
+                    How Booking Works
+                </h2>
+                <p class="mt-3 text-slate-600 text-base">
+                    From selecting your trek to landing in Islamabad, our process is transparent, secure, and stress-free.
+                </p>
+            </div>
+
+            <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 relative">
+                {{-- Step 1 --}}
+                <div class="rounded-3xl border border-slate-200 bg-slate-50/60 p-7 text-center relative hover:border-brand-300 transition-colors">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-navy-950 text-white font-display text-xl font-bold flex items-center justify-center mb-5 shadow-md">
+                        01
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Choose Your Trip</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Browse our curated treks or submit a custom route inquiry tailored to your travel window.
+                    </p>
+                </div>
+
+                {{-- Step 2 --}}
+                <div class="rounded-3xl border border-slate-200 bg-slate-50/60 p-7 text-center relative hover:border-brand-300 transition-colors">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-navy-950 text-white font-display text-xl font-bold flex items-center justify-center mb-5 shadow-md">
+                        02
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Select Date & Travelers</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Pick guaranteed departure dates, package tier (Standard, Premium, Private), and party size.
+                    </p>
+                </div>
+
+                {{-- Step 3 --}}
+                <div class="rounded-3xl border border-slate-200 bg-slate-50/60 p-7 text-center relative hover:border-brand-300 transition-colors">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-navy-950 text-white font-display text-xl font-bold flex items-center justify-center mb-5 shadow-md">
+                        03
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">Submit Booking</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Enter traveler information and receive an immediate reference code (<span class="font-mono text-brand-700 font-bold">KCE-2027-...</span>).
+                    </p>
+                </div>
+
+                {{-- Step 4 --}}
+                <div class="rounded-3xl border border-brand-200 bg-brand-50/40 p-7 text-center relative shadow-sm">
+                    <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-600 text-white font-display text-xl font-bold flex items-center justify-center mb-5 shadow-md">
+                        04
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-lg mb-2">We Confirm Your Journey</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Our travel team reviews logistics, issues visa invitation letters, and guides your preparations.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="{{ route('booking.create') }}" class="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 text-base font-bold text-white shadow-xl hover:shadow-2xl transition-all">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Start Your Booking Now</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════
+         8. INTERNATIONAL TRAVELER TESTIMONIALS
+    ═══════════════════════════════════════════════ --}}
+    <section class="py-20 bg-slate-50">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 uppercase tracking-widest">
+                    <i class="fas fa-quote-left text-[10px]"></i> Client Reviews
+                </span>
+                <h2 class="mt-3 font-display text-3xl md:text-5xl font-bold text-slate-900">
+                    Trusted by Adventurers Worldwide
+                </h2>
+                <p class="mt-3 text-slate-600 text-base">
+                    Read unedited feedback from international guests who experienced the Karakoram with our local team.
+                </p>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-3">
+                <article class="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-amber-400 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed">
+                            “The communication from Karakorum Crown Expeditions was stellar from our very first WhatsApp inquiry. The K2 Base Camp trek was challenging, but our guide and porters made us feel completely safe and valued.”
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">
+                            AG
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Anna & Markus</p>
+                            <p class="text-xs text-slate-400">Germany · K2 & Concordia</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-amber-400 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed">
+                            “An extraordinary mix of hospitality, professionalism, and jaw-dropping views in Deosai and Hunza. The booking system was straightforward, and they even handled our Pakistan visa LOI paperwork flawlessly.”
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-sm">
+                            DC
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">David Chen</p>
+                            <p class="text-xs text-slate-400">Canada · Hunza & Deosai Explorer</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-amber-400 mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm leading-relaxed">
+                            “We booked a private expedition for our climbing club. Their gear, camp chefs, and high-altitude logistics were among the best we've experienced anywhere in the Himalayas or Karakoram.”
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-sm">
+                            EW
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-900 text-sm">Emma Watson</p>
+                            <p class="text-xs text-slate-400">Australia · Nagma Valley Climbing</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════
+         9. FREQUENTLY ASKED QUESTIONS
+    ═══════════════════════════════════════════════ --}}
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="max-w-2xl text-center mx-auto mb-12">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 uppercase tracking-widest">
+                    <i class="far fa-question-circle text-[10px]"></i> Traveler Queries
+                </span>
+                <h2 class="mt-3 font-display text-3xl md:text-5xl font-bold text-slate-900">
+                    Frequently Asked Questions
+                </h2>
+                <p class="mt-3 text-slate-600 text-base">
+                    Clear answers to the most common questions from international tourists.
+                </p>
+            </div>
+
+            <div class="mt-10 max-w-3xl mx-auto space-y-4" id="home-faq-accordion">
+                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors">
+                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus:outline-none">
+                        <span class="font-bold text-slate-900 text-base">Do you provide visa support and Letter of Invitation (LOI)?</span>
+                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-panel px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 bg-white" hidden>
+                        Yes. As a licensed Pakistani tour operator, we issue official Letters of Invitation (LOI), complete itinerary documents, and tour registration papers required for the Pakistan online tourist visa.
+                    </div>
+                </div>
+
+                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors">
+                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus:outline-none">
+                        <span class="font-bold text-slate-900 text-base">Is traveling in Gilgit-Baltistan safe for international tourists?</span>
+                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-panel px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 bg-white" hidden>
+                        Gilgit-Baltistan is widely considered one of the safest, most welcoming regions in South Asia. Local communities are deeply hospitable to foreigners. We also register all treks with local tourism police and maintain satellite communications.
+                    </div>
+                </div>
+
+                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors">
+                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus:outline-none">
+                        <span class="font-bold text-slate-900 text-base">Can I customize my dates or book a private trip?</span>
+                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-panel px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 bg-white" hidden>
+                        Absolutely. Over 50% of our travelers choose private departures. You can customize travel pace, accommodation grade, rest days, and special photographic stops according to your schedule.
+                    </div>
+                </div>
+
+                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors">
+                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus:outline-none">
+                        <span class="font-bold text-slate-900 text-base">How does payment work? Do I pay immediately?</span>
+                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-panel px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 bg-white" hidden>
+                        No immediate card charge is taken upon submission. We first verify departure dates, logistics, and permit quotas. Once approved, you receive official deposit payment instructions to secure your reservation.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- ═══════════════════════════════════════════════
+         10. FINAL CALL TO ACTION
+    ═══════════════════════════════════════════════ --}}
+    <section class="relative bg-navy-950 py-24 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-25">
+            <img src="{{ asset('assets/Front-banner-k2.webp') }}" alt="Karakoram Mountains" loading="lazy" decoding="async" class="h-full w-full object-cover">
+        </div>
+        <div class="relative container mx-auto px-4 lg:px-8 text-center max-w-3xl">
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-brand-300 backdrop-blur-md mb-6">
+                Begin Your Expedition
+            </span>
+            <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight">
+                Your Karakoram Adventure Starts Here.
+            </h2>
+            <p class="mt-4 text-white/80 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-light">
+                Discover the untouched majesty of K2, Concordia, and Gilgit-Baltistan with Pakistan's premier mountain travel company.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#experiences" class="inline-flex items-center justify-center rounded-xl px-8 py-4 font-bold text-base text-slate-900 bg-white hover:bg-slate-100 transition-all shadow-xl">
+                    <i class="fas fa-compass mr-2 text-brand-600"></i> Explore Trips
+                </a>
+                <a href="{{ route('booking.create') }}" class="btn-primary inline-flex items-center justify-center rounded-xl px-8 py-4 font-bold text-base text-white shadow-xl hover:shadow-2xl transition-all">
+                    <i class="fas fa-calendar-check mr-2"></i> Book Now
+                </a>
+            </div>
+        </div>
+    </section>
+
 @endsection
 
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const faqAccordion = document.getElementById('faq-accordion');
+            const faqAccordion = document.getElementById('home-faq-accordion');
 
             if (!faqAccordion) return;
 

@@ -31,7 +31,7 @@
 </div>
 
 <!-- Main Navigation -->
-<nav id="main-nav" class="bg-navy-900/95 sticky top-0 z-50 transition-all duration-500">
+<nav id="main-nav" class="bg-navy-900 sticky top-0 z-50 transition-shadow duration-300">
     <div class="container mx-auto px-4 lg:px-8">
         <div class="flex justify-between items-center h-20">
             <!-- Logo -->
@@ -85,6 +85,9 @@
                     </li>
                 @endforeach
 
+                <li>
+                    <a href="/blog" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">Blog</a>
+                </li>
                 <li>
                     <a href="/about-us" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">About</a>
                 </li>
@@ -154,6 +157,7 @@
             </li>
             @endforeach
             
+            <li><a href="/blog" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Blog</a></li>
             <li><a href="/about-us" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">About Us</a></li>
             <li><a href="/how-to-apply" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Visa Guide</a></li>
             <li><a href="/salajeet" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Salajeet</a></li>

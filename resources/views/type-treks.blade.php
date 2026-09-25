@@ -29,52 +29,7 @@
         @if($treks->count())
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             @foreach($treks as $trek)
-            <article class="premium-card group overflow-hidden rounded-3xl bg-white shadow-lg border border-slate-100">
-                <div class="relative h-64 overflow-hidden">
-                    @if($trek->galleries->where('is_featured', true)->first())
-                        <img src="{{ asset('storage/' . $trek->galleries->where('is_featured', true)->first()->image_path) }}" alt="{{ $trek->title }}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    @elseif($trek->galleries->first())
-                        <img src="{{ asset('storage/' . $trek->galleries->first()->image_path) }}" alt="{{ $trek->title }}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    @else
-                        <div class="h-full w-full bg-gradient-to-br from-navy-800 to-navy-950 flex items-center justify-center">
-                            <i class="{{ $type->icon ?? 'fas fa-mountain' }} text-5xl text-white/20"></i>
-                        </div>
-                    @endif
-                    <div class="absolute top-4 left-4 flex gap-2">
-                        @if($trek->is_trending)
-                            <span class="bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full">🔥 Trending</span>
-                        @endif
-                        <span class="bg-navy-900/80 text-white text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
-                            {{ $trek->duration_days }} {{ \Str::plural('day', $trek->duration_days) }}
-                        </span>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-full">{{ $type->name }}</span>
-                        <span class="text-xs text-slate-400">·</span>
-                        <span class="text-xs text-slate-500">{{ $trek->location }}</span>
-                    </div>
-                    <h3 class="font-display text-xl text-slate-900 group-hover:text-brand-700 transition-colors">{{ $trek->title }}</h3>
-                    <p class="mt-2 text-sm text-slate-500 line-clamp-2">{{ \Str::limit(strip_tags($trek->description ?? $trek->overview ?? ''), 120) }}</p>
-                    <div class="mt-4 flex items-center justify-between">
-                        <div class="flex items-center gap-3 text-xs text-slate-500">
-                            <span><i class="fas fa-signal mr-1"></i>Level {{ $trek->difficulty_level }}/5</span>
-                            @if($trek->height_meters)
-                                <span><i class="fas fa-mountain mr-1"></i>{{ number_format($trek->height_meters) }}m</span>
-                            @endif
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <a href="{{ route('trek.show', $trek->slug) }}" class="text-sm font-semibold text-slate-600 hover:text-slate-800 transition-colors">
-                                <i class="fas fa-info-circle"></i>
-                            </a>
-                            <a href="{{ route('booking.create') }}?trek={{ $trek->slug }}" class="inline-flex items-center gap-1.5 text-sm font-bold text-white bg-gradient-to-r from-brand-600 to-brand-700 px-3 py-1.5 rounded-lg hover:from-brand-700 hover:to-brand-800 transition-all shadow-sm">
-                                <i class="fas fa-calendar-check text-xs"></i> Book
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </article>
+                <x-trip-card :trek="$trek" />
             @endforeach
         </div>
 

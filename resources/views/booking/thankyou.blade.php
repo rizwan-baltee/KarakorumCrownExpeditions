@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Thank You - Karakorum Crown Expeditions')
+@section('title', 'Booking Confirmation - Karakorum Crown Expeditions')
 
 @section('content')
 <section class="relative bg-navy-950 pt-32 pb-20">
@@ -8,100 +8,131 @@
     <div class="relative container mx-auto px-4 lg:px-8 text-center">
         <div class="max-w-2xl mx-auto">
             {{-- Success Icon --}}
-            <div class="w-24 h-24 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8 border-2 border-green-400/30">
-                <i class="fas fa-check text-5xl text-green-400"></i>
+            <div class="w-20 h-20 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-emerald-400/40 shadow-lg shadow-emerald-500/10">
+                <i class="fas fa-check text-4xl text-emerald-400"></i>
             </div>
 
-            <h1 class="font-display text-4xl md:text-5xl text-white mb-4">
-                {{ $booking->isInquiry() ? 'Inquiry Received!' : 'Booking Request Sent!' }}
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-brand-300 backdrop-blur-md mb-4">
+                Booking Request Received
+            </span>
+
+            <h1 class="font-display text-3xl sm:text-5xl font-bold text-white mb-3">
+                Booking Confirmed
             </h1>
 
-            <p class="text-white/60 text-lg mb-6">
-                Thank you, <strong class="text-white">{{ $booking->name }}</strong>. Our team will review your
-                {{ $booking->isInquiry() ? 'inquiry' : 'booking request' }} and get back to you within
-                <strong class="text-white">24 hours</strong>.
+            <p class="text-white/80 text-base sm:text-lg mb-8 font-light">
+                Thank you for choosing <strong class="text-white font-semibold">Karakorum Crown Expeditions</strong>.<br>
+                Our travel team will review your booking and contact you shortly.
             </p>
 
-            {{-- Reference Code Banner --}}
-            <div class="bg-gradient-to-r from-brand-500 to-brand-600 rounded-2xl p-6 md:p-8 mb-8 relative overflow-hidden shadow-2xl shadow-brand-500/20">
+            {{-- Reference Code Card --}}
+            <div class="bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-800 rounded-3xl p-6 sm:p-8 mb-8 relative overflow-hidden shadow-2xl">
                 <div class="absolute inset-0 opacity-10">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-white rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"></div>
+                    <div class="absolute top-0 right-0 w-36 h-36 bg-white rounded-full blur-2xl"></div>
                 </div>
                 <div class="relative">
-                    <p class="text-white/70 text-xs uppercase tracking-[0.2em] font-medium mb-2">Your Booking Reference</p>
-                    <p class="text-white text-3xl md:text-5xl font-bold font-mono tracking-wider mb-2">{{ $booking->reference_code }}</p>
-                    <p class="text-white/60 text-xs">Save this reference — you'll need it to track your booking</p>
+                    <p class="text-white/80 text-xs uppercase tracking-[0.25em] font-bold mb-2">Your Booking Reference</p>
+                    <p class="text-white text-3xl sm:text-5xl font-mono font-bold tracking-wider mb-2 select-all">{{ $booking->reference_code }}</p>
+                    <div class="inline-flex items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-xs text-white font-medium mt-1">
+                        <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                        Status: Pending Confirmation
+                    </div>
                 </div>
-            </div>
-
-            {{-- Download Button --}}
-            <div class="mb-8">
-                <a href="{{ route('booking.download', $booking->id) }}" target="_blank"
-                   class="inline-flex items-center gap-2.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white rounded-xl px-6 py-3.5 font-semibold text-sm transition-all hover:scale-[1.02]">
-                    <i class="fas fa-file-download text-brand-300"></i>
-                    Download Booking Confirmation
-                    <i class="fas fa-external-link-alt text-xs text-white/40"></i>
-                </a>
-                <p class="text-white/30 text-xs mt-2">Opens a printable page — use your browser's Print / Save as PDF</p>
             </div>
 
             {{-- Summary Card --}}
-            <div class="bg-white/5 backdrop-blur-md rounded-3xl border border-white/10 p-8 text-left mb-10">
-                <h3 class="text-white font-semibold text-sm uppercase tracking-wider mb-5">
-                    <i class="fas fa-receipt mr-2 text-brand-400"></i> Request Summary
+            <div class="bg-white/10 backdrop-blur-xl rounded-3xl border border-white/15 p-6 sm:p-8 text-left mb-8 shadow-xl">
+                <h3 class="text-white font-bold text-sm uppercase tracking-wider mb-5 flex items-center justify-between border-b border-white/10 pb-3">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-receipt text-brand-400"></i>
+                        <span>Trip & Traveler Summary</span>
+                    </span>
+                    <span class="text-xs text-white/50 font-normal">Reference: {{ $booking->reference_code }}</span>
                 </h3>
-                <div class="space-y-3 text-sm">
+
+                <div class="space-y-3.5 text-xs sm:text-sm">
                     <div class="flex justify-between border-b border-white/10 pb-3">
-                        <span class="text-white/50">Reference Code</span>
-                        <span class="text-brand-300 font-bold font-mono tracking-wider">{{ $booking->reference_code }}</span>
+                        <span class="text-white/60">Trip / Expedition</span>
+                        <span class="text-white font-bold text-right">{{ $booking->trendingTrek?->title ?: 'Custom Tour' }}</span>
                     </div>
-                    @if($booking->trendingTrek)
-                    <div class="flex justify-between border-b border-white/10 pb-3">
-                        <span class="text-white/50">Package</span>
-                        <span class="text-white font-medium">{{ $booking->trendingTrek->title }}</span>
-                    </div>
-                    @endif
+
                     @if($booking->start_date)
                     <div class="flex justify-between border-b border-white/10 pb-3">
-                        <span class="text-white/50">Preferred Dates</span>
-                        <span class="text-white font-medium">{{ $booking->start_date->format('d M') }} – {{ $booking->end_date?->format('d M Y') }}</span>
+                        <span class="text-white/60">Travel Date</span>
+                        <span class="text-white font-medium">
+                            {{ $booking->start_date->format('d F Y') }}
+                            @if($booking->end_date)
+                                → {{ $booking->end_date->format('d F Y') }}
+                            @endif
+                        </span>
                     </div>
                     @endif
-                    @if($booking->guests)
+
                     <div class="flex justify-between border-b border-white/10 pb-3">
-                        <span class="text-white/50">Travelers</span>
-                        <span class="text-white font-medium">{{ $booking->guests }}</span>
+                        <span class="text-white/60">Travelers</span>
+                        <span class="text-white font-medium">
+                            {{ $booking->guests }} Total
+                            ({{ $booking->adults ?: $booking->guests }} Adults{{ $booking->children > 0 ? ', ' . $booking->children . ' Children' : '' }})
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between border-b border-white/10 pb-3">
+                        <span class="text-white/60">Package Tier</span>
+                        <span class="text-white font-medium">
+                            {{ $booking->package_tier ?: 'Standard' }} ({{ $booking->trip_type ?: 'Group' }})
+                        </span>
+                    </div>
+
+                    @if($booking->total_amount && $booking->total_amount > 0)
+                    <div class="flex justify-between border-b border-white/10 pb-3">
+                        <span class="text-white/60">Quoted Amount</span>
+                        <span class="text-brand-300 font-display font-bold text-base">
+                            {{ $booking->formatted_total }}
+                        </span>
                     </div>
                     @endif
+
+                    <div class="flex justify-between border-b border-white/10 pb-3">
+                        <span class="text-white/60">Customer Name</span>
+                        <span class="text-white font-medium">{{ $booking->name }}</span>
+                    </div>
+
                     <div class="flex justify-between">
-                        <span class="text-white/50">Status</span>
-                        <span class="text-green-400 font-medium">Received ✓</span>
+                        <span class="text-white/60">Email & Contact</span>
+                        <span class="text-white font-medium text-right">{{ $booking->email }} · {{ $booking->phone }}</span>
                     </div>
                 </div>
             </div>
 
-            {{-- CTAs --}}
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-                <a href="{{ route('home') }}" class="btn-primary inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
-                    <i class="fas fa-home mr-2"></i> Back to Home
+            {{-- Action CTAs --}}
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <a href="{{ route('booking.download', $booking->id) }}" target="_blank"
+                   class="inline-flex items-center justify-center gap-2 rounded-xl bg-white/15 hover:bg-white/25 border border-white/20 text-white px-6 py-4 font-bold text-sm transition-all shadow-md">
+                    <i class="fas fa-file-download text-brand-300"></i>
+                    <span>Download Booking Summary</span>
                 </a>
-                <a href="https://wa.me/923131562859?text=Hi!%20I%20just%20submitted%20a%20booking%20request%20({{ urlencode($booking->reference_code) }})%20on%20your%20website." target="_blank"
-                   class="inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white bg-[#25D366] hover:bg-[#1fb855] transition-colors">
-                    <i class="fab fa-whatsapp mr-2 text-lg"></i> Follow up on WhatsApp
+
+                <a href="https://wa.me/923425343629?text={{ urlencode('Hello! I have submitted booking reference: ' . $booking->reference_code . ' for ' . ($booking->trendingTrek?->title ?: 'Karakoram trip') . '. Looking forward to confirmation!') }}"
+                   target="_blank"
+                   class="inline-flex items-center justify-center gap-2 rounded-xl px-7 py-4 font-bold text-sm text-white bg-[#25D366] hover:bg-[#1fb855] transition-all shadow-lg">
+                    <i class="fab fa-whatsapp text-lg"></i>
+                    <span>WhatsApp Travel Expert</span>
+                </a>
+
+                <a href="{{ route('home') }}"
+                   class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-7 py-4 font-bold text-sm text-white shadow-lg">
+                    <i class="fas fa-home"></i>
+                    <span>Return Home</span>
                 </a>
             </div>
 
-            {{-- Track Booking Link --}}
-            <div class="mb-8">
-                <a href="{{ route('booking.track') }}" class="text-white/40 hover:text-white/70 text-sm underline underline-offset-4 transition-colors">
-                    <i class="fas fa-search mr-1"></i> Track your booking status anytime
+            {{-- Tracking Note --}}
+            <div class="text-xs text-white/50">
+                <span>You can track your status anytime with your reference at</span>
+                <a href="{{ route('booking.track') }}" class="text-brand-300 hover:underline font-semibold ml-1">
+                    Booking Tracker
                 </a>
             </div>
-
-            <p class="text-white/30 text-sm">
-                Confirmation email sent to <span class="text-white/60">{{ $booking->email }}</span>
-            </p>
         </div>
     </div>
 </section>
