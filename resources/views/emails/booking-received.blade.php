@@ -87,7 +87,7 @@
                     <tr>
                         <td style="background:#f8fafc;padding:20px 40px;text-align:center;border-top:1px solid #e2e8f0;">
                             <p style="color:#94a3b8;font-size:12px;margin:0;">Submitted {{ $booking->created_at->format('d M Y \a\t g:i A') }}</p>
-                            <p style="color:#cbd5e1;font-size:11px;margin:6px 0 0;">Karakorum Crown Expeditions · Skardu, Gilgit-Baltistan · Licensed Tour Operator #2332</p>
+                            <p style="color:#cbd5e1;font-size:11px;margin:6px 0 0;">Karakorum Crown Expeditions · Skardu, Gilgit-Baltistan · Licensed Tour Operator CUIN: 0343091</p>
                         </td>
                     </tr>
 

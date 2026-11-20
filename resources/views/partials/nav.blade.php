@@ -1,29 +1,52 @@
 <!-- Top Bar - Minimal & Elegant -->
-<div class="bg-navy-900 text-white/70 py-2 text-xs tracking-wide border-b border-white/10">
+<div class="relative z-[60] bg-navy-900 text-white/70 py-2 text-xs tracking-wide border-b border-white/10" style="position: relative; z-index: 60; pointer-events: auto;">
     <div class="container mx-auto px-4 lg:px-8">
         <div class="flex justify-between items-center">
             <div class="flex items-center gap-6">
-                <a href="tel:+923131562859" class="flex items-center gap-1.5 hover:text-white transition-colors">
-                    <i class="fas fa-phone text-brand-400"></i>
-                    <span>+92 3425343629</span>
+                <a href="tel:+923425343629"
+                   class="cursor-pointer flex items-center gap-1.5 hover:text-brand-400 transition-colors py-1"
+                   style="cursor: pointer; pointer-events: auto;"
+                   title="Call +92 3425343629">
+                    <i class="fas fa-phone text-brand-400 pointer-events-none"></i>
+                    <span class="pointer-events-none">+92 3425343629</span>
                 </a>
-                <a href="mailto:karakorumcrownexpeditions@gmail.com" class="hidden sm:flex items-center gap-1.5 hover:text-white transition-colors">
-                    <i class="fas fa-envelope text-brand-400"></i>
-                    <span>karakorumcrownexpeditions@gmail.com</span>
+                <a href="mailto:karakorumcrownexpeditions@gmail.com"
+                   class="cursor-pointer hidden sm:flex items-center gap-1.5 hover:text-brand-400 transition-colors py-1"
+                   style="cursor: pointer; pointer-events: auto;"
+                   title="Email karakorumcrownexpeditions@gmail.com">
+                    <i class="fas fa-envelope text-brand-400 pointer-events-none"></i>
+                    <span class="pointer-events-none">karakorumcrownexpeditions@gmail.com</span>
                 </a>
-                <span class="hidden md:flex items-center gap-1.5">
-                    <i class="fas fa-map-marker-alt text-brand-400 min-w-max"></i>
-                    <span class="truncate max-w-[200px] lg:max-w-[300px] xl:max-w-[400px]">Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Shigar, Skardu, Gilgit-Baltistan, Pakistan</span>
-                </span>
+                <a href="https://maps.google.com/?q={{ urlencode('Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Gilgit-Baltistan, Pakistan') }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="cursor-pointer hidden md:flex items-center gap-1.5 hover:text-brand-400 transition-colors py-1"
+                   style="cursor: pointer; pointer-events: auto;"
+                   title="Open location in Google Maps">
+                    <i class="fas fa-map-marker-alt text-brand-400 min-w-max pointer-events-none"></i>
+                    <span class="truncate max-w-[200px] lg:max-w-[300px] xl:max-w-[400px] pointer-events-none">Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Shigar, Skardu, Gilgit-Baltistan, Pakistan</span>
+                </a>
             </div>
             <div class="flex items-center gap-4">
                 <span class="hidden sm:inline text-white/40">|</span>
-                <span class="hidden sm:inline text-white/50">Licensed Tour Operator CUIN: 0343091
-</span>
-                <div class="flex items-center gap-3 ml-2">
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-white transition-colors"><i class="fab fa-youtube"></i></a>
+                <span class="hidden sm:inline text-white/50">Licensed Tour Operator CUIN: 0343091</span>
+                <div class="flex items-center gap-3.5 ml-2">
+                    <a href="https://www.instagram.com/karakorum_crown/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="cursor-pointer text-white/70 hover:text-[#E4405F] transition-colors text-sm flex items-center justify-center p-1"
+                       style="cursor: pointer; pointer-events: auto;"
+                       title="Follow us on Instagram">
+                        <i class="fab fa-instagram pointer-events-none"></i>
+                    </a>
+                    <a href="https://wa.me/923425343629"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="cursor-pointer text-white/70 hover:text-[#25D366] transition-colors text-sm flex items-center justify-center p-1"
+                       style="cursor: pointer; pointer-events: auto;"
+                       title="Chat with us on WhatsApp">
+                        <i class="fab fa-whatsapp pointer-events-none"></i>
+                    </a>
                 </div>
             </div>
         </div>

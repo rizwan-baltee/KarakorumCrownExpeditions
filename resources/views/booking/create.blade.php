@@ -157,7 +157,7 @@
                                         <optgroup label="{{ $groupName }}">
                                             @foreach($groupItems as $t)
                                                 <option value="{{ $t->id }}" {{ ($selectedTrek && $selectedTrek->id == $t->id) || (!$selectedTrek && $loop->parent->first && $loop->first) ? 'selected' : '' }}>
-                                                    {{ $t->title }} ({{ $t->duration_days }} Days — {{ $t->starting_price_formatted }})
+                                                    {{ $t->title }} ({{ $t->duration_days }} Days)
                                                 </option>
                                             @endforeach
                                         </optgroup>
@@ -184,10 +184,9 @@
                                         <span><i class="fas fa-signal text-brand-600 mr-1"></i><span id="preview-difficulty">{{ $selectedTrek?->difficulty_label ?: 'Challenging' }}</span></span>
                                         <span><i class="fas fa-map-marker-alt text-brand-600 mr-1"></i><span id="preview-location">{{ $selectedTrek?->location ?: 'Gilgit-Baltistan' }}</span></span>
                                     </div>
-                                    <div class="mt-3 text-sm">
-                                        <span class="text-xs text-slate-400">Starting Price:</span>
-                                        <span id="preview-price" class="font-display text-lg font-bold text-brand-800 ml-1">
-                                            {{ $selectedTrek?->starting_price_formatted ?: ($treks->first()?->starting_price_formatted ?: '$2,499') }}
+                                    <div class="mt-3 flex items-center justify-center sm:justify-start gap-2">
+                                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200">
+                                            <i class="fas fa-tag text-[10px]"></i> Price on Request · Custom Quote
                                         </span>
                                     </div>
                                 </div>
@@ -337,33 +336,42 @@
                                 <div id="tier-standard" onclick="selectTier('standard')" class="tier-card cursor-pointer rounded-2xl border-2 border-slate-200 p-5 transition-all">
                                     <div class="flex items-center justify-between mb-2">
                                         <span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">Standard</span>
-                                        <span class="text-xs font-bold text-brand-700" id="tier-standard-multiplier">1.0x Base</span>
+                                        <span class="text-xs font-bold text-slate-500" id="tier-standard-multiplier">Group Tier</span>
                                     </div>
                                     <h4 class="font-display font-bold text-slate-900 text-lg">Group Journey</h4>
-                                    <p class="text-xs text-slate-500 mt-1">Shared tent, certified local guide, full meals.</p>
-                                    <p class="mt-4 font-bold text-base text-slate-900" id="tier-standard-price">$2,499</p>
+                                    <p class="text-xs text-slate-500 mt-1">Shared tent, certified local guide, full nutritious meals.</p>
+                                    <div class="mt-4 pt-3 border-t border-slate-100">
+                                        <p class="font-bold text-base text-slate-900" id="tier-standard-price">Price on Request</p>
+                                        <p class="text-[11px] text-slate-400 mt-0.5">Custom quote based on group size</p>
+                                    </div>
                                 </div>
 
                                 {{-- Premium Tier --}}
                                 <div id="tier-premium" onclick="selectTier('premium')" class="tier-card cursor-pointer rounded-2xl border-2 border-slate-200 p-5 transition-all">
                                     <div class="flex items-center justify-between mb-2">
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2 py-0.5 rounded-md">Popular</span>
-                                        <span class="text-xs font-bold text-brand-700">+35%</span>
+                                        <span class="text-[10px] font-bold uppercase tracking-wider text-brand-700 bg-brand-100 px-2 py-0.5 rounded-md">Most Popular</span>
+                                        <span class="text-xs font-bold text-brand-700">Recommended</span>
                                     </div>
                                     <h4 class="font-display font-bold text-slate-900 text-lg">Enhanced Comfort</h4>
-                                    <p class="text-xs text-slate-500 mt-1">Upgraded stays, private tent & satellite kit.</p>
-                                    <p class="mt-4 font-bold text-base text-brand-800" id="tier-premium-price">$3,374</p>
+                                    <p class="text-xs text-slate-500 mt-1">Upgraded stays, private tent & satellite safety kit.</p>
+                                    <div class="mt-4 pt-3 border-t border-brand-100">
+                                        <p class="font-bold text-base text-brand-800" id="tier-premium-price">Custom Quote</p>
+                                        <p class="text-[11px] text-emerald-600 mt-0.5">Best balance of comfort & gear</p>
+                                    </div>
                                 </div>
 
                                 {{-- Private Tier --}}
                                 <div id="tier-private" onclick="selectTier('private')" class="tier-card cursor-pointer rounded-2xl border-2 border-slate-200 p-5 transition-all">
                                     <div class="flex items-center justify-between mb-2">
                                         <span class="text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">Exclusive</span>
-                                        <span class="text-xs font-bold text-amber-700">+65%</span>
+                                        <span class="text-xs font-bold text-amber-700">VIP Option</span>
                                     </div>
                                     <h4 class="font-display font-bold text-slate-900 text-lg">Private VIP</h4>
                                     <p class="text-xs text-slate-500 mt-1">Custom pacing, private jeep, dedicated chef.</p>
-                                    <p class="mt-4 font-bold text-base text-slate-900" id="tier-private-price">$4,123</p>
+                                    <div class="mt-4 pt-3 border-t border-slate-100">
+                                        <p class="font-bold text-base text-slate-900" id="tier-private-price">Tailored Pricing</p>
+                                        <p class="text-[11px] text-slate-400 mt-0.5">100% private bespoke expedition</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -380,7 +388,7 @@
                                                 <p class="text-xs text-slate-500">Guaranteed solo 4-season private tent throughout the trek.</p>
                                             </div>
                                         </div>
-                                        <span class="text-xs font-bold text-slate-900">+$150 USD</span>
+                                        <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">Optional Add-on</span>
                                     </label>
 
                                     {{-- Add-on 2 --}}
@@ -392,7 +400,7 @@
                                                 <p class="text-xs text-slate-500">Dedicated porter to carry your personal duffel bag each day.</p>
                                             </div>
                                         </div>
-                                        <span class="text-xs font-bold text-slate-900">+$250 USD</span>
+                                        <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">Optional Add-on</span>
                                     </label>
 
                                     {{-- Add-on 3 --}}
@@ -404,7 +412,7 @@
                                                 <p class="text-xs text-slate-500">Sanitized, expedition-grade -20°C sleeping bag & down jacket rental.</p>
                                             </div>
                                         </div>
-                                        <span class="text-xs font-bold text-slate-900">+$90 USD</span>
+                                        <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">Optional Add-on</span>
                                     </label>
 
                                     {{-- Add-on 4 --}}
@@ -416,7 +424,7 @@
                                                 <p class="text-xs text-slate-500">Private greeting at Skardu airport and direct hotel shuttle.</p>
                                             </div>
                                         </div>
-                                        <span class="text-xs font-bold text-slate-900">+$60 USD</span>
+                                        <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">Optional Add-on</span>
                                     </label>
                                 </div>
                             </div>
@@ -523,74 +531,98 @@
                                     </div>
                                 </div>
 
-                                <div class="border-t border-brand-200 pt-3 flex items-center justify-between">
+                                <div class="border-t border-brand-200 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                     <div>
-                                        <p class="text-xs text-slate-500">Estimated Total Amount:</p>
-                                        <p class="font-display text-2xl font-bold text-brand-800" id="summary-price">$4,998 USD</p>
+                                        <p class="text-xs text-slate-500">Pricing & Billing:</p>
+                                        <p class="font-display text-xl font-bold text-slate-900 flex items-center gap-2">
+                                            <span class="text-brand-700">Custom Quote on Request</span>
+                                        </p>
+                                        <p class="text-[11px] text-slate-500 mt-0.5">Zero upfront card payment · Quote sent via WhatsApp & Email within 24h</p>
                                     </div>
-                                    <span class="rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-bold px-3 py-1">
-                                        Zero Upfront Charge
+                                    <span class="rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold px-3.5 py-1.5 self-start sm:self-center flex items-center gap-1.5">
+                                        <i class="fas fa-shield-alt text-emerald-600"></i>
+                                        <span>Zero Upfront Charge</span>
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="pt-4 flex items-center justify-between">
-                                <button type="button" onclick="goToStep(3)" class="px-5 py-3 rounded-xl border border-slate-200 text-slate-600 font-semibold text-sm hover:bg-slate-100 transition-colors">
+                            <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                                <button type="button" onclick="goToStep(3)" class="w-full sm:w-auto px-5 py-3 rounded-xl border border-slate-200 text-slate-600 font-semibold text-sm hover:bg-slate-100 transition-colors text-center">
                                     ← Back
                                 </button>
-                                <button type="submit" class="btn-primary px-10 py-4 rounded-xl font-bold text-base text-white shadow-xl hover:shadow-2xl transition-all flex items-center gap-2">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>Confirm Booking Request</span>
-                                </button>
+                                <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                                    <a id="step4-whatsapp-btn"
+                                       href="https://wa.me/923425343629?text={{ urlencode('Hello Karakorum Crown Expeditions! I would like to inquire about booking a tour.') }}"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-emerald-500 text-emerald-700 hover:bg-emerald-50 font-bold text-sm transition-all text-center">
+                                        <i class="fab fa-whatsapp text-lg text-[#25D366]"></i>
+                                        <span>Ask via WhatsApp</span>
+                                    </a>
+                                    <button type="submit" class="w-full sm:w-auto btn-primary px-8 py-4 rounded-xl font-bold text-base text-white shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>Submit Booking Request</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
 
                     </div>
 
-                    {{-- RIGHT 4 COLUMNS: Live Dynamic Price Calculation Sidebar --}}
+                    {{-- RIGHT 4 COLUMNS: Live Reservation Summary Sidebar --}}
                     <div class="lg:col-span-4 space-y-6">
 
-                        {{-- Dynamic Calculation Card --}}
+                        {{-- Reservation Summary Card --}}
                         <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-md sticky top-28">
                             <h3 class="font-display text-xl font-bold text-slate-900 pb-4 border-b border-slate-100 flex items-center justify-between">
-                                <span>Price Breakdown</span>
-                                <span class="text-xs font-sans text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-full font-bold">USD</span>
+                                <span>Reservation Summary</span>
+                                <span class="text-xs font-sans text-brand-700 bg-brand-50 px-2.5 py-0.5 rounded-full font-bold">Inquiry</span>
                             </h3>
 
-                            <div class="py-4 space-y-3 text-xs">
-                                {{-- Base Price per person --}}
-                                <div class="flex items-center justify-between">
-                                    <span class="text-slate-500">Package Base / Person:</span>
-                                    <span class="font-bold text-slate-800" id="calc-base-price">$2,499</span>
+                            <div class="py-4 space-y-3.5 text-xs">
+                                {{-- Selected Expedition --}}
+                                <div>
+                                    <span class="text-slate-400 block text-[11px] uppercase font-bold tracking-wider">Selected Expedition:</span>
+                                    <p class="font-bold text-slate-800 text-sm mt-0.5" id="calc-expedition-title">K2 Base Camp Trek</p>
                                 </div>
 
-                                {{-- Adults line --}}
-                                <div class="flex items-center justify-between">
-                                    <span class="text-slate-500" id="calc-adults-label">Adults (× 2):</span>
-                                    <span class="font-semibold text-slate-800" id="calc-adults-subtotal">$4,998</span>
+                                {{-- Dates --}}
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-3">
+                                    <span class="text-slate-500">Travel Date:</span>
+                                    <span class="font-semibold text-slate-800" id="calc-travel-date">Flexible Dates</span>
                                 </div>
 
-                                {{-- Children line (if > 0) --}}
-                                <div id="calc-children-row" class="hidden flex items-center justify-between">
-                                    <span class="text-slate-500" id="calc-children-label">Children:</span>
-                                    <span class="font-semibold text-slate-800" id="calc-children-subtotal">$0</span>
+                                {{-- Travelers --}}
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-3">
+                                    <span class="text-slate-500">Party Size:</span>
+                                    <span class="font-semibold text-slate-800" id="calc-party-size">2 Adults</span>
                                 </div>
 
-                                {{-- Addons subtotal (if any) --}}
-                                <div id="calc-addons-row" class="hidden flex items-center justify-between text-amber-800">
-                                    <span>Selected Add-ons:</span>
-                                    <span class="font-semibold" id="calc-addons-subtotal">+$0</span>
+                                {{-- Tier --}}
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-3">
+                                    <span class="text-slate-500">Package Tier:</span>
+                                    <span class="font-bold text-brand-700" id="calc-package-tier">Standard (Group)</span>
+                                </div>
+
+                                {{-- Addons list (if any) --}}
+                                <div id="calc-addons-row" class="hidden border-t border-slate-100 pt-3">
+                                    <span class="text-slate-500 block mb-1 font-semibold">Selected Add-ons:</span>
+                                    <ul id="calc-addons-list" class="space-y-1 text-slate-700 pl-2">
+                                        {{-- Injected dynamically --}}
+                                    </ul>
                                 </div>
                             </div>
 
-                            {{-- Total Price Highlight --}}
+                            {{-- Pricing Status Highlight --}}
                             <div class="pt-4 border-t-2 border-dashed border-slate-200">
-                                <p class="text-[11px] uppercase font-bold text-slate-400">Total Calculation</p>
+                                <p class="text-[11px] uppercase font-bold text-slate-400">Pricing Status</p>
                                 <div class="mt-1 flex items-baseline justify-between">
-                                    <span class="font-display text-3xl font-bold text-slate-900" id="calc-total-price">$4,998</span>
-                                    <span class="text-xs font-semibold text-slate-400">USD</span>
+                                    <span class="font-display text-2xl font-bold text-slate-900" id="calc-pricing-status">Custom Quote</span>
+                                    <span class="text-xs font-semibold text-brand-700 bg-brand-50 px-2 py-0.5 rounded-full">On Request</span>
                                 </div>
-                                <p class="text-[11px] text-slate-400 mt-1">Guaranteed quote. No card charged today.</p>
+                                <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                                    Personalized quote based on season and group size. Zero upfront card charges today.
+                                </p>
                             </div>
 
                             {{-- Trust Points --}}
@@ -601,21 +633,23 @@
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <i class="fas fa-check text-brand-600"></i>
-                                    <span>Free dates rescheduling</span>
+                                    <span>Licensed Tour Operator CUIN: 0343091</span>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <i class="fas fa-check text-brand-600"></i>
-                                    <span>Visa LOI invitation assistance</span>
+                                    <span>Free dates rescheduling & LOI Visa support</span>
                                 </div>
                             </div>
 
                             {{-- Direct WhatsApp Help --}}
                             <div class="mt-6 pt-5 border-t border-slate-100">
-                                <a href="https://wa.me/923425343629?text={{ urlencode('Hi! I need help with booking an expedition.') }}"
+                                <a id="sidebar-whatsapp-btn"
+                                   href="https://wa.me/923425343629?text={{ urlencode('Hi Karakorum Crown Expeditions! I would like to inquire about booking an expedition.') }}"
                                    target="_blank"
-                                   class="flex items-center justify-center gap-2 w-full py-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-xs font-bold text-slate-800 transition-colors">
-                                    <i class="fab fa-whatsapp text-base text-[#25D366]"></i>
-                                    <span>Questions? Talk to an Expert</span>
+                                   rel="noopener noreferrer"
+                                   class="flex items-center justify-center gap-2 w-full py-3.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-xs font-bold text-emerald-800 border border-emerald-200 transition-colors shadow-xs">
+                                    <i class="fab fa-whatsapp text-lg text-[#25D366]"></i>
+                                    <span>Prefer Instant WhatsApp Quote?</span>
                                 </a>
                             </div>
                         </div>
@@ -677,26 +711,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function goToStep(step) {
-    // Validate step 1 if trying to advance
     if (step > 1 && !currentTrek) {
-        alert('Please choose a trip first.');
-        return;
-    }
-
-    // Validate step 2 if moving to 3 or 4
-    if (step > 2) {
-        const startDate = document.getElementById('start-date-input').value;
-        const adults = parseInt(document.getElementById('adults-count').value);
-        if (!startDate) {
-            alert('Please select your preferred travel start date.');
-            goToStep(2);
-            return;
-        }
-        if (isNaN(adults) || adults < 1) {
-            alert('Please specify at least 1 adult traveler.');
-            goToStep(2);
-            return;
-        }
+        currentTrek = treksData[0];
     }
 
     currentStep = step;
@@ -728,46 +744,64 @@ function goToStep(step) {
     }
 
     updateSummary();
-    window.scrollTo({ top: 350, behavior: 'smooth' });
+
+    const wizardTop = document.getElementById('step-nav-1');
+    if (wizardTop) {
+        wizardTop.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 }
 
 function updateTrekPreview() {
     if (!currentTrek) return;
 
-    document.getElementById('preview-image').src = currentTrek.image_url;
-    document.getElementById('preview-title').textContent = currentTrek.title;
-    document.getElementById('preview-category').textContent = currentTrek.category;
-    document.getElementById('preview-duration').textContent = currentTrek.duration_days + ' Days';
-    document.getElementById('preview-difficulty').textContent = currentTrek.difficulty_label;
-    document.getElementById('preview-location').textContent = currentTrek.location;
-    document.getElementById('preview-price').textContent = '$' + Math.round(currentTrek.base_price).toLocaleString();
+    const imgEl = document.getElementById('preview-image');
+    if (imgEl) imgEl.src = currentTrek.image_url;
+
+    const titleEl = document.getElementById('preview-title');
+    if (titleEl) titleEl.textContent = currentTrek.title;
+
+    const catEl = document.getElementById('preview-category');
+    if (catEl) catEl.textContent = currentTrek.category;
+
+    const durEl = document.getElementById('preview-duration');
+    if (durEl) durEl.textContent = currentTrek.duration_days + ' Days';
+
+    const diffEl = document.getElementById('preview-difficulty');
+    if (diffEl) diffEl.textContent = currentTrek.difficulty_label;
+
+    const locEl = document.getElementById('preview-location');
+    if (locEl) locEl.textContent = currentTrek.location;
 
     // Render scheduled departures if available
     const datesContainer = document.getElementById('fixed-dates-container');
     const datesList = document.getElementById('fixed-dates-list');
 
-    if (currentTrek.departures && currentTrek.departures.length > 0) {
-        datesContainer.classList.remove('hidden');
-        datesList.innerHTML = '';
+    if (datesContainer && datesList) {
+        if (currentTrek.departures && currentTrek.departures.length > 0) {
+            datesContainer.classList.remove('hidden');
+            datesList.innerHTML = '';
 
-        currentTrek.departures.forEach(dep => {
-            const isAvail = dep.availability === 'Available';
-            const card = document.createElement('div');
-            card.className = `p-3 rounded-xl border text-xs cursor-pointer transition-all flex items-center justify-between ${
-                isAvail ? 'border-slate-200 bg-white hover:border-brand-500' : 'border-slate-100 bg-slate-50 opacity-60 pointer-events-none'
-            }`;
-            card.onclick = () => selectScheduledDeparture(dep);
-            card.innerHTML = `
-                <div>
-                    <p class="font-bold text-slate-800">${dep.formatted_dates}</p>
-                    <p class="text-[10px] text-slate-400">${dep.group_type}</p>
-                </div>
-                <span class="font-bold text-brand-700">$${Math.round(dep.price).toLocaleString()}</span>
-            `;
-            datesList.appendChild(card);
-        });
-    } else {
-        datesContainer.classList.add('hidden');
+            currentTrek.departures.forEach(dep => {
+                const isAvail = dep.availability === 'Available';
+                const card = document.createElement('div');
+                card.className = `p-3.5 rounded-xl border text-xs cursor-pointer transition-all flex items-center justify-between ${
+                    isAvail ? 'border-slate-200 bg-white hover:border-brand-500 hover:shadow-xs' : 'border-slate-100 bg-slate-50 opacity-60 pointer-events-none'
+                }`;
+                card.onclick = () => selectScheduledDeparture(dep);
+                card.innerHTML = `
+                    <div>
+                        <p class="font-bold text-slate-800">${dep.formatted_dates}</p>
+                        <p class="text-[10px] text-slate-400 mt-0.5">${dep.group_type}</p>
+                    </div>
+                    <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
+                        <i class="fas fa-check-circle text-[10px]"></i> Open
+                    </span>
+                `;
+                datesList.appendChild(card);
+            });
+        } else {
+            datesContainer.classList.add('hidden');
+        }
     }
 }
 
@@ -844,68 +878,16 @@ function adjustCount(type, delta) {
 function updateCalculations() {
     if (!currentTrek) return;
 
-    const basePerPerson = currentTrek.base_price;
     const adults = parseInt(document.getElementById('adults-count').value) || 1;
     const children = parseInt(document.getElementById('children-count').value) || 0;
 
-    // Multiplier per tier
-    let multiplier = 1.0;
-    if (currentTier === 'premium') multiplier = 1.35;
-    if (currentTier === 'private') multiplier = 1.65;
-
-    const adultRate = Math.round(basePerPerson * multiplier);
-    const childRate = Math.round(adultRate * 0.75); // 25% discount for child
-
-    const adultsSubtotal = adultRate * adults;
-    const childrenSubtotal = childRate * children;
-
-    // Update package tier cards prices
-    const stdRate = Math.round(basePerPerson);
-    const premRate = Math.round(basePerPerson * 1.35);
-    const privRate = Math.round(basePerPerson * 1.65);
-
-    document.getElementById('tier-standard-price').textContent = '$' + stdRate.toLocaleString() + ' / person';
-    document.getElementById('tier-premium-price').textContent = '$' + premRate.toLocaleString() + ' / person';
-    document.getElementById('tier-private-price').textContent = '$' + privRate.toLocaleString() + ' / person';
-
-    // Calculate selected add-ons
-    let addonsTotal = 0;
-    const checkedAddons = document.querySelectorAll('input[name="selected_addons[]"]:checked');
-    checkedAddons.forEach(cb => {
-        const parts = cb.value.split(':');
-        if (parts.length > 1) {
-            addonsTotal += parseFloat(parts[1]) || 0;
-        }
-    });
-
-    const grandTotal = adultsSubtotal + childrenSubtotal + addonsTotal;
-
-    // Update Sidebar Calculation Box
-    document.getElementById('calc-base-price').textContent = '$' + adultRate.toLocaleString();
-    document.getElementById('calc-adults-label').textContent = `Adults (× ${adults}):`;
-    document.getElementById('calc-adults-subtotal').textContent = '$' + adultsSubtotal.toLocaleString();
-
-    const childRow = document.getElementById('calc-children-row');
-    if (children > 0) {
-        childRow.classList.remove('hidden');
-        document.getElementById('calc-children-label').textContent = `Children (× ${children}):`;
-        document.getElementById('calc-children-subtotal').textContent = '$' + childrenSubtotal.toLocaleString();
-    } else {
-        childRow.classList.add('hidden');
+    // Keep hidden total amount at 0 (indicates custom quote requested)
+    const totalAmountInput = document.getElementById('input-total-amount');
+    if (totalAmountInput) {
+        totalAmountInput.value = 0;
     }
 
-    const addonsRow = document.getElementById('calc-addons-row');
-    if (addonsTotal > 0) {
-        addonsRow.classList.remove('hidden');
-        document.getElementById('calc-addons-subtotal').textContent = '+$' + addonsTotal.toLocaleString();
-    } else {
-        addonsRow.classList.add('hidden');
-    }
-
-    document.getElementById('calc-total-price').textContent = '$' + grandTotal.toLocaleString();
-    document.getElementById('input-total-amount').value = grandTotal;
-
-    updateSummary(grandTotal, adults, children);
+    updateSummary(0, adults, children);
 }
 
 function updateSummary(total, adults, children) {
@@ -914,26 +896,67 @@ function updateSummary(total, adults, children) {
     adults = adults || (parseInt(document.getElementById('adults-count').value) || 1);
     children = children !== undefined ? children : (parseInt(document.getElementById('children-count').value) || 0);
 
+    // Form inputs
+    const sDate = document.getElementById('start-date-input').value;
+    const formattedDate = sDate ? new Date(sDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Flexible Dates';
+    const partyText = `${adults} Adult${adults > 1 ? 's' : ''}` + (children > 0 ? `, ${children} Child${children > 1 ? 'ren' : ''}` : '');
+    const tierDisplay = `${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)} (${tripStyle})`;
+
+    // Step 4 Complete Booking Summary Box
     const titleEl = document.getElementById('summary-trek-title');
     const dateEl = document.getElementById('summary-date');
     const partyEl = document.getElementById('summary-party');
     const tierEl = document.getElementById('summary-tier');
-    const priceEl = document.getElementById('summary-price');
 
     if (titleEl) titleEl.textContent = currentTrek.title;
-    if (dateEl) {
-        const sDate = document.getElementById('start-date-input').value;
-        dateEl.textContent = sDate ? new Date(sDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Flexible';
+    if (dateEl) dateEl.textContent = formattedDate;
+    if (partyEl) partyEl.textContent = partyText;
+    if (tierEl) tierEl.textContent = tierDisplay;
+
+    // Right-Hand Sidebar Summary
+    const calcTitle = document.getElementById('calc-expedition-title');
+    const calcDate = document.getElementById('calc-travel-date');
+    const calcParty = document.getElementById('calc-party-size');
+    const calcTier = document.getElementById('calc-package-tier');
+
+    if (calcTitle) calcTitle.textContent = currentTrek.title;
+    if (calcDate) calcDate.textContent = formattedDate;
+    if (calcParty) calcParty.textContent = partyText;
+    if (calcTier) calcTier.textContent = tierDisplay;
+
+    // Selected Add-ons
+    const checkedAddons = document.querySelectorAll('input[name="selected_addons[]"]:checked');
+    const addonsRow = document.getElementById('calc-addons-row');
+    const addonsList = document.getElementById('calc-addons-list');
+
+    if (addonsRow && addonsList) {
+        if (checkedAddons.length > 0) {
+            addonsRow.classList.remove('hidden');
+            addonsList.innerHTML = '';
+            checkedAddons.forEach(cb => {
+                const parts = cb.value.split(':');
+                const name = parts[0] || cb.value;
+                const li = document.createElement('li');
+                li.className = 'flex items-center gap-1.5 text-xs text-slate-700';
+                li.innerHTML = `<i class="fas fa-check text-brand-600 text-[10px]"></i> <span>${name}</span>`;
+                addonsList.appendChild(li);
+            });
+        } else {
+            addonsRow.classList.add('hidden');
+        }
     }
-    if (partyEl) {
-        partyEl.textContent = `${adults} Adult${adults > 1 ? 's' : ''}` + (children > 0 ? `, ${children} Child${children > 1 ? 'ren' : ''}` : '');
-    }
-    if (tierEl) {
-        tierEl.textContent = `${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)} (${tripStyle})`;
-    }
-    if (priceEl && total !== undefined) {
-        priceEl.textContent = '$' + total.toLocaleString() + ' USD';
-    }
+
+    // Dynamic WhatsApp Inquiry URL with pre-filled details
+    const waText = encodeURIComponent(
+        `Hello Karakorum Crown Expeditions! I would like to inquire about booking the "${currentTrek.title}" for ${partyText} on ${formattedDate} (${tierDisplay}). Please share the official quote and itinerary.`
+    );
+    const waUrl = `https://wa.me/923425343629?text=${waText}`;
+
+    const sidebarWa = document.getElementById('sidebar-whatsapp-btn');
+    if (sidebarWa) sidebarWa.href = waUrl;
+
+    const step4Wa = document.getElementById('step4-whatsapp-btn');
+    if (step4Wa) step4Wa.href = waUrl;
 }
 </script>
 @endpush

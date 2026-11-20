@@ -319,7 +319,9 @@
         /* ============================================
            GOOGLE TRANSLATE OVERRIDES
            ============================================ */
-        /* Hide the Google Translate toolbar */
+        /* Hide the Google Translate toolbar & banner overlays that can block header clicks */
+        .skiptranslate,
+        iframe.skiptranslate,
         iframe.goog-te-banner-frame,
         .goog-te-banner-frame,
         #goog-gt-tt,
@@ -329,6 +331,11 @@
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
+            pointer-events: none !important;
+            height: 0 !important;
+            max-height: 0 !important;
+            width: 0 !important;
+            overflow: hidden !important;
         }
         /* Keep body from shifting down */
         body {

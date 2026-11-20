@@ -36,8 +36,9 @@ class AppServiceProvider extends ServiceProvider
                 ->get();
 
             $footerTrendingTreks = TrendingTrek::where('is_active', true)
-                ->where('is_trending', true)
+                ->orderBy('is_trending', 'desc')
                 ->orderBy('priority', 'desc')
+                ->orderBy('created_at', 'desc')
                 ->limit(6)
                 ->get();
 

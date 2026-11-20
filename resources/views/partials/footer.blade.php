@@ -11,20 +11,14 @@
                     <p class="text-white/40 text-xs tracking-[0.15em] uppercase mt-1">Premium Treks & Tours</p>
                 </div>
                 <p class="text-white/50 text-sm leading-relaxed mb-6">
-                    Pakistan's trusted partner for premium adventure travel in Gilgit-Baltistan. Licensed, certified, and committed to delivering world-class mountain experiences since 2016.
+                    Pakistan's trusted partner for premium adventure travel in Gilgit-Baltistan. Licensed, certified, and committed to delivering world-class mountain experiences since 2020.
                 </p>
                 <div class="flex gap-3">
-                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-brand-600 rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-brand-500">
-                        <i class="fab fa-facebook-f text-white/60 hover:text-white text-sm"></i>
+                    <a href="https://www.instagram.com/karakorum_crown/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 hover:bg-[#E4405F] rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent text-white/60 hover:text-white" title="Instagram">
+                        <i class="fab fa-instagram text-sm"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-brand-600 rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-brand-500">
-                        <i class="fab fa-instagram text-white/60 hover:text-white text-sm"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-brand-600 rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-brand-500">
-                        <i class="fab fa-youtube text-white/60 hover:text-white text-sm"></i>
-                    </a>
-                    <a href="#" class="w-10 h-10 bg-white/5 hover:bg-brand-600 rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-brand-500">
-                        <i class="fab fa-whatsapp text-white/60 hover:text-white text-sm"></i>
+                    <a href="https://wa.me/923425343629" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 hover:bg-[#25D366] rounded-lg flex items-center justify-center transition-all duration-300 border border-white/10 hover:border-transparent text-white/60 hover:text-white" title="WhatsApp">
+                        <i class="fab fa-whatsapp text-sm"></i>
                     </a>
                 </div>
             </div>
@@ -40,7 +34,6 @@
                     <li><a href="/how-to-apply" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Visa Guide</a></li>
                     <li><a href="{{ route('privacy-policy') }}" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Privacy Policy</a></li>
                     <li><a href="{{ route('terms-of-service') }}" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Terms & Conditions</a></li>
-                    <li><a href="#" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Cancellation Policy</a></li>
                 </ul>
             </div>
 
@@ -49,8 +42,13 @@
                 <h4 class="text-white font-semibold text-sm tracking-wider uppercase mb-6 flex items-center gap-2">
                     <span class="w-8 h-0.5 bg-brand-500"></span> Popular Treks
                 </h4>
+                @php
+                    $dynamicFooterTreks = (!empty($footerTrendingTreks) && $footerTrendingTreks->count()) 
+                        ? $footerTrendingTreks 
+                        : \App\Models\TrendingTrek::where('is_active', true)->orderBy('is_trending', 'desc')->orderBy('priority', 'desc')->take(6)->get();
+                @endphp
                 <ul class="space-y-3">
-                    @forelse($footerTrendingTreks as $footerTrek)
+                    @forelse($dynamicFooterTreks as $footerTrek)
                     <li><a href="{{ route('trek.show', $footerTrek->slug) }}" class="text-white/50 hover:text-brand-400 transition-colors text-sm">{{ $footerTrek->title }}</a></li>
                     @empty
                     <li class="text-white/30 text-sm">Tours coming soon</li>
@@ -69,8 +67,7 @@
                             <i class="fas fa-map-marker-alt text-brand-400 text-xs"></i>
                         </div>
                         <div>
-                            <p class="text-white/50 text-sm">Satpara Road, Zhye Thang 1, Near Hispar Hotel
-,<br>Skardu, Shigar, Skardu, Gilgit-Baltistan, Pakistan</p>
+                            <a href="https://maps.google.com/?q={{ urlencode('Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Gilgit-Baltistan, Pakistan') }}" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-brand-400 transition-colors text-sm block leading-relaxed" title="Open in Google Maps">Satpara Road, Zhye Thang 1, Near Hispar Hotel,<br>Skardu, Gilgit-Baltistan, Pakistan</a>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">
@@ -78,7 +75,7 @@
                             <i class="fas fa-phone-alt text-brand-400 text-xs"></i>
                         </div>
                         <div>
-                            <a href="tel:+923131562859" class="text-white/50 hover:text-brand-400 transition-colors text-sm block">+92 3425343629</a>
+                            <a href="tel:+923425343629" class="text-white/50 hover:text-brand-400 transition-colors text-sm block">+92 3425343629</a>
                             <a href="tel:+923358411291" class="text-white/50 hover:text-brand-400 transition-colors text-sm block">+92 335 8411291</a>
                         </div>
                     </div>
@@ -107,13 +104,8 @@
         <div class="border-t border-white/10 pt-10 mb-10">
             <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
                 <div class="text-center">
-                    <div class="text-white font-bold text-sm tracking-wider">PATO</div>
-                    <p class="text-white/30 text-[10px] uppercase tracking-wider mt-0.5">Certified Member</p>
-                </div>
-                <div class="w-px h-8 bg-white/10 hidden md:block"></div>
-                <div class="text-center">
-                    <div class="text-white font-bold text-sm tracking-wider">License #2332</div>
-                    <p class="text-white/30 text-[10px] uppercase tracking-wider mt-0.5">Govt. Authorized</p>
+                    <div class="text-white font-bold text-sm tracking-wider">CUIN: 0343091</div>
+                    <p class="text-white/30 text-[10px] uppercase tracking-wider mt-0.5">Licensed Tour Operator</p>
                 </div>
                 <div class="w-px h-8 bg-white/10 hidden md:block"></div>
                 <div class="text-center">

@@ -110,7 +110,7 @@
                     <tr>
                         <td style="background:#f8fafc;padding:20px 40px;text-align:center;border-top:1px solid #e2e8f0;">
                             <p style="color:#94a3b8;font-size:12px;margin:0;">Karakorum Crown Expeditions · Skardu, Gilgit-Baltistan, Pakistan</p>
-                            <p style="color:#cbd5e1;font-size:11px;margin:6px 0 0;">Licensed Tour Operator #2332 · PATO Certified · NADRA Verified</p>
+                            <p style="color:#cbd5e1;font-size:11px;margin:6px 0 0;">Licensed Tour Operator CUIN: 0343091 · NADRA Verified</p>
                         </td>
                     </tr>
 

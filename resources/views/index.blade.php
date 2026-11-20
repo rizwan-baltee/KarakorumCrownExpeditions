@@ -24,10 +24,10 @@
 @section('content')
 
     {{-- ═══════════════════════════════════════════════
-         1. HERO SECTION & LIVE STATISTICS
+         1. HERO SECTION
     ═══════════════════════════════════════════════ --}}
     <section class="relative min-h-[85vh] flex items-end overflow-hidden bg-navy-950 pt-24 pb-12 md:pb-16">
-        <div class="absolute inset-0">
+        <div class="absolute inset-0 pointer-events-none">
             <img src="{{ asset('assets/Front-banner-k2.webp') }}"
                  alt="Gilgit-Baltistan Karakoram Mountains"
                  decoding="async"
@@ -37,7 +37,7 @@
             <div class="absolute inset-0 hero-glow"></div>
         </div>
 
-        <div class="relative w-full">
+        <div class="relative z-10 w-full">
             <div class="container mx-auto px-4 lg:px-8">
                 <div class="max-w-4xl text-white">
                     <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs uppercase tracking-[0.2em] text-white/90 backdrop-blur-md shadow-sm">
@@ -53,49 +53,25 @@
                         Curated treks, mountaineering expeditions, and cultural journeys tailored for international travelers seeking world-class safety, native expertise, and extraordinary mountain scenery.
                     </p>
 
-                    <div class="mt-6 flex flex-wrap items-center gap-3 max-w-full">
-                        <a href="#experiences" class="btn-primary inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all">
+                    <div class="mt-6 flex flex-wrap items-center gap-3 max-w-full relative z-20">
+                        <a href="#experiences"
+                           onclick="const el = document.getElementById('experiences'); if(el) { event.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }"
+                           class="btn-primary cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all">
                             <span>Explore Experiences</span>
                             <i class="fas fa-arrow-down text-xs"></i>
                         </a>
-                        <a href="{{ route('booking.create') }}" class="btn-gold inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all">
+                        <a href="{{ route('booking.create') }}"
+                           class="btn-gold cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all">
                             <i class="fas fa-calendar-check text-xs"></i>
                             <span>Book a Tour</span>
                         </a>
                         <a href="https://wa.me/923425343629?text={{ urlencode('Hello Karakorum Crown Expeditions! I would like to consult with a travel expert.') }}"
                            target="_blank"
-                           class="btn-outline-light inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white backdrop-blur-md">
+                           rel="noopener noreferrer"
+                           class="btn-outline-light cursor-pointer inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white backdrop-blur-md">
                             <i class="fab fa-whatsapp text-base text-[#25D366]"></i>
                             <span>Chat with Expert</span>
                         </a>
-                    </div>
-
-                    {{-- Live Statistics Badges --}}
-                    <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 max-w-3xl" id="stats-section">
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 backdrop-blur-md text-center">
-                            <div class="text-3xl lg:text-4xl font-display text-brand-400 font-bold">
-                                {{ number_format($stats['happy_travelers']) }}+
-                            </div>
-                            <p class="text-[11px] text-white/70 mt-1 uppercase tracking-wider font-medium">Happy Travelers</p>
-                        </div>
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 backdrop-blur-md text-center">
-                            <div class="text-3xl lg:text-4xl font-display text-brand-400 font-bold">
-                                {{ $stats['total_trips'] }}+
-                            </div>
-                            <p class="text-[11px] text-white/70 mt-1 uppercase tracking-wider font-medium">Treks & Expeditions</p>
-                        </div>
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 backdrop-blur-md text-center">
-                            <div class="text-3xl lg:text-4xl font-display text-brand-400 font-bold">
-                                {{ $stats['expert_guides'] }}+
-                            </div>
-                            <p class="text-[11px] text-white/70 mt-1 uppercase tracking-wider font-medium">Certified Local Guides</p>
-                        </div>
-                        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 backdrop-blur-md text-center">
-                            <div class="text-3xl lg:text-4xl font-display text-brand-400 font-bold">
-                                {{ $stats['satisfaction_rate'] }}%
-                            </div>
-                            <p class="text-[11px] text-white/70 mt-1 uppercase tracking-wider font-medium">Client Satisfaction</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -112,10 +88,6 @@
                 <div class="flex items-center gap-2.5">
                     <i class="fas fa-shield-alt text-2xl text-slate-800"></i>
                     <span class="font-display font-bold text-lg text-slate-800">SECP Licensed</span>
-                </div>
-                <div class="flex items-center gap-2.5">
-                    <i class="fas fa-mountain text-2xl text-slate-800"></i>
-                    <span class="font-display font-bold text-lg text-slate-800">PATO Member</span>
                 </div>
                 <div class="flex items-center gap-2.5">
                     <i class="fas fa-map-marked-alt text-2xl text-slate-800"></i>
@@ -293,24 +265,13 @@
                         </div>
 
                         {{-- Trust Pillar 3 --}}
-                        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-xs">
+                        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-xs sm:col-span-2">
                             <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg mb-3">
                                 <i class="fas fa-hand-holding-heart"></i>
                             </div>
                             <h3 class="font-bold text-slate-900 text-base">Ethical Porter Treatment</h3>
                             <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
                                 Fair wages, full insurance, quality cold-weather gear, and strict weight limit enforcement.
-                            </p>
-                        </div>
-
-                        {{-- Trust Pillar 4 --}}
-                        <div class="rounded-2xl border border-slate-100 bg-slate-50 p-5 shadow-xs">
-                            <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg mb-3">
-                                <i class="fas fa-satellite-dish"></i>
-                            </div>
-                            <h3 class="font-bold text-slate-900 text-base">Satellite Comms & Rescue</h3>
-                            <p class="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                                Satellite communication devices on all remote treks with rapid helicopter evacuation coverage.
                             </p>
                         </div>
                     </div>
@@ -328,7 +289,7 @@
                             </div>
                         </div>
                         <div class="rounded-3xl bg-navy-950 p-6 text-white text-center shadow-lg">
-                            <div class="font-display text-4xl font-bold text-brand-400">15+</div>
+                            <div class="font-display text-4xl font-bold text-brand-400">5+</div>
                             <p class="text-xs uppercase tracking-wider text-white/70 mt-1">Years Operating in Karakoram</p>
                         </div>
                     </div>
@@ -490,82 +451,194 @@
     </section>
 
     {{-- ═══════════════════════════════════════════════
-         8. INTERNATIONAL TRAVELER TESTIMONIALS
+         8. MEET OUR TEAM
     ═══════════════════════════════════════════════ --}}
-    <section class="py-20 bg-slate-50">
+    <section class="py-20 bg-slate-50" id="our-team">
         <div class="container mx-auto px-4 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-14">
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 uppercase tracking-widest">
-                    <i class="fas fa-quote-left text-[10px]"></i> Client Reviews
+                    <i class="fas fa-users text-[10px]"></i> The People Behind the Expeditions
                 </span>
                 <h2 class="mt-3 font-display text-3xl md:text-5xl font-bold text-slate-900">
-                    Trusted by Adventurers Worldwide
+                    Meet Our Team
                 </h2>
                 <p class="mt-3 text-slate-600 text-base">
-                    Read unedited feedback from international guests who experienced the Karakoram with our local team.
+                    Native mountain experts, certified leaders, and dedicated travel advisors committed to your safety and unforgettable adventures in Gilgit-Baltistan.
                 </p>
             </div>
 
-            <div class="grid gap-6 md:grid-cols-3">
-                <article class="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex gap-1 text-amber-400 mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                {{-- Team Member 1: Chacha --}}
+                <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-[390px] sm:h-[410px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
+                        <img src="{{ asset('assets/chacha.jpeg') }}"
+                             alt="Muhammad Jaffar - CEO & Founder"
+                             loading="lazy"
+                             class="h-full w-full object-cover object-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-50"></div>
+                        <span class="absolute inline-flex items-center gap-1 rounded-full bg-navy-950/80 backdrop-blur-md border border-white/20 px-3 py-1 text-[11px] font-semibold text-brand-300" style="position: absolute; top: 14px; left: 14px; z-index: 20;">
+                            Leadership
+                        </span>
+                        {{-- Social links inside image in vertical layout --}}
+                        <div class="absolute flex flex-col gap-2" style="position: absolute; top: 14px; right: 14px; z-index: 20;">
+                            <a href="https://www.facebook.com/share/p/17iuJ5e7GJ/"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="Facebook Profile">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
                         </div>
-                        <p class="text-slate-700 text-sm leading-relaxed">
-                            “The communication from Karakorum Crown Expeditions was stellar from our very first WhatsApp inquiry. The K2 Base Camp trek was challenging, but our guide and porters made us feel completely safe and valued.”
+                    </div>
+                    <div class="p-5 text-center">
+                        <h3 class="font-display font-bold text-lg text-slate-900 group-hover:text-brand-700 transition-colors">
+                            Muhammad Jaffar
+                        </h3>
+                        <p class="text-xs font-semibold text-brand-700 uppercase tracking-wider mt-1">
+                            CEO of Company
                         </p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-sm">
-                            AG
-                        </div>
-                        <div>
-                            <p class="font-bold text-slate-900 text-sm">Anna & Markus</p>
-                            <p class="text-xs text-slate-400">Germany · K2 & Concordia</p>
-                        </div>
-                    </div>
-                </article>
+                </div>
 
-                <article class="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex gap-1 text-amber-400 mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                {{-- Team Member 2: Rizwan --}}
+                <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-[390px] sm:h-[410px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
+                        <img src="{{ asset('assets/rizwan.jpeg') }}"
+                             alt="Rizwan Ali - Director & Organization"
+                             loading="lazy"
+                             class="h-full w-full object-cover object-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-50"></div>
+                        <span class="absolute inline-flex items-center gap-1 rounded-full bg-navy-950/80 backdrop-blur-md border border-white/20 px-3 py-1 text-[11px] font-semibold text-brand-300" style="position: absolute; top: 14px; left: 14px; z-index: 20;">
+                            Management
+                        </span>
+                        {{-- Social links inside image in vertical layout --}}
+                        <div class="absolute flex flex-col gap-2" style="position: absolute; top: 14px; right: 14px; z-index: 20;">
+                            <a href="https://www.facebook.com/share/1JpwRykraQ/?mibextid=wwXIfr"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="Facebook Profile">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/baltee__?dmpr=a2t5OThlNjM1bnB0&utm_source=qr"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-[#E4405F] hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="Instagram Profile">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
                         </div>
-                        <p class="text-slate-700 text-sm leading-relaxed">
-                            “An extraordinary mix of hospitality, professionalism, and jaw-dropping views in Deosai and Hunza. The booking system was straightforward, and they even handled our Pakistan visa LOI paperwork flawlessly.”
+                    </div>
+                    <div class="p-5 text-center">
+                        <h3 class="font-display font-bold text-lg text-slate-900 group-hover:text-brand-700 transition-colors">
+                            Rizwan Ali
+                        </h3>
+                        <p class="text-xs font-semibold text-brand-700 uppercase tracking-wider mt-1">
+                            Director & Organization
                         </p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold flex items-center justify-center text-sm">
-                            DC
-                        </div>
-                        <div>
-                            <p class="font-bold text-slate-900 text-sm">David Chen</p>
-                            <p class="text-xs text-slate-400">Canada · Hunza & Deosai Explorer</p>
-                        </div>
-                    </div>
-                </article>
+                </div>
 
-                <article class="rounded-3xl border border-slate-200/80 bg-white p-8 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex gap-1 text-amber-400 mb-4">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                {{-- Team Member 3: Imran --}}
+                <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-[390px] sm:h-[410px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
+                        <img src="{{ asset('assets/imran.jpg') }}"
+                             alt="Imran Ali - Expedition Coordinator"
+                             loading="lazy"
+                             class="h-full w-full object-cover object-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-50"></div>
+                        <span class="absolute inline-flex items-center gap-1 rounded-full bg-navy-950/80 backdrop-blur-md border border-white/20 px-3 py-1 text-[11px] font-semibold text-brand-300" style="position: absolute; top: 14px; left: 14px; z-index: 20;">
+                            Expeditions
+                        </span>
+                        {{-- Social links inside image in vertical layout --}}
+                        <div class="absolute flex flex-col gap-2" style="position: absolute; top: 14px; right: 14px; z-index: 20;">
+                            <a href="https://www.facebook.com/share/19G6SuYcdr/?mibextid=wwXIfr"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="Facebook Profile">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/imranali_129?igsh=MWNxZDZoOXBudTBjdg%3D%3D&utm_source=qr"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-[#E4405F] hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="Instagram Profile">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@baltistan_vlog?_r=1&_t=ZS-97tG3uqM9NE"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-black hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="TikTok Profile">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
                         </div>
-                        <p class="text-slate-700 text-sm leading-relaxed">
-                            “We booked a private expedition for our climbing club. Their gear, camp chefs, and high-altitude logistics were among the best we've experienced anywhere in the Himalayas or Karakoram.”
+                    </div>
+                    <div class="p-5 text-center">
+                        <h3 class="font-display font-bold text-lg text-slate-900 group-hover:text-brand-700 transition-colors">
+                            Imran Ali
+                        </h3>
+                        <p class="text-xs font-semibold text-brand-700 uppercase tracking-wider mt-1">
+                            Expedition Coordinator
                         </p>
                     </div>
-                    <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center text-sm">
-                            EW
-                        </div>
-                        <div>
-                            <p class="font-bold text-slate-900 text-sm">Emma Watson</p>
-                            <p class="text-xs text-slate-400">Australia · Nagma Valley Climbing</p>
+                </div>
+
+                {{-- Team Member 4: Kami --}}
+                <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-[390px] sm:h-[410px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
+                        <img src="{{ asset('assets/kami.jpeg') }}"
+                             alt="Kami - Tourist Advisor"
+                             loading="lazy"
+                             class="h-full w-full object-cover object-bottom">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-50"></div>
+                        <span class="absolute inline-flex items-center gap-1 rounded-full bg-navy-950/80 backdrop-blur-md border border-white/20 px-3 py-1 text-[11px] font-semibold text-brand-300" style="position: absolute; top: 14px; left: 14px; z-index: 20;">
+                            Advisory
+                        </span>
+                        {{-- Social links inside image in vertical layout --}}
+                        <div class="absolute flex flex-col gap-2" style="position: absolute; top: 14px; right: 14px; z-index: 20;">
+                            <a href="https://www.facebook.com/share/14h3iR4rF7G/?mibextid=wwXIfr"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="Facebook Profile">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/muhammad_kamran321?igsh=MWRteTAwMm52czFucA%3D%3D&utm_source=qr"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-[#E4405F] hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="Instagram Profile">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@muhammad_kamran321"
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               class="rounded-full bg-white text-slate-900 hover:bg-black hover:text-white flex items-center justify-center text-sm shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110"
+                               style="width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;"
+                               title="TikTok Profile">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
                         </div>
                     </div>
-                </article>
+                    <div class="p-5 text-center">
+                        <h3 class="font-display font-bold text-lg text-slate-900 group-hover:text-brand-700 transition-colors">
+                            Kami
+                        </h3>
+                        <p class="text-xs font-semibold text-brand-700 uppercase tracking-wider mt-1">
+                            Tourist Advisor
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -611,7 +684,7 @@
                 <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors">
                     <button type="button" class="faq-button flex w-full items-center justify-b    {{-- ═══════════════════════════════════════════════
          10. FINAL CALL TO ACTION
-     ═══════════════════════════════════════════════ --}}
+     
     <section class="relative bg-navy-950 py-16 md:py-20 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-25">
             <img src="{{ asset('assets/Front-banner-k2.webp') }}" alt="Karakoram Mountains" loading="lazy" decoding="async" class="h-full w-full object-cover">

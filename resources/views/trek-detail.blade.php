@@ -476,21 +476,14 @@
                     {{-- 5. Transparent Pricing & Package Tiers --}}
                     <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10" id="pricing-packages">
                         <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 mb-2">
-                            <i class="fas fa-tag"></i> Clear Packages
+                            <i class="fas fa-layer-group"></i> Package Options
                         </span>
                         <h2 class="font-display text-3xl font-bold text-slate-900">
-                            Trip Packages & Pricing
+                            Trip Packages & Experience Tiers
                         </h2>
                         <p class="mt-2 text-slate-600 text-sm max-w-2xl">
-                            All prices are per person in USD. Transparent pricing with no hidden charges at any stage.
+                            Tailored packages designed for your comfort, safety, and group size. Contact us directly through the website or WhatsApp for custom quotes and seasonal rates.
                         </p>
-
-                        @php
-                            $basePrice = $trek->calculated_starting_price ?: 2499;
-                            $standardPrice = round($basePrice);
-                            $premiumPrice = round($basePrice * 1.35);
-                            $privatePrice = round($basePrice * 1.65);
-                        @endphp
 
                         <div class="mt-8 grid gap-6 md:grid-cols-3">
                             {{-- Standard Package --}}
@@ -502,8 +495,8 @@
                                 </div>
 
                                 <div class="my-6 pt-4 border-t border-slate-100">
-                                    <span class="font-display text-3xl font-bold text-slate-900">${{ number_format($standardPrice) }}</span>
-                                    <span class="text-xs text-slate-500 font-medium">/ person</span>
+                                    <span class="font-display text-2xl font-bold text-slate-900">Price on Request</span>
+                                    <span class="text-xs text-slate-500 font-medium block mt-1">Based on group size & travel dates</span>
                                 </div>
 
                                 <ul class="space-y-3 text-xs text-slate-600 flex-1 mb-6">
@@ -514,10 +507,19 @@
                                     <li class="flex items-center gap-2.5"><i class="fas fa-check text-brand-600"></i> Group 4x4 transportation</li>
                                 </ul>
 
-                                <a href="{{ route('booking.create', ['trek' => $trek->slug, 'tier' => 'standard']) }}"
-                                   class="block w-full py-3 px-4 rounded-xl border-2 border-slate-900 text-slate-900 text-center font-bold text-xs hover:bg-slate-900 hover:text-white transition-all">
-                                    Book Standard Tier
-                                </a>
+                                <div class="space-y-2 mt-auto">
+                                    <a href="{{ route('booking.create', ['trek' => $trek->slug, 'tier' => 'standard']) }}"
+                                       class="block w-full py-3 px-4 rounded-xl border-2 border-slate-900 text-slate-900 text-center font-bold text-xs hover:bg-slate-900 hover:text-white transition-all">
+                                        Inquire Standard Tier
+                                    </a>
+                                    <a href="https://wa.me/923425343629?text={{ urlencode('Hello Karakorum Crown Expeditions! I would like to inquire about the Standard Tier package for ' . $trek->title . '.') }}"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-center font-semibold text-xs transition-colors">
+                                        <i class="fab fa-whatsapp text-sm text-[#25D366]"></i>
+                                        <span>Chat on WhatsApp</span>
+                                    </a>
+                                </div>
                             </div>
 
                             {{-- Premium Package (Highlighted) --}}
@@ -533,8 +535,8 @@
                                 </div>
 
                                 <div class="my-6 pt-4 border-t border-brand-100">
-                                    <span class="font-display text-3xl font-bold text-brand-800">${{ number_format($premiumPrice) }}</span>
-                                    <span class="text-xs text-slate-500 font-medium">/ person</span>
+                                    <span class="font-display text-2xl font-bold text-brand-800">Custom Quote</span>
+                                    <span class="text-xs text-slate-500 font-medium block mt-1">Best value with enhanced comfort & gear</span>
                                 </div>
 
                                 <ul class="space-y-3 text-xs text-slate-700 flex-1 mb-6">
@@ -545,10 +547,19 @@
                                     <li class="flex items-center gap-2.5"><i class="fas fa-check text-brand-600"></i> Dedicated trail porter (12kg)</li>
                                 </ul>
 
-                                <a href="{{ route('booking.create', ['trek' => $trek->slug, 'tier' => 'premium']) }}"
-                                   class="btn-primary block w-full py-3.5 px-4 rounded-xl text-white text-center font-bold text-xs shadow-md hover:shadow-lg transition-all">
-                                    Book Premium Tier
-                                </a>
+                                <div class="space-y-2 mt-auto">
+                                    <a href="{{ route('booking.create', ['trek' => $trek->slug, 'tier' => 'premium']) }}"
+                                       class="btn-primary block w-full py-3 px-4 rounded-xl text-white text-center font-bold text-xs shadow-md hover:shadow-lg transition-all">
+                                        Inquire Premium Tier
+                                    </a>
+                                    <a href="https://wa.me/923425343629?text={{ urlencode('Hello Karakorum Crown Expeditions! I would like to inquire about the Premium Tier package for ' . $trek->title . '.') }}"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-xl bg-emerald-100/80 hover:bg-emerald-100 text-emerald-800 text-center font-semibold text-xs transition-colors border border-emerald-200">
+                                        <i class="fab fa-whatsapp text-sm text-[#25D366]"></i>
+                                        <span>Chat on WhatsApp</span>
+                                    </a>
+                                </div>
                             </div>
 
                             {{-- Private Expedition --}}
@@ -560,8 +571,8 @@
                                 </div>
 
                                 <div class="my-6 pt-4 border-t border-slate-100">
-                                    <span class="font-display text-3xl font-bold text-slate-900">${{ number_format($privatePrice) }}</span>
-                                    <span class="text-xs text-slate-500 font-medium">/ person</span>
+                                    <span class="font-display text-2xl font-bold text-slate-900">Tailored Pricing</span>
+                                    <span class="text-xs text-slate-500 font-medium block mt-1">100% bespoke VIP itinerary & private team</span>
                                 </div>
 
                                 <ul class="space-y-3 text-xs text-slate-600 flex-1 mb-6">
@@ -572,10 +583,19 @@
                                     <li class="flex items-center gap-2.5"><i class="fas fa-check text-brand-600"></i> Premium sleeping pad & down bag</li>
                                 </ul>
 
-                                <a href="{{ route('booking.create', ['trek' => $trek->slug, 'tier' => 'private']) }}"
-                                   class="block w-full py-3 px-4 rounded-xl border-2 border-slate-900 text-slate-900 text-center font-bold text-xs hover:bg-slate-900 hover:text-white transition-all">
-                                    Book Private Expedition
-                                </a>
+                                <div class="space-y-2 mt-auto">
+                                    <a href="{{ route('booking.create', ['trek' => $trek->slug, 'tier' => 'private']) }}"
+                                       class="block w-full py-3 px-4 rounded-xl border-2 border-slate-900 text-slate-900 text-center font-bold text-xs hover:bg-slate-900 hover:text-white transition-all">
+                                        Inquire Private Expedition
+                                    </a>
+                                    <a href="https://wa.me/923425343629?text={{ urlencode('Hello Karakorum Crown Expeditions! I would like to inquire about the Private VIP Expedition for ' . $trek->title . '.') }}"
+                                       target="_blank"
+                                       rel="noopener noreferrer"
+                                       class="flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-center font-semibold text-xs transition-colors">
+                                        <i class="fab fa-whatsapp text-sm text-[#25D366]"></i>
+                                        <span>Chat on WhatsApp</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
