@@ -99,7 +99,7 @@
                     <!-- WhatsApp CTA -->
                     <tr>
                         <td style="padding:0 40px 30px;text-align:center;">
-                            <a href="https://wa.me/923131562859?text=Hi!%20I%20just%20submitted%20a%20booking%20request%20on%20your%20website." style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:600;">
+                            <a href="https://wa.me/923425343629?text=Hi!%20I%20just%20submitted%20a%20booking%20request%20on%20your%20website." style="display:inline-block;background:#25D366;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:10px;font-size:14px;font-weight:600;">
                                 💬 Chat on WhatsApp
                             </a>
                             <p style="color:#94a3b8;font-size:12px;margin:16px 0 0;">Or email us at <a href="mailto:info@discoverghanche.com" style="color:#059669;">info@discoverghanche.com</a></p>

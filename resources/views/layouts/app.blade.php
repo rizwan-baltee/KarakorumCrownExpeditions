@@ -29,15 +29,30 @@
            GLOBAL PREMIUM STYLES
            ============================================ */
         .container {
+            width: 100%;
             max-width: 1536px !important; /* Forces container to be fluid up to 1536px */
+            margin-left: auto;
+            margin-right: auto;
         }
         
         * {
             font-family: 'Inter', system-ui, sans-serif;
+            box-sizing: border-box;
         }
         
+        html {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
             overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }

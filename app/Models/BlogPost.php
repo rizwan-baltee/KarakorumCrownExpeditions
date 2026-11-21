@@ -26,6 +26,39 @@ class BlogPost extends Model
         'published_at' => 'datetime',
     ];
 
+    /**
+     * Resolve working featured image URL
+     */
+    public function getFeaturedImageUrlAttribute(): string
+    {
+        if (empty($this->featured_image)) {
+            return asset('assets/Front-banner-k2.webp');
+        }
+
+        if (str_starts_with($this->featured_image, 'http://') || str_starts_with($this->featured_image, 'https://')) {
+            return $this->featured_image;
+        }
+
+        if (str_starts_with($this->featured_image, 'assets/')) {
+            return asset($this->featured_image);
+        }
+
+        if (file_exists(public_path('assets/' . basename($this->featured_image)))) {
+            return asset('assets/' . basename($this->featured_image));
+        }
+
+        return \Illuminate\Support\Facades\Storage::url($this->featured_image);
+    }
+
+    /**
+     * Estimated reading time in minutes
+     */
+    public function getReadingTimeAttribute(): int
+    {
+        $words = str_word_count(strip_tags($this->content ?: ''));
+        return max(1, (int)ceil($words / 200));
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(BlogCategory::class, 'category_id');

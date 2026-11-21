@@ -109,31 +109,28 @@
         </div>
 
         {{-- Pricing & Action CTAs --}}
-        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
-            {{-- Price Block --}}
+        <div class="mt-5 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+            {{-- Quote Badge --}}
             <div>
-                <p class="text-[10px] uppercase tracking-wider font-semibold text-slate-400 leading-none">Starting From</p>
+                <p class="text-[10px] uppercase tracking-wider font-bold text-brand-700 leading-none">Trip Pricing</p>
                 <div class="mt-1 flex items-baseline gap-1">
-                    <span class="font-display text-2xl font-bold text-slate-900 tracking-tight">
-                        {{ $startingPrice }}
+                    <span class="font-display text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+                        Quote on Request
                     </span>
-                    @if($numericPrice)
-                        <span class="text-[11px] text-slate-500 font-medium">/ person</span>
-                    @endif
                 </div>
             </div>
 
             {{-- Dual CTAs --}}
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 ml-auto">
                 <a href="{{ $detailUrl }}"
-                   class="inline-flex items-center justify-center rounded-xl px-3.5 py-2.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
+                   class="inline-flex items-center justify-center rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors"
                    title="View complete itinerary and details">
                     Details
                 </a>
 
                 @if($showBookButton)
                     <a href="{{ $bookUrl }}"
-                       class="inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-800 shadow-md hover:shadow-lg transition-all"
+                       class="inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold text-white bg-gradient-to-r from-brand-600 to-brand-700 hover:from-brand-700 hover:to-brand-800 shadow-sm hover:shadow transition-all"
                        title="Book this trip directly">
                         <i class="fas fa-calendar-check text-[11px]"></i>
                         <span>Book</span>

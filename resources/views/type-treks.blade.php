@@ -45,7 +45,7 @@
                 <a href="{{ route('booking.create') }}" class="px-8 py-3.5 bg-white text-brand-700 rounded-xl font-bold hover:bg-slate-50 transition shadow-lg">
                     <i class="fas fa-calendar-check mr-2"></i> Request Custom Tour
                 </a>
-                <a href="https://wa.me/923131562859?text=Hi!%20I'm%20interested%20in%20{{ urlencode($type->name) }}" target="_blank" class="px-8 py-3.5 bg-[#25D366] text-white rounded-xl font-bold hover:bg-[#1fb855] transition shadow-lg">
+                <a href="https://wa.me/923425343629?text=Hi!%20I'm%20interested%20in%20{{ urlencode($type->name) }}" target="_blank" class="px-8 py-3.5 bg-[#25D366] text-white rounded-xl font-bold hover:bg-[#1fb855] transition shadow-lg">
                     <i class="fab fa-whatsapp mr-2"></i> Chat on WhatsApp
                 </a>
             </div>

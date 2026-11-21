@@ -470,7 +470,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                 {{-- Team Member 1: Chacha --}}
                 <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                    <div class="h-[390px] sm:h-[410px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
+                    <div class="h-[290px] sm:h-[350px] md:h-[400px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
                         <img src="{{ asset('assets/chacha.jpeg') }}"
                              alt="Muhammad Jaffar - CEO & Founder"
                              loading="lazy"
@@ -496,14 +496,17 @@
                             Muhammad Jaffar
                         </h3>
                         <p class="text-xs font-semibold text-brand-700 uppercase tracking-wider mt-1">
-                            CEO of Company
+                            Founder & Expedition Director
+                        </p>
+                        <p class="text-[11px] text-slate-500 mt-1">
+                            High-Altitude Sirdar & Route Specialist
                         </p>
                     </div>
                 </div>
 
                 {{-- Team Member 2: Rizwan --}}
                 <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                    <div class="h-[390px] sm:h-[410px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
+                    <div class="h-[290px] sm:h-[350px] md:h-[400px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
                         <img src="{{ asset('assets/rizwan.jpeg') }}"
                              alt="Rizwan Ali - Director & Organization"
                              loading="lazy"
@@ -537,14 +540,17 @@
                             Rizwan Ali
                         </h3>
                         <p class="text-xs font-semibold text-brand-700 uppercase tracking-wider mt-1">
-                            Director & Organization
+                            Director of Operations
+                        </p>
+                        <p class="text-[11px] text-slate-500 mt-1">
+                            Base Logistics & Govt. Clearances
                         </p>
                     </div>
                 </div>
 
                 {{-- Team Member 3: Imran --}}
                 <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                    <div class="h-[390px] sm:h-[410px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
+                    <div class="h-[290px] sm:h-[350px] md:h-[400px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
                         <img src="{{ asset('assets/imran.jpg') }}"
                              alt="Imran Ali - Expedition Coordinator"
                              loading="lazy"
@@ -588,12 +594,15 @@
                         <p class="text-xs font-semibold text-brand-700 uppercase tracking-wider mt-1">
                             Expedition Coordinator
                         </p>
+                        <p class="text-[11px] text-slate-500 mt-1">
+                            Trail Operations & Camp Logistics
+                        </p>
                     </div>
                 </div>
 
                 {{-- Team Member 4: Kami --}}
                 <div class="group rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                    <div class="h-[390px] sm:h-[410px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
+                    <div class="h-[290px] sm:h-[350px] md:h-[400px] w-full overflow-hidden bg-navy-950 relative" style="position: relative;">
                         <img src="{{ asset('assets/kami.jpeg') }}"
                              alt="Kami - Tourist Advisor"
                              loading="lazy"
@@ -632,10 +641,13 @@
                     </div>
                     <div class="p-5 text-center">
                         <h3 class="font-display font-bold text-lg text-slate-900 group-hover:text-brand-700 transition-colors">
-                            Kami
+                            Kami (Kamran)
                         </h3>
                         <p class="text-xs font-semibold text-brand-700 uppercase tracking-wider mt-1">
-                            Tourist Advisor
+                            Senior Travel Advisor
+                        </p>
+                        <p class="text-[11px] text-slate-500 mt-1">
+                            Client Relations & Itinerary Design
                         </p>
                     </div>
                 </div>
@@ -682,34 +694,32 @@
                 </div>
 
                 <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors">
-                    <button type="button" class="faq-button flex w-full items-center justify-b    {{-- ═══════════════════════════════════════════════
-         10. FINAL CALL TO ACTION
-     
-    <section class="relative bg-navy-950 py-16 md:py-20 text-white overflow-hidden">
-        <div class="absolute inset-0 opacity-25">
-            <img src="{{ asset('assets/Front-banner-k2.webp') }}" alt="Karakoram Mountains" loading="lazy" decoding="async" class="h-full w-full object-cover">
-        </div>
-        <div class="relative container mx-auto px-4 lg:px-8 text-center max-w-3xl">
-            <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs uppercase tracking-[0.2em] text-brand-300 backdrop-blur-md mb-4">
-                Begin Your Expedition
-            </span>
-            <h2 class="font-display text-3xl md:text-5xl font-bold leading-tight">
-                Your Karakoram Adventure Starts Here.
-            </h2>
-            <p class="mt-3 text-white/80 text-sm md:text-base leading-relaxed max-w-xl mx-auto font-light">
-                Discover the untouched majesty of K2, Concordia, and Gilgit-Baltistan with Pakistan's premier mountain travel company.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-3 justify-center">
-                <a href="#experiences" class="inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold text-slate-900 bg-white hover:bg-slate-100 transition-all shadow-lg">
-                    <i class="fas fa-compass mr-2 text-brand-600"></i> Explore Trips
-                </a>
-                <a href="{{ route('booking.create') }}" class="btn-primary inline-flex items-center justify-center rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-lg hover:shadow-xl transition-all">
-                    <i class="fas fa-calendar-check mr-2"></i> Book Now
-                </a>
+                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus:outline-none">
+                        <span class="font-bold text-slate-900 text-base">What is the best season for trekking to K2 Base Camp?</span>
+                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-panel px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 bg-white" hidden>
+                        The optimal trekking window for K2 Base Camp, Concordia, and Gondogoro La is from mid-June to late August. During this period, weather on the Baltoro Glacier is most stable, and mountain passes are accessible with lower snowpack.
+                    </div>
+                </div>
+
+                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors">
+                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 px-6 py-5 text-left focus:outline-none">
+                        <span class="font-bold text-slate-900 text-base">What equipment and fitness level do I need?</span>
+                        <i class="faq-icon fas fa-chevron-down text-brand-600 transition-transform"></i>
+                    </button>
+                    <div class="faq-panel px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 bg-white" hidden>
+                        For high-altitude treks like K2 Base Camp, you need solid cardiovascular endurance (capable of walking 6–8 hours daily on rocky glacial terrain) and proper four-season alpine gear (sub-zero sleeping bag, broken-in trekking boots, thermal layers). We provide four-season tents, mess facilities, and all cooking gear.
+                    </div>
+                </div>
             </div>
         </div>
-    </section>��═══════════════════════════════════ --}}
-    <section class="relative bg-navy-950 py-24 text-white overflow-hidden">
+    </section>
+
+    {{-- ═══════════════════════════════════════════════
+         10. FINAL CALL TO ACTION
+    ═══════════════════════════════════════════════ --}}
+    <section class="relative bg-navy-950 py-16 md:py-24 text-white overflow-hidden">
         <div class="absolute inset-0 opacity-25">
             <img src="{{ asset('assets/Front-banner-k2.webp') }}" alt="Karakoram Mountains" loading="lazy" decoding="async" class="h-full w-full object-cover">
         </div>
@@ -717,17 +727,17 @@
             <span class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs uppercase tracking-[0.25em] text-brand-300 backdrop-blur-md mb-6">
                 Begin Your Expedition
             </span>
-            <h2 class="font-display text-4xl md:text-6xl font-bold leading-tight">
+            <h2 class="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Your Karakoram Adventure Starts Here.
             </h2>
-            <p class="mt-4 text-white/80 text-base md:text-lg leading-relaxed max-w-xl mx-auto font-light">
+            <p class="mt-4 text-white/80 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mx-auto font-light">
                 Discover the untouched majesty of K2, Concordia, and Gilgit-Baltistan with Pakistan's premier mountain travel company.
             </p>
             <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#experiences" class="inline-flex items-center justify-center rounded-xl px-8 py-4 font-bold text-base text-slate-900 bg-white hover:bg-slate-100 transition-all shadow-xl">
+                <a href="#experiences" class="inline-flex items-center justify-center rounded-xl px-7 py-3.5 sm:px-8 sm:py-4 font-bold text-sm sm:text-base text-slate-900 bg-white hover:bg-slate-100 transition-all shadow-xl">
                     <i class="fas fa-compass mr-2 text-brand-600"></i> Explore Trips
                 </a>
-                <a href="{{ route('booking.create') }}" class="btn-primary inline-flex items-center justify-center rounded-xl px-8 py-4 font-bold text-base text-white shadow-xl hover:shadow-2xl transition-all">
+                <a href="{{ route('booking.create') }}" class="btn-primary inline-flex items-center justify-center rounded-xl px-7 py-3.5 sm:px-8 sm:py-4 font-bold text-sm sm:text-base text-white shadow-xl hover:shadow-2xl transition-all">
                     <i class="fas fa-calendar-check mr-2"></i> Book Now
                 </a>
             </div>

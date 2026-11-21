@@ -28,14 +28,14 @@
     <div class="container mx-auto px-4 lg:px-8">
         
         <!-- Step 1: E-Visa Process -->
-        <div class="max-w-5xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 mb-10">
-            <div class="flex flex-col md:flex-row gap-8 items-start">
-                <div class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center border border-brand-100">
+        <div class="max-w-5xl mx-auto bg-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-sm border border-gray-100 mb-10">
+            <div class="flex flex-col md:flex-row gap-5 md:gap-8 items-start">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center border border-brand-100">
                     <span class="font-display text-2xl font-bold">1</span>
                 </div>
-                <div>
+                <div class="min-w-0 flex-1">
                     <span class="text-brand-600 text-xs font-bold tracking-[0.2em] uppercase mb-2 block">Step 1</span>
-                    <h2 class="font-display text-3xl text-navy-900 mb-4">The Pakistan E-Visa</h2>
+                    <h2 class="font-display text-2xl sm:text-3xl text-navy-900 mb-4">The Pakistan E-Visa</h2>
                     <p class="text-gray-600 leading-relaxed mb-6">
                         Before traveling to Gilgit-Baltistan, you must secure a valid Pakistan visa. The process is completely digitized and handled through the official government portal. Depending on your nationality, you can apply for a Tourist E-Visa or receive an Electronic Travel Authorization (ETA) for a Visa on Arrival.
                     </p>
@@ -61,14 +61,14 @@
         </div>
 
         <!-- Step 2: NOC & Permits -->
-        <div class="max-w-5xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 mb-10">
-            <div class="flex flex-col md:flex-row gap-8 items-start">
-                <div class="w-16 h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center border border-brand-100">
+        <div class="max-w-5xl mx-auto bg-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-sm border border-gray-100 mb-10">
+            <div class="flex flex-col md:flex-row gap-5 md:gap-8 items-start">
+                <div class="w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center border border-brand-100">
                     <span class="font-display text-2xl font-bold">2</span>
                 </div>
-                <div>
+                <div class="min-w-0 flex-1">
                     <span class="text-brand-600 text-xs font-bold tracking-[0.2em] uppercase mb-2 block">Step 2</span>
-                    <h2 class="font-display text-3xl text-navy-900 mb-4">NOCs & Trekking Permits</h2>
+                    <h2 class="font-display text-2xl sm:text-3xl text-navy-900 mb-4">NOCs & Trekking Permits</h2>
                     <p class="text-gray-600 leading-relaxed mb-6">
                         Good news! For most popular tourist destinations in Gilgit-Baltistan, foreign tourists <strong>do not</strong> need a No Objection Certificate (NOC). However, specialized trekking in restricted zones requires government permits.
                     </p>
@@ -112,7 +112,7 @@
         </div>
 
         <!-- Step 3: Essential Travel Tips -->
-        <div class="max-w-5xl mx-auto bg-navy-900 text-white rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div class="max-w-5xl mx-auto bg-navy-900 text-white rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl"></div>
             
             <h2 class="font-display text-3xl text-white mb-8 text-center">Essential Travel Requirements</h2>

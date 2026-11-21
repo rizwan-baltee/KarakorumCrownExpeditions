@@ -76,7 +76,6 @@
                         </div>
                         <div>
                             <a href="tel:+923425343629" class="text-white/50 hover:text-brand-400 transition-colors text-sm block">+92 3425343629</a>
-                            <a href="tel:+923358411291" class="text-white/50 hover:text-brand-400 transition-colors text-sm block">+92 335 8411291</a>
                         </div>
                     </div>
                     <div class="flex items-start gap-3">

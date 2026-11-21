@@ -24,7 +24,7 @@
 <section class="py-16 bg-slate-50">
     <div class="container mx-auto px-4 lg:px-8">
         <div class="max-w-2xl mx-auto">
-            <div class="bg-white rounded-3xl border border-slate-200 shadow-lg p-8 md:p-10">
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-lg p-5 sm:p-8 md:p-10">
                 @if(session('error'))
                     <div class="mb-6 rounded-2xl border border-red-200 bg-red-50 p-4 text-red-700 text-sm">
                         {{ session('error') }}
@@ -35,7 +35,7 @@
                     @csrf
                     <div>
                         <label class="block text-sm font-medium text-slate-700 mb-1.5">Booking Reference Number *</label>
-                        <input type="text" name="reference_code" value="{{ old('reference_code') }}" required placeholder="DGH-2026-XXXXXX"
+                        <input type="text" name="reference_code" value="{{ old('reference_code') }}" required placeholder="KCE-2026-XXXXXX"
                                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none">
                         @error('reference_code')<p class="mt-1 text-sm text-red-600">{{ $message }}</p>@enderror
                     </div>

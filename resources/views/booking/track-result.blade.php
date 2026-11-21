@@ -67,7 +67,7 @@
                 <a href="{{ route('booking.track') }}" class="btn-primary inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
                     Track Another Booking
                 </a>
-                <a href="https://wa.me/923131562859" target="_blank" class="inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white bg-[#25D366] hover:bg-[#1fb855] transition-colors">
+                <a href="https://wa.me/923425343629" target="_blank" class="inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white bg-[#25D366] hover:bg-[#1fb855] transition-colors">
                     <i class="fab fa-whatsapp mr-2 text-lg"></i> WhatsApp Us
                 </a>
             </div>

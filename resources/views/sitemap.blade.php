@@ -13,11 +13,6 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>{{ route('salajeet') }}</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
         <loc>{{ route('visa-guide') }}</loc>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>

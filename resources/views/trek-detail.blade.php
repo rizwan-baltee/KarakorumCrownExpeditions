@@ -18,22 +18,21 @@
     <div class="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 py-3 px-4 shadow-2xl lg:hidden">
         <div class="flex items-center justify-between gap-3 max-w-lg mx-auto">
             <div class="min-w-0 flex-1">
-                <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400 truncate">Starting From</p>
-                <p class="text-lg font-display font-bold text-slate-900 leading-tight">
-                    {{ $trek->starting_price_formatted }}
-                    <span class="text-xs text-slate-500 font-sans font-normal">/ person</span>
+                <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400 truncate">Expedition Pricing</p>
+                <p class="text-base font-display font-bold text-slate-900 leading-tight">
+                    Quote on Request
                 </p>
             </div>
             <div class="flex items-center gap-2">
                 <a href="https://wa.me/923425343629?text={{ urlencode('Hi Karakorum Crown Expeditions! I am interested in: ' . $trek->title) }}"
                    target="_blank"
-                   class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-[#25D366] text-white shadow-md hover:bg-[#1fb855] transition-colors"
+                   class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#25D366] text-white shadow-md hover:bg-[#1fb855] transition-colors"
                    title="Chat with expert on WhatsApp">
                     <i class="fab fa-whatsapp text-lg"></i>
                 </a>
                 <a href="{{ route('booking.create', ['trek' => $trek->slug]) }}"
-                   class="btn-primary inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-bold text-white shadow-lg">
-                    <i class="fas fa-calendar-check mr-2"></i> Book Now
+                   class="btn-primary inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-xs font-bold text-white shadow-lg">
+                    <i class="fas fa-calendar-check mr-1.5"></i> Book Now
                 </a>
             </div>
         </div>
@@ -52,21 +51,21 @@
         </div>
 
         <div class="relative w-full">
-            <div class="container mx-auto px-4 lg:px-8">
+            <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
                 {{-- Breadcrumb --}}
-                <nav class="mb-5 flex items-center gap-2 text-xs md:text-sm text-white/60">
+                <nav class="mb-5 flex flex-wrap items-center gap-2 text-xs md:text-sm text-white/60">
                     <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
                     <span>/</span>
                     @if($trek->type)
                         <a href="{{ route('type.index', $trek->type->slug) }}" class="hover:text-white transition-colors">{{ $trek->type->name }}</a>
                         <span>/</span>
                     @endif
-                    <span class="text-white font-medium truncate max-w-xs md:max-w-md">{{ $trek->title }}</span>
+                    <span class="text-white font-medium truncate max-w-[200px] sm:max-w-xs md:max-w-md">{{ $trek->title }}</span>
                 </nav>
 
-                <div class="grid lg:grid-cols-12 gap-8 items-end">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end min-w-0 max-w-full">
                     {{-- Left Title & Badges --}}
-                    <div class="lg:col-span-8 text-white">
+                    <div class="lg:col-span-8 text-white min-w-0 max-w-full">
                         <div class="flex flex-wrap items-center gap-2 mb-4">
                             @if($trek->type)
                                 <span class="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-xs uppercase tracking-[0.2em] font-semibold text-brand-300 backdrop-blur-md">
@@ -86,28 +85,28 @@
                             </span>
                         </div>
 
-                        <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-balance">
+                        <h1 class="font-display text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-balance break-words">
                             {{ $trek->title }}
                         </h1>
 
                         {{-- Metadata bar --}}
-                        <div class="mt-6 flex flex-wrap items-center gap-4 md:gap-6 text-sm text-white/80">
+                        <div class="mt-6 flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 text-xs sm:text-sm text-white/80">
                             @if($trek->location)
-                                <span class="inline-flex items-center gap-2">
+                                <span class="inline-flex items-center gap-1.5 sm:gap-2">
                                     <i class="fas fa-map-marker-alt text-brand-400"></i>
                                     <span>{{ $trek->location }}</span>
                                 </span>
                             @endif
-                            <span class="inline-flex items-center gap-2">
+                            <span class="inline-flex items-center gap-1.5 sm:gap-2">
                                 <i class="far fa-clock text-brand-400"></i>
                                 <span>{{ $trek->duration_days }} {{ \Str::plural('Day', $trek->duration_days) }}</span>
                             </span>
-                            <span class="inline-flex items-center gap-2">
+                            <span class="inline-flex items-center gap-1.5 sm:gap-2">
                                 <i class="fas fa-signal text-brand-400"></i>
                                 <span>Level {{ $trek->difficulty_level }}/5 ({{ $trek->difficulty_label }})</span>
                             </span>
                             @if($trek->height_meters)
-                                <span class="inline-flex items-center gap-2">
+                                <span class="inline-flex items-center gap-1.5 sm:gap-2">
                                     <i class="fas fa-mountain text-brand-400"></i>
                                     <span>{{ number_format($trek->height_meters) }}m</span>
                                 </span>
@@ -116,31 +115,29 @@
                     </div>
 
                     {{-- Right Hero Card (Starting Price & CTA) --}}
-                    <div class="lg:col-span-4">
-                        <div class="rounded-3xl border border-white/20 bg-white/10 p-6 md:p-8 backdrop-blur-xl shadow-2xl text-white">
-                            <p class="text-xs uppercase font-semibold tracking-[0.2em] text-brand-300">Guaranteed Experience</p>
-                            <div class="mt-2 flex items-baseline gap-2">
-                                <span class="font-display text-4xl md:text-5xl font-bold text-white tracking-tight">
-                                    {{ $trek->starting_price_formatted }}
+                    <div class="lg:col-span-4 min-w-0 max-w-full">
+                        <div class="rounded-3xl border border-white/20 bg-white/10 p-5 sm:p-6 md:p-8 backdrop-blur-xl shadow-2xl text-white">
+                            <p class="text-xs uppercase font-semibold tracking-[0.2em] text-brand-300">Customized Expedition</p>
+                            <div class="mt-2">
+                                <span class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight block">
+                                    Price on Request
                                 </span>
-                                @if($trek->calculated_starting_price)
-                                    <span class="text-sm text-white/70">/ person</span>
-                                @endif
+                                <span class="text-xs text-brand-300 font-medium block mt-1">Direct quote based on party size & season</span>
                             </div>
-                            <p class="mt-2 text-xs text-white/70">
+                            <p class="mt-2 text-xs text-white/70 leading-relaxed">
                                 Guided by licensed Karakoram mountain guides. Includes all park permits, accommodation & transport.
                             </p>
 
                             <div class="mt-6 space-y-3">
                                 <a href="{{ route('booking.create', ['trek' => $trek->slug]) }}"
-                                   class="btn-primary flex w-full items-center justify-center gap-2 rounded-xl py-4 text-center font-bold text-base text-white shadow-lg hover:shadow-xl transition-all">
+                                   class="btn-primary flex w-full items-center justify-center gap-2 rounded-xl py-3.5 sm:py-4 text-center font-bold text-sm sm:text-base text-white shadow-lg hover:shadow-xl transition-all">
                                     <i class="fas fa-calendar-check"></i>
                                     <span>Book This Trip</span>
                                 </a>
 
                                 <a href="https://wa.me/923425343629?text={{ urlencode('Hello! I would like to inquire about booking the ' . $trek->title . '.') }}"
                                    target="_blank"
-                                   class="flex w-full items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/5 py-3.5 text-center font-semibold text-sm text-white hover:bg-white/15 transition-all">
+                                   class="flex w-full items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/5 py-3 sm:py-3.5 text-center font-semibold text-xs sm:text-sm text-white hover:bg-white/15 transition-all">
                                     <i class="fab fa-whatsapp text-lg text-[#25D366]"></i>
                                     <span>Talk to a Travel Expert</span>
                                 </a>
@@ -155,87 +152,87 @@
     {{-- ═══════════════════════════════════════════════
          QUICK INFORMATION — 8 Visual Key Facts Cards
     ═══════════════════════════════════════════════ --}}
-    <section class="bg-white border-b border-slate-200 py-10">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+    <section class="bg-white border-b border-slate-200 py-8 sm:py-10">
+        <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 min-w-0 max-w-full">
                 {{-- Duration --}}
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-center hover:border-brand-300 transition-colors">
-                    <div class="w-10 h-10 mx-auto rounded-xl bg-brand-50 flex items-center justify-center text-brand-700 mb-2">
-                        <i class="far fa-clock text-lg"></i>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-3 sm:p-4 text-center hover:border-brand-300 transition-colors min-w-0 max-w-full">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 mx-auto rounded-xl bg-brand-50 flex items-center justify-center text-brand-700 mb-2">
+                        <i class="far fa-clock text-base sm:text-lg"></i>
                     </div>
                     <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Duration</p>
-                    <p class="mt-1 font-bold text-slate-900 text-sm md:text-base">{{ $trek->duration_days }} Days</p>
+                    <p class="mt-1 font-bold text-slate-900 text-xs sm:text-sm md:text-base">{{ $trek->duration_days }} Days</p>
                 </div>
 
                 {{-- Difficulty --}}
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-center hover:border-brand-300 transition-colors">
-                    <div class="w-10 h-10 mx-auto rounded-xl bg-amber-50 flex items-center justify-center text-amber-700 mb-2">
-                        <i class="fas fa-signal text-lg"></i>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-3 sm:p-4 text-center hover:border-brand-300 transition-colors min-w-0 max-w-full">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 mx-auto rounded-xl bg-amber-50 flex items-center justify-center text-amber-700 mb-2">
+                        <i class="fas fa-signal text-base sm:text-lg"></i>
                     </div>
                     <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Difficulty</p>
-                    <p class="mt-1 font-bold text-slate-900 text-sm md:text-base">{{ $trek->difficulty_label }}</p>
+                    <p class="mt-1 font-bold text-slate-900 text-xs sm:text-sm md:text-base truncate" title="{{ $trek->difficulty_label }}">{{ $trek->difficulty_label }}</p>
                 </div>
 
                 {{-- Max Group Size --}}
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-center hover:border-brand-300 transition-colors">
-                    <div class="w-10 h-10 mx-auto rounded-xl bg-blue-50 flex items-center justify-center text-blue-700 mb-2">
-                        <i class="fas fa-users text-lg"></i>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-3 sm:p-4 text-center hover:border-brand-300 transition-colors min-w-0 max-w-full">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 mx-auto rounded-xl bg-blue-50 flex items-center justify-center text-blue-700 mb-2">
+                        <i class="fas fa-users text-base sm:text-lg"></i>
                     </div>
                     <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Group Size</p>
-                    <p class="mt-1 font-bold text-slate-900 text-sm md:text-base">Max {{ $trek->max_guests ?: 12 }}</p>
+                    <p class="mt-1 font-bold text-slate-900 text-xs sm:text-sm md:text-base">Max {{ $trek->max_guests ?: 12 }}</p>
                 </div>
 
                 {{-- Starting Point --}}
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-center hover:border-brand-300 transition-colors">
-                    <div class="w-10 h-10 mx-auto rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700 mb-2">
-                        <i class="fas fa-plane-departure text-lg"></i>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-3 sm:p-4 text-center hover:border-brand-300 transition-colors min-w-0 max-w-full">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 mx-auto rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700 mb-2">
+                        <i class="fas fa-plane-departure text-base sm:text-lg"></i>
                     </div>
                     <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Start Point</p>
-                    <p class="mt-1 font-bold text-slate-900 text-sm md:text-base truncate" title="{{ $trek->starting_point ?: 'Islamabad' }}">
+                    <p class="mt-1 font-bold text-slate-900 text-xs sm:text-sm md:text-base truncate" title="{{ $trek->starting_point ?: 'Islamabad' }}">
                         {{ $trek->starting_point ?: 'Islamabad' }}
                     </p>
                 </div>
 
                 {{-- Ending Point --}}
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-center hover:border-brand-300 transition-colors">
-                    <div class="w-10 h-10 mx-auto rounded-xl bg-purple-50 flex items-center justify-center text-purple-700 mb-2">
-                        <i class="fas fa-flag-checkered text-lg"></i>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-3 sm:p-4 text-center hover:border-brand-300 transition-colors min-w-0 max-w-full">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 mx-auto rounded-xl bg-purple-50 flex items-center justify-center text-purple-700 mb-2">
+                        <i class="fas fa-flag-checkered text-base sm:text-lg"></i>
                     </div>
                     <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">End Point</p>
-                    <p class="mt-1 font-bold text-slate-900 text-sm md:text-base truncate" title="{{ $trek->ending_point ?: 'Skardu' }}">
+                    <p class="mt-1 font-bold text-slate-900 text-xs sm:text-sm md:text-base truncate" title="{{ $trek->ending_point ?: 'Skardu' }}">
                         {{ $trek->ending_point ?: 'Skardu' }}
                     </p>
                 </div>
 
                 {{-- Best Season --}}
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-center hover:border-brand-300 transition-colors">
-                    <div class="w-10 h-10 mx-auto rounded-xl bg-amber-50 flex items-center justify-center text-amber-700 mb-2">
-                        <i class="fas fa-sun text-lg"></i>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-3 sm:p-4 text-center hover:border-brand-300 transition-colors min-w-0 max-w-full">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 mx-auto rounded-xl bg-amber-50 flex items-center justify-center text-amber-700 mb-2">
+                        <i class="fas fa-sun text-base sm:text-lg"></i>
                     </div>
                     <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Best Season</p>
-                    <p class="mt-1 font-bold text-slate-900 text-sm md:text-base truncate" title="{{ $trek->best_season ?: 'Jun to Sep' }}">
+                    <p class="mt-1 font-bold text-slate-900 text-xs sm:text-sm md:text-base truncate" title="{{ $trek->best_season ?: 'Jun to Sep' }}">
                         {{ $trek->best_season ?: 'Jun to Sep' }}
                     </p>
                 </div>
 
                 {{-- Accommodation --}}
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-center hover:border-brand-300 transition-colors">
-                    <div class="w-10 h-10 mx-auto rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-700 mb-2">
-                        <i class="fas fa-campground text-lg"></i>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-3 sm:p-4 text-center hover:border-brand-300 transition-colors min-w-0 max-w-full">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 mx-auto rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-700 mb-2">
+                        <i class="fas fa-campground text-base sm:text-lg"></i>
                     </div>
                     <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Stay</p>
-                    <p class="mt-1 font-bold text-slate-900 text-sm md:text-base truncate" title="{{ $trek->accommodation_type ?: 'Hotel & Camp' }}">
+                    <p class="mt-1 font-bold text-slate-900 text-xs sm:text-sm md:text-base truncate" title="{{ $trek->accommodation_type ?: 'Hotel & Camp' }}">
                         {{ $trek->accommodation_type ?: 'Hotel & Camp' }}
                     </p>
                 </div>
 
                 {{-- Transportation --}}
-                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-4 text-center hover:border-brand-300 transition-colors">
-                    <div class="w-10 h-10 mx-auto rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 mb-2">
-                        <i class="fas fa-shuttle-van text-lg"></i>
+                <div class="rounded-2xl bg-slate-50 border border-slate-200/80 p-3 sm:p-4 text-center hover:border-brand-300 transition-colors min-w-0 max-w-full">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 mx-auto rounded-xl bg-teal-50 flex items-center justify-center text-teal-700 mb-2">
+                        <i class="fas fa-shuttle-van text-base sm:text-lg"></i>
                     </div>
                     <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Transport</p>
-                    <p class="mt-1 font-bold text-slate-900 text-sm md:text-base truncate" title="{{ $trek->transport_type ?: '4x4 Jeeps' }}">
+                    <p class="mt-1 font-bold text-slate-900 text-xs sm:text-sm md:text-base truncate" title="{{ $trek->transport_type ?: '4x4 Jeeps' }}">
                         {{ $trek->transport_type ?: '4x4 Jeeps' }}
                     </p>
                 </div>
@@ -246,31 +243,31 @@
     {{-- ═══════════════════════════════════════════════
          MAIN CONTENT SECTION
     ═══════════════════════════════════════════════ --}}
-    <section class="py-16 bg-slate-50">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid gap-12 lg:grid-cols-12">
+    <section class="py-10 md:py-16 bg-slate-50 overflow-hidden">
+        <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 min-w-0 max-w-full">
 
                 {{-- LEFT COLUMN: Details, Itinerary, Inclusions, Gallery, FAQs --}}
-                <div class="lg:col-span-8 space-y-16">
+                <div class="lg:col-span-8 space-y-10 sm:space-y-12 md:space-y-16 min-w-0 max-w-full">
 
                     {{-- 1. About This Trip / Concise Overview --}}
-                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-7 md:p-10 min-w-0 max-w-full">
                         <div class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 mb-4">
                             <i class="fas fa-mountain"></i> The Journey
                         </div>
-                        <h2 class="font-display text-3xl md:text-4xl font-bold text-slate-900">
+                        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 break-words">
                             About This Trip
                         </h2>
 
-                        <div class="mt-6 text-slate-600 leading-relaxed text-base space-y-4">
+                        <div class="mt-6 text-slate-600 leading-relaxed text-sm sm:text-base space-y-4 break-words">
                             @if($trek->overview)
-                                <p class="text-lg text-slate-800 font-medium leading-relaxed">
+                                <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed">
                                     {{ $trek->overview }}
                                 </p>
                             @endif
 
                             @if($trek->description)
-                                <div class="prose prose-slate max-w-none text-slate-600">
+                                <div class="prose prose-slate max-w-none text-slate-600 break-words">
                                     {!! nl2br(e($trek->description)) !!}
                                 </div>
                             @endif
@@ -283,32 +280,32 @@
                         </div>
 
                         {{-- Quick Highlights Callout --}}
-                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-100">
-                            <div class="flex items-center gap-3">
+                        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-100 min-w-0 max-w-full">
+                            <div class="flex items-center gap-3 min-w-0">
                                 <div class="w-10 h-10 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <p class="text-xs text-slate-400 uppercase tracking-wider">Safety & Permits</p>
                                     <p class="text-sm font-bold text-slate-800">100% Fully Managed</p>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-3 min-w-0">
                                 <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-language"></i>
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <p class="text-xs text-slate-400 uppercase tracking-wider">Guide Languages</p>
-                                    <p class="text-sm font-bold text-slate-800">{{ $trek->languages_support ?: 'English & Local' }}</p>
+                                    <p class="text-sm font-bold text-slate-800 truncate">{{ $trek->languages_support ?: 'English & Local' }}</p>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-3 min-w-0">
                                 <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center flex-shrink-0">
                                     <i class="fas fa-user-check"></i>
                                 </div>
-                                <div>
+                                <div class="min-w-0">
                                     <p class="text-xs text-slate-400 uppercase tracking-wider">Minimum Age</p>
                                     <p class="text-sm font-bold text-slate-800">{{ $trek->min_age ?: 16 }}+ Years</p>
                                 </div>
@@ -321,13 +318,13 @@
                         $itineraryItems = is_string($trek->itinerary) ? json_decode($trek->itinerary, true) : $trek->itinerary;
                     @endphp
                     @if(!empty($itineraryItems) && is_array($itineraryItems))
-                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-7 md:p-10 min-w-0 max-w-full">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                             <div>
                                 <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 mb-2">
                                     <i class="fas fa-route"></i> Day-by-Day Journey
                                 </span>
-                                <h2 class="font-display text-3xl font-bold text-slate-900">
+                                <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 break-words">
                                     Detailed Itinerary
                                 </h2>
                             </div>
@@ -343,15 +340,15 @@
                                     $dayTitle = $day['title'] ?? ('Day ' . $dayNumber);
                                     $dayDescription = $day['description'] ?? '';
                                 @endphp
-                                <div class="itinerary-item overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-all hover:border-slate-300">
-                                    <button type="button" class="itinerary-button flex w-full items-center justify-between gap-4 p-5 text-left focus:outline-none">
-                                        <div class="flex items-center gap-4 min-w-0">
-                                            <span class="flex-shrink-0 w-12 h-12 rounded-xl bg-navy-950 text-white font-display font-bold text-sm flex flex-col items-center justify-center shadow-sm">
-                                                <span class="text-[9px] uppercase tracking-wider text-brand-400 font-sans">Day</span>
-                                                <span class="text-base leading-none">{{ str_pad($dayNumber, 2, '0', STR_PAD_LEFT) }}</span>
+                                <div class="itinerary-item overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-all hover:border-slate-300 min-w-0">
+                                    <button type="button" class="itinerary-button flex w-full items-center justify-between gap-3 sm:gap-4 p-4 sm:p-5 text-left focus:outline-none">
+                                        <div class="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+                                            <span class="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-navy-950 text-white font-display font-bold text-xs sm:text-sm flex flex-col items-center justify-center shadow-sm">
+                                                <span class="text-[8px] sm:text-[9px] uppercase tracking-wider text-brand-400 font-sans">Day</span>
+                                                <span class="text-sm sm:text-base leading-none">{{ str_pad($dayNumber, 2, '0', STR_PAD_LEFT) }}</span>
                                             </span>
-                                            <div class="min-w-0">
-                                                <h3 class="font-bold text-slate-900 text-base md:text-lg truncate">
+                                            <div class="min-w-0 flex-1">
+                                                <h3 class="font-bold text-slate-900 text-sm sm:text-base md:text-lg truncate">
                                                     {{ $dayTitle }}
                                                 </h3>
                                                 <p class="text-xs text-slate-500 mt-0.5 truncate">
@@ -363,8 +360,8 @@
                                             <i class="itinerary-icon fas fa-chevron-down text-xs text-slate-500 transition-transform"></i>
                                         </div>
                                     </button>
-                                    <div class="itinerary-panel px-6 pb-6 pt-2 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 bg-white" {{ $index === 0 ? '' : 'hidden' }}>
-                                        <p class="leading-relaxed whitespace-pre-line">{{ $dayDescription ?: 'Day activities, trekking route, and evening camp setup.' }}</p>
+                                    <div class="itinerary-panel px-4 sm:px-6 pb-5 sm:pb-6 pt-2 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-200/60 bg-white" {{ $index === 0 ? '' : 'hidden' }}>
+                                        <p class="leading-relaxed whitespace-pre-line break-words">{{ $dayDescription ?: 'Day activities, trekking route, and evening camp setup.' }}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -378,31 +375,31 @@
                         $excludedItems = is_string($trek->excluded) ? json_decode($trek->excluded, true) : $trek->excluded;
                     @endphp
                     @if(!empty($includedItems) || !empty($excludedItems))
-                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-7 md:p-10 min-w-0 max-w-full">
                         <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 mb-2">
                             <i class="fas fa-check-double"></i> Complete Transparency
                         </span>
-                        <h2 class="font-display text-3xl font-bold text-slate-900 mb-8">
+                        <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 mb-6 sm:mb-8 break-words">
                             What's Included & What's Not
                         </h2>
 
-                        <div class="grid md:grid-cols-2 gap-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 min-w-0 max-w-full">
                             {{-- Included Card --}}
                             @if(!empty($includedItems) && is_array($includedItems))
-                            <div class="rounded-2xl border-2 border-emerald-100 bg-emerald-50/40 p-6 md:p-7">
-                                <div class="flex items-center gap-3 mb-6">
-                                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold">
+                            <div class="rounded-2xl border-2 border-emerald-100 bg-emerald-50/40 p-5 sm:p-6 md:p-7 min-w-0 max-w-full">
+                                <div class="flex items-center gap-3 mb-5 sm:mb-6">
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold flex-shrink-0">
                                         <i class="fas fa-check"></i>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900 text-lg">What's Included</h3>
+                                        <h3 class="font-bold text-slate-900 text-base sm:text-lg">What's Included</h3>
                                         <p class="text-xs text-emerald-800">Covered in your tour package</p>
                                     </div>
                                 </div>
 
-                                <ul class="space-y-3.5">
+                                <ul class="space-y-3.5 text-xs sm:text-sm">
                                     @foreach($includedItems as $item)
-                                        <li class="flex items-start gap-3 text-sm text-slate-700">
+                                        <li class="flex items-start gap-3 text-slate-700 break-words">
                                             <i class="fas fa-check-circle text-emerald-600 mt-0.5 flex-shrink-0"></i>
                                             <span>{{ $item }}</span>
                                         </li>
@@ -413,20 +410,20 @@
 
                             {{-- Excluded Card --}}
                             @if(!empty($excludedItems) && is_array($excludedItems))
-                            <div class="rounded-2xl border-2 border-rose-100 bg-rose-50/40 p-6 md:p-7">
-                                <div class="flex items-center gap-3 mb-6">
-                                    <div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold">
+                            <div class="rounded-2xl border-2 border-rose-100 bg-rose-50/40 p-5 sm:p-6 md:p-7 min-w-0 max-w-full">
+                                <div class="flex items-center gap-3 mb-5 sm:mb-6">
+                                    <div class="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center font-bold flex-shrink-0">
                                         <i class="fas fa-times"></i>
                                     </div>
                                     <div>
-                                        <h3 class="font-bold text-slate-900 text-lg">What's Not Included</h3>
+                                        <h3 class="font-bold text-slate-900 text-base sm:text-lg">What's Not Included</h3>
                                         <p class="text-xs text-rose-800">Personal or external expenses</p>
                                     </div>
                                 </div>
 
-                                <ul class="space-y-3.5">
+                                <ul class="space-y-3.5 text-xs sm:text-sm">
                                     @foreach($excludedItems as $item)
-                                        <li class="flex items-start gap-3 text-sm text-slate-700">
+                                        <li class="flex items-start gap-3 text-slate-700 break-words">
                                             <i class="fas fa-times-circle text-rose-500 mt-0.5 flex-shrink-0"></i>
                                             <span>{{ $item }}</span>
                                         </li>
@@ -440,13 +437,13 @@
 
                     {{-- 4. Gallery Section --}}
                     @if($trek->galleries->count())
-                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
-                        <div class="flex items-center justify-between mb-8">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-7 md:p-10 min-w-0 max-w-full">
+                        <div class="flex items-center justify-between mb-6 sm:mb-8">
                             <div>
                                 <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 mb-2">
                                     <i class="far fa-images"></i> Visual Expedition
                                 </span>
-                                <h2 class="font-display text-3xl font-bold text-slate-900">
+                                <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 break-words">
                                     Destination Gallery
                                 </h2>
                             </div>
@@ -455,9 +452,9 @@
                             </span>
                         </div>
 
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 min-w-0 max-w-full">
                             @foreach($trek->galleries as $gallery)
-                                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 shadow-sm">
+                                <div class="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 shadow-sm min-w-0">
                                     <img src="{{ $gallery->full_image_url }}"
                                          alt="{{ $gallery->title ?: $trek->title }}"
                                          loading="lazy"
@@ -474,28 +471,28 @@
                     @endif
 
                     {{-- 5. Transparent Pricing & Package Tiers --}}
-                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10" id="pricing-packages">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-7 md:p-10 min-w-0 max-w-full" id="pricing-packages">
                         <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 mb-2">
                             <i class="fas fa-layer-group"></i> Package Options
                         </span>
-                        <h2 class="font-display text-3xl font-bold text-slate-900">
+                        <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 break-words">
                             Trip Packages & Experience Tiers
                         </h2>
-                        <p class="mt-2 text-slate-600 text-sm max-w-2xl">
+                        <p class="mt-2 text-slate-600 text-xs sm:text-sm max-w-2xl break-words">
                             Tailored packages designed for your comfort, safety, and group size. Contact us directly through the website or WhatsApp for custom quotes and seasonal rates.
                         </p>
 
-                        <div class="mt-8 grid gap-6 md:grid-cols-3">
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 min-w-0 max-w-full">
                             {{-- Standard Package --}}
-                            <div class="package-card flex flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+                            <div class="package-card flex flex-col rounded-3xl border border-slate-200 bg-white p-5 sm:p-7 shadow-sm min-w-0 max-w-full">
                                 <div class="mb-4">
                                     <span class="inline-block rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Standard Tier</span>
-                                    <h3 class="mt-3 font-display text-2xl font-bold text-slate-900">Group Journey</h3>
+                                    <h3 class="mt-3 font-display text-xl sm:text-2xl font-bold text-slate-900">Group Journey</h3>
                                     <p class="mt-1 text-xs text-slate-500">Perfect for solo travelers & small groups.</p>
                                 </div>
 
                                 <div class="my-6 pt-4 border-t border-slate-100">
-                                    <span class="font-display text-2xl font-bold text-slate-900">Price on Request</span>
+                                    <span class="font-display text-xl sm:text-2xl font-bold text-slate-900">Price on Request</span>
                                     <span class="text-xs text-slate-500 font-medium block mt-1">Based on group size & travel dates</span>
                                 </div>
 
@@ -523,19 +520,19 @@
                             </div>
 
                             {{-- Premium Package (Highlighted) --}}
-                            <div class="package-card relative flex flex-col rounded-3xl border-2 border-brand-500 bg-gradient-to-b from-brand-50/40 to-white p-7 shadow-lg">
+                            <div class="package-card relative flex flex-col rounded-3xl border-2 border-brand-500 bg-gradient-to-b from-brand-50/40 to-white p-5 sm:p-7 shadow-lg min-w-0 max-w-full">
                                 <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-brand-600 px-4 py-1 text-[11px] font-bold uppercase tracking-wider text-white shadow-md">
                                     Most Popular
                                 </div>
 
                                 <div class="mb-4 mt-2">
                                     <span class="inline-block rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-800">Premium Tier</span>
-                                    <h3 class="mt-3 font-display text-2xl font-bold text-slate-900">Enhanced Comfort</h3>
+                                    <h3 class="mt-3 font-display text-xl sm:text-2xl font-bold text-slate-900">Enhanced Comfort</h3>
                                     <p class="mt-1 text-xs text-slate-500">Upgraded stays, gear & personal space.</p>
                                 </div>
 
                                 <div class="my-6 pt-4 border-t border-brand-100">
-                                    <span class="font-display text-2xl font-bold text-brand-800">Custom Quote</span>
+                                    <span class="font-display text-xl sm:text-2xl font-bold text-brand-800">Custom Quote</span>
                                     <span class="text-xs text-slate-500 font-medium block mt-1">Best value with enhanced comfort & gear</span>
                                 </div>
 
@@ -563,15 +560,15 @@
                             </div>
 
                             {{-- Private Expedition --}}
-                            <div class="package-card flex flex-col rounded-3xl border border-slate-200 bg-white p-7 shadow-sm">
+                            <div class="package-card flex flex-col rounded-3xl border border-slate-200 bg-white p-5 sm:p-7 shadow-sm min-w-0 max-w-full">
                                 <div class="mb-4">
                                     <span class="inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">Private VIP</span>
-                                    <h3 class="mt-3 font-display text-2xl font-bold text-slate-900">Custom Expedition</h3>
+                                    <h3 class="mt-3 font-display text-xl sm:text-2xl font-bold text-slate-900">Custom Expedition</h3>
                                     <p class="mt-1 text-xs text-slate-500">Tailored schedule, chef & private jeep.</p>
                                 </div>
 
                                 <div class="my-6 pt-4 border-t border-slate-100">
-                                    <span class="font-display text-2xl font-bold text-slate-900">Tailored Pricing</span>
+                                    <span class="font-display text-xl sm:text-2xl font-bold text-slate-900">Tailored Pricing</span>
                                     <span class="text-xs text-slate-500 font-medium block mt-1">100% bespoke VIP itinerary & private team</span>
                                 </div>
 
@@ -604,37 +601,37 @@
                             $scheduledDepartures = $trek->prices->whereNotNull('start_date')->sortBy('start_date');
                         @endphp
                         @if($scheduledDepartures->count())
-                        <div class="mt-10 pt-8 border-t border-slate-100">
-                            <h3 class="font-display text-xl font-bold text-slate-900 mb-4">
+                        <div class="mt-10 pt-8 border-t border-slate-100 min-w-0 max-w-full">
+                            <h3 class="font-display text-lg sm:text-xl font-bold text-slate-900 mb-4">
                                 Fixed Departure Dates
                             </h3>
-                            <div class="overflow-x-auto rounded-2xl border border-slate-200">
-                                <table class="w-full text-left text-sm text-slate-700">
-                                    <thead class="bg-slate-100 text-xs uppercase font-semibold text-slate-500">
+                            <div class="overflow-x-auto rounded-2xl border border-slate-200 w-full max-w-full">
+                                <table class="w-full text-left text-xs sm:text-sm text-slate-700 min-w-[550px]">
+                                    <thead class="bg-slate-100 text-[11px] sm:text-xs uppercase font-semibold text-slate-500">
                                         <tr>
-                                            <th class="px-5 py-3.5">Departure Dates</th>
-                                            <th class="px-5 py-3.5">Group Type</th>
-                                            <th class="px-5 py-3.5">Price / Person</th>
-                                            <th class="px-5 py-3.5">Availability</th>
-                                            <th class="px-5 py-3.5 text-right">Action</th>
+                                            <th class="px-4 sm:px-5 py-3.5">Departure Dates</th>
+                                            <th class="px-4 sm:px-5 py-3.5">Group Type</th>
+                                            <th class="px-4 sm:px-5 py-3.5">Price / Person</th>
+                                            <th class="px-4 sm:px-5 py-3.5">Availability</th>
+                                            <th class="px-4 sm:px-5 py-3.5 text-right">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-slate-100 bg-white">
                                         @foreach($scheduledDepartures as $departure)
                                             <tr class="hover:bg-slate-50 transition-colors">
-                                                <td class="px-5 py-4 font-semibold text-slate-900">
+                                                <td class="px-4 sm:px-5 py-4 font-semibold text-slate-900">
                                                     {{ \Carbon\Carbon::parse($departure->start_date)->format('d M Y') }}
                                                     @if($departure->end_date)
                                                         → {{ \Carbon\Carbon::parse($departure->end_date)->format('d M Y') }}
                                                     @endif
                                                 </td>
-                                                <td class="px-5 py-4 text-xs text-slate-600">
+                                                <td class="px-4 sm:px-5 py-4 text-xs text-slate-600">
                                                     {{ $departure->group_type }}
                                                 </td>
-                                                <td class="px-5 py-4 font-bold text-brand-700">
+                                                <td class="px-4 sm:px-5 py-4 font-bold text-brand-700">
                                                     ${{ number_format($departure->price_usd, 0) }}
                                                 </td>
-                                                <td class="px-5 py-4">
+                                                <td class="px-4 sm:px-5 py-4">
                                                     @if($departure->availability === 'Available')
                                                         <span class="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-800">Available</span>
                                                     @elseif($departure->availability === 'Limited')
@@ -643,7 +640,7 @@
                                                         <span class="inline-flex rounded-full bg-rose-100 px-2.5 py-0.5 text-[11px] font-semibold text-rose-800">Fully Booked</span>
                                                     @endif
                                                 </td>
-                                                <td class="px-5 py-4 text-right">
+                                                <td class="px-4 sm:px-5 py-4 text-right">
                                                     <a href="{{ route('booking.create', ['trek' => $trek->slug, 'price_id' => $departure->id, 'start_date' => $departure->start_date->format('Y-m-d')]) }}"
                                                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 text-white text-xs font-semibold hover:bg-brand-600 transition-colors">
                                                         <span>Select Date</span>
@@ -663,24 +660,24 @@
                         $faqs = is_string($trek->faqs) ? json_decode($trek->faqs, true) : $trek->faqs;
                     @endphp
                     @if(!empty($faqs) && is_array($faqs))
-                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
+                    <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-5 sm:p-7 md:p-10 min-w-0 max-w-full">
                         <span class="inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1 text-xs font-semibold text-brand-700 mb-2">
                             <i class="far fa-question-circle"></i> Questions & Answers
                         </span>
-                        <h2 class="font-display text-3xl font-bold text-slate-900 mb-8">
+                        <h2 class="font-display text-2xl sm:text-3xl font-bold text-slate-900 mb-6 sm:mb-8 break-words">
                             Frequently Asked Questions
                         </h2>
 
                         <div class="space-y-3" id="trek-faq-accordion">
                             @foreach($faqs as $index => $faq)
-                                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors hover:border-slate-300">
-                                    <button type="button" class="faq-button flex w-full items-center justify-between gap-4 p-5 text-left focus:outline-none">
-                                        <span class="font-bold text-slate-900 text-base">
+                                <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors hover:border-slate-300 min-w-0">
+                                    <button type="button" class="faq-button flex w-full items-center justify-between gap-3 sm:gap-4 p-4 sm:p-5 text-left focus:outline-none">
+                                        <span class="font-bold text-slate-900 text-sm sm:text-base break-words flex-1">
                                             {{ $faq['question'] ?? '' }}
                                         </span>
-                                        <i class="faq-icon fas fa-chevron-down text-xs text-slate-400 transition-transform"></i>
+                                        <i class="faq-icon fas fa-chevron-down text-xs text-slate-400 transition-transform flex-shrink-0"></i>
                                     </button>
-                                    <div class="faq-panel px-6 pb-6 pt-1 text-slate-600 text-sm leading-relaxed border-t border-slate-200/60 bg-white" hidden>
+                                    <div class="faq-panel px-4 sm:px-6 pb-5 sm:pb-6 pt-1 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-200/60 bg-white break-words" hidden>
                                         {{ $faq['answer'] ?? '' }}
                                     </div>
                                 </div>
@@ -692,15 +689,15 @@
                 </div>
 
                 {{-- RIGHT COLUMN: Sticky Sidebar CTA Card --}}
-                <div class="lg:col-span-4">
-                    <div class="lg:sticky lg:top-28 space-y-6">
+                <div class="lg:col-span-4 min-w-0 max-w-full">
+                    <div class="lg:sticky lg:top-28 space-y-6 min-w-0 max-w-full">
 
                         {{-- Booking Sidebar Card --}}
-                        <div class="rounded-3xl border border-slate-200 bg-white p-7 shadow-lg">
+                        <div class="rounded-3xl border border-slate-200 bg-white p-5 sm:p-7 shadow-lg min-w-0 max-w-full">
                             <div class="border-b border-slate-100 pb-5">
                                 <p class="text-[10px] uppercase font-bold tracking-wider text-slate-400">Guaranteed Price</p>
                                 <div class="mt-1 flex items-baseline gap-2">
-                                    <span class="font-display text-4xl font-bold text-slate-900">
+                                    <span class="font-display text-3xl sm:text-4xl font-bold text-slate-900">
                                         {{ $trek->starting_price_formatted }}
                                     </span>
                                     <span class="text-xs text-slate-500 font-medium">/ person</span>
@@ -711,23 +708,23 @@
                             {{-- Inclusions Quick Summary --}}
                             <div class="py-5 space-y-3 text-xs text-slate-600 border-b border-slate-100">
                                 <div class="flex items-center gap-3">
-                                    <i class="fas fa-check text-brand-600 text-sm w-4"></i>
+                                    <i class="fas fa-check text-brand-600 text-sm w-4 flex-shrink-0"></i>
                                     <span>All trekking permits & security clearances</span>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <i class="fas fa-check text-brand-600 text-sm w-4"></i>
+                                    <i class="fas fa-check text-brand-600 text-sm w-4 flex-shrink-0"></i>
                                     <span>Professional local high-altitude guides</span>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <i class="fas fa-check text-brand-600 text-sm w-4"></i>
+                                    <i class="fas fa-check text-brand-600 text-sm w-4 flex-shrink-0"></i>
                                     <span>All domestic 4x4 mountain transportation</span>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <i class="fas fa-check text-brand-600 text-sm w-4"></i>
+                                    <i class="fas fa-check text-brand-600 text-sm w-4 flex-shrink-0"></i>
                                     <span>Hotel stays & 4-season mountain camping</span>
                                 </div>
                                 <div class="flex items-center gap-3">
-                                    <i class="fas fa-check text-brand-600 text-sm w-4"></i>
+                                    <i class="fas fa-check text-brand-600 text-sm w-4 flex-shrink-0"></i>
                                     <span>Full board nutritious trail meals & hot drinks</span>
                                 </div>
                             </div>
@@ -735,14 +732,14 @@
                             {{-- Primary Action Buttons --}}
                             <div class="pt-6 space-y-3">
                                 <a href="{{ route('booking.create', ['trek' => $trek->slug]) }}"
-                                   class="btn-primary flex w-full items-center justify-center gap-2 rounded-xl py-4 text-center font-bold text-base text-white shadow-lg hover:shadow-xl transition-all">
+                                   class="btn-primary flex w-full items-center justify-center gap-2 rounded-xl py-3.5 sm:py-4 text-center font-bold text-sm sm:text-base text-white shadow-lg hover:shadow-xl transition-all">
                                     <i class="fas fa-calendar-check"></i>
                                     <span>Book This Trip</span>
                                 </a>
 
                                 <a href="https://wa.me/923425343629?text={{ urlencode('Hi Karakorum Crown Expeditions! I want to inquire about: ' . $trek->title) }}"
                                    target="_blank"
-                                   class="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 py-3.5 text-center font-semibold text-sm text-slate-800 hover:bg-slate-100 transition-colors">
+                                   class="flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 py-3 sm:py-3.5 text-center font-semibold text-xs sm:text-sm text-slate-800 hover:bg-slate-100 transition-colors">
                                     <i class="fab fa-whatsapp text-lg text-[#25D366]"></i>
                                     <span>Talk to a Travel Expert</span>
                                 </a>
@@ -756,8 +753,8 @@
                         </div>
 
                         {{-- Why Travel With KCE Trust Card --}}
-                        <div class="rounded-3xl bg-navy-950 p-7 text-white shadow-xl">
-                            <h3 class="font-display text-xl font-bold mb-4">Why Book With Karakorum Crown</h3>
+                        <div class="rounded-3xl bg-navy-950 p-5 sm:p-7 text-white shadow-xl min-w-0 max-w-full">
+                            <h3 class="font-display text-lg sm:text-xl font-bold mb-4">Why Book With Karakorum Crown</h3>
                             <div class="space-y-4 text-xs text-white/75">
                                 <div class="flex items-start gap-3">
                                     <div class="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center text-brand-400 flex-shrink-0 mt-0.5">

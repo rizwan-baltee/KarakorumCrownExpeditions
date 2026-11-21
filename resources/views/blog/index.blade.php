@@ -43,41 +43,47 @@
                 @if($posts->count() > 0)
                     <div class="grid md:grid-cols-2 gap-8">
                         @foreach($posts as $post)
-                            <article class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden group hover:shadow-xl transition-all duration-300">
-                                <a href="{{ route('blog.show', $post->slug) }}" class="block relative h-64 overflow-hidden">
-                                    @if($post->featured_image)
-                                        <img src="{{ Storage::url($post->featured_image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    @else
-                                        <div class="w-full h-full bg-slate-200 flex items-center justify-center">
-                                            <i class="fas fa-image text-slate-400 text-4xl"></i>
-                                        </div>
-                                    @endif
+                            <article class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden group hover:shadow-xl hover:border-slate-300 transition-all duration-300 flex flex-col">
+                                <a href="{{ route('blog.show', $post->slug) }}" class="block relative h-48 sm:h-56 md:h-64 overflow-hidden bg-slate-900">
+                                    <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
                                     @if($post->category)
-                                        <span class="absolute top-4 left-4 bg-brand-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-lg">
+                                        <span class="absolute top-4 left-4 bg-brand-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-lg">
                                             {{ $post->category->name }}
                                         </span>
                                     @endif
                                 </a>
-                                <div class="p-6 md:p-8">
-                                    <div class="flex items-center gap-4 text-xs text-slate-500 mb-3">
+                                <div class="p-5 sm:p-6 md:p-8 flex-1 flex flex-col">
+                                    <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 mb-3">
+                                        @if($post->author)
+                                            <span class="flex items-center gap-1.5 font-medium text-slate-700">
+                                                <i class="fas fa-user-circle text-brand-600"></i>
+                                                {{ $post->author->name }}
+                                            </span>
+                                            <span class="text-slate-300">•</span>
+                                        @endif
                                         <span class="flex items-center gap-1.5">
-                                            <i class="fas fa-calendar-alt text-brand-400"></i>
+                                            <i class="fas fa-calendar-alt text-brand-500"></i>
                                             {{ $post->published_at ? $post->published_at->format('M d, Y') : $post->created_at->format('M d, Y') }}
                                         </span>
+                                        <span class="text-slate-300">•</span>
                                         <span class="flex items-center gap-1.5">
-                                            <i class="fas fa-clock text-brand-400"></i>
-                                            {{ max(1, ceil(str_word_count(strip_tags($post->content)) / 200)) }} min read
+                                            <i class="fas fa-clock text-brand-500"></i>
+                                            {{ $post->reading_time }} min read
                                         </span>
                                     </div>
-                                    <h2 class="font-display text-xl md:text-2xl text-slate-900 leading-tight mb-3 group-hover:text-brand-600 transition-colors">
+                                    <h2 class="font-display text-xl md:text-2xl font-bold text-slate-900 leading-tight mb-3 group-hover:text-brand-600 transition-colors">
                                         <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
                                     </h2>
-                                    <p class="text-slate-600 line-clamp-3 mb-5">
-                                        {{ Str::limit(strip_tags($post->content), 150) }}
+                                    <p class="text-slate-600 line-clamp-3 mb-6 text-sm leading-relaxed flex-1">
+                                        {{ Str::limit(strip_tags($post->content), 160) }}
                                     </p>
-                                    <a href="{{ route('blog.show', $post->slug) }}" class="inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-700 transition-colors">
-                                        Read Article <i class="fas fa-arrow-right text-xs"></i>
-                                    </a>
+                                    <div class="pt-4 border-t border-slate-100 mt-auto">
+                                        <a href="{{ route('blog.show', $post->slug) }}" class="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-700 transition-all group-hover:translate-x-1">
+                                            <span>Read More</span>
+                                            <i class="fas fa-arrow-right text-xs"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </article>
                         @endforeach

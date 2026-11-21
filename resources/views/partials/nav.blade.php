@@ -24,7 +24,7 @@
                    style="cursor: pointer; pointer-events: auto;"
                    title="Open location in Google Maps">
                     <i class="fas fa-map-marker-alt text-brand-400 min-w-max pointer-events-none"></i>
-                    <span class="truncate max-w-[200px] lg:max-w-[300px] xl:max-w-[400px] pointer-events-none">Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Shigar, Skardu, Gilgit-Baltistan, Pakistan</span>
+                    <span class="truncate max-w-[200px] lg:max-w-[300px] xl:max-w-[400px] pointer-events-none">Satpara Road, Zhye Thang 1, Near Hispar Hotel, Skardu, Gilgit-Baltistan, Pakistan</span>
                 </a>
             </div>
             <div class="flex items-center gap-4">
@@ -117,9 +117,6 @@
                 <li>
                     <a href="/how-to-apply" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">Visa Guide</a>
                 </li>
-                <li>
-                    <a href="/salajeet" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">Salajeet</a>
-                </li>
                 <li class="dropdown relative">
                     <a href="#" class="nav-link text-white/80 hover:text-white px-2 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide whitespace-nowrap">
                         <i class="fas fa-globe text-brand-400"></i> Language <i class="fas fa-chevron-down text-[10px] opacity-50"></i>
@@ -183,7 +180,6 @@
             <li><a href="/blog" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Blog</a></li>
             <li><a href="/about-us" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">About Us</a></li>
             <li><a href="/how-to-apply" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Visa Guide</a></li>
-            <li><a href="/salajeet" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Salajeet</a></li>
             
             <!-- Language Selection -->
             <li>
@@ -214,8 +210,8 @@
                 </a>
             </li>
             <li class="pb-2">
-                <a href="tel:+923131562859" class="block text-center py-3 rounded-lg border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
-                    <i class="fas fa-phone-alt mr-2"></i>Or Call Us Directly
+                <a href="tel:+923425343629" class="block text-center py-3 rounded-lg border border-white/20 text-white/70 text-sm font-medium hover:text-white hover:border-white/40 transition-colors">
+                    <i class="fas fa-phone-alt mr-2"></i>Or Call Us Directly (+92 3425343629)
                 </a>
             </li>
         </ul>

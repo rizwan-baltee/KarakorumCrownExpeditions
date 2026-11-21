@@ -1,28 +1,43 @@
 @extends('layouts.app')
 
-@section('title', 'Premium Salajeet - Karakorum Crown Expeditions')
+@section('title', 'Traditional Mountain Mineral Pitch (Salajeet) - Karakorum Crown Expeditions')
+@section('meta_description', 'An educational overview of traditional high-altitude mineral resin collected by native mountain gatherers in the Karakoram and Himalayan cliffs of Gilgit-Baltistan.')
+@section('meta_robots', 'noindex, nofollow')
 
 @section('content')
-<section class="relative bg-navy-950 pt-32 pb-24 overflow-hidden">
-    <div class="absolute inset-0 hero-glow"></div>
-    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[140px]"></div>
-    <div class="relative container mx-auto px-4 lg:px-8">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="inline-flex items-center gap-2 bg-brand-500/10 border border-brand-500/20 text-brand-300 rounded-full px-5 py-2 text-xs font-semibold tracking-[0.2em] uppercase mb-6">
-                <i class="fas fa-leaf text-[10px]"></i> Pure & Authentic
-            </span>
-            <h1 class="font-display text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
-                Premium Himalayan<br>
-                <span class="text-brand-400">Salajeet (Shilajit)</span>
-            </h1>
-            <p class="text-white/60 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                Experience the natural energy and wellness benefits of pure, high-altitude Salajeet, sustainably sourced directly from the Karakorum and Himalayan mountains of Gilgit-Baltistan.
-            </p>
+
+{{-- Hero Section --}}
+<section class="relative bg-navy-950 pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden text-white">
+    <div class="absolute inset-0 hero-glow pointer-events-none"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+    <div class="relative container mx-auto px-4 lg:px-8 text-center max-w-4xl">
+        <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-brand-300 backdrop-blur-md mb-6">
+            <i class="fas fa-mountain text-brand-400"></i>
+            <span>Geological & Cultural Heritage of Gilgit-Baltistan</span>
+        </div>
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+            Traditional Mountain Mineral Pitch<br>
+            <span class="text-brand-400">(Salajeet / Shilajit)</span>
+        </h1>
+        <p class="mt-4 text-white/70 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+            An educational look at the natural mineral resin traditionally gathered by native highlanders from high-altitude rock crevices in the Karakoram and Himalayan ranges.
+        </p>
+
+        {{-- Mandatory Policy Notice --}}
+        <div class="mt-8 max-w-2xl mx-auto bg-amber-500/15 border border-amber-400/30 rounded-2xl p-4 text-left text-xs text-amber-200/90 leading-relaxed">
+            <div class="flex items-start gap-2.5">
+                <i class="fas fa-exclamation-triangle text-amber-400 mt-0.5 flex-shrink-0 text-sm"></i>
+                <div>
+                    <strong>Notice:</strong> This page is strictly for cultural, geographical, and historical education. Karakorum Crown Expeditions is a licensed tourism and trekking operator. We make zero medical or therapeutic claims.
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Full Screen Video Showcase -->
-    <div class="relative w-full mt-16 h-[50vh] md:h-[80vh] bg-navy-950 border-t border-b border-white/10">
+    <!-- Video Showcase -->
+    @if(file_exists(public_path('assets/salajeet.MOV')))
+    <div class="relative w-full mt-12 h-[45vh] md:h-[65vh] bg-navy-950 border-t border-b border-white/10 max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl">
         <video 
             class="absolute inset-0 w-full h-full object-cover" 
             autoplay loop muted playsinline controls>
@@ -30,49 +45,58 @@
             Your browser does not support the video tag.
         </video>
     </div>
+    @endif
 </section>
 
-<section class="bg-white py-24">
-    <div class="container mx-auto px-4 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <span class="text-brand-600 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Natural Wellness</span>
-                <h2 class="font-display text-3xl md:text-4xl text-navy-900 mb-6 leading-tight">
-                    The Mountain's Hidden<br>
-                    Treasure
+{{-- Geological Origin Section --}}
+<section class="bg-white py-20 border-b border-slate-100">
+    <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-5">
+                <span class="text-brand-600 text-xs font-bold tracking-[0.2em] uppercase block">
+                    Geological Context
+                </span>
+                <h2 class="font-display text-3xl md:text-4xl text-navy-950 font-bold leading-tight">
+                    A Natural Rock Exudate of High-Altitude Cliffs
                 </h2>
-                <div class="space-y-4 text-gray-600 leading-relaxed text-base">
+                <div class="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
                     <p>
-                        Salajeet, also known as Shilajit, is a sticky, tar-like resin found in the high rocks of the Himalayas and Karakorum. Formed over centuries by the slow decomposition of plants, it is one of nature's most potent mineral supplements.
+                        In the steep cliff walls of Gilgit-Baltistan—often at elevations between 3,000 and 5,000 meters—a thick, tar-like dark mineral resin known locally as <em>Salajeet</em> naturally exudes from rock fractures during hot summer months.
                     </p>
                     <p>
-                        Rich in fulvic acid and over 84 trace minerals, it has been used for generations to boost energy, improve stamina, and support overall health and vitality.
+                        Geologists and researchers note that this substance forms over extensive periods through the slow humification of compressed mountain flora and microorganisms within sedimentary rock layers, absorbing minerals from the surrounding granite and limestone.
                     </p>
                     <p>
-                        We source our Salajeet directly from local gatherers in Gilgit-Baltistan, ensuring it is 100% pure, unadulterated, and traditionally purified without the use of harsh chemicals.
+                        Native Balti gatherers scale these vertical rock faces during midsummer to harvest the raw pitch before it is washed and purified using traditional water filtration and sunlight settling techniques.
                     </p>
                 </div>
             </div>
 
-            <div class="relative">
-                <div class="bg-gradient-to-br from-navy-900 to-navy-800 rounded-3xl p-8 md:p-10 text-white relative overflow-hidden shadow-2xl">
-                    <div class="absolute top-0 right-0 w-40 h-40 bg-brand-500/10 rounded-full blur-3xl"></div>
-                    <div class="relative grid grid-cols-2 gap-5">
-                        <div class="bg-white/8 border border-white/10 rounded-2xl p-5">
-                            <div class="text-3xl font-bold text-brand-300 mb-2">100%</div>
-                            <div class="text-white/70 text-sm">Pure & Natural</div>
+            <div class="bg-slate-50 border border-slate-200 rounded-3xl p-8 space-y-4">
+                <h3 class="font-display text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
+                    <i class="fas fa-layer-group text-brand-600"></i>
+                    <span>Composition & Characteristics</span>
+                </h3>
+                <div class="space-y-3 text-xs text-slate-600">
+                    <div class="p-3.5 bg-white rounded-xl border border-slate-100 flex items-start gap-3">
+                        <i class="fas fa-mountain text-slate-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-slate-900 block">Origin Elevation:</strong>
+                            Harvested primarily from steep rock faces in Skardu, Shigar, and Khaplu valleys (3,000 m – 5,000 m).
                         </div>
-                        <div class="bg-white/8 border border-white/10 rounded-2xl p-5">
-                            <div class="text-3xl font-bold text-brand-300 mb-2">84+</div>
-                            <div class="text-white/70 text-sm">Trace Minerals</div>
+                    </div>
+                    <div class="p-3.5 bg-white rounded-xl border border-slate-100 flex items-start gap-3">
+                        <i class="fas fa-filter text-slate-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-slate-900 block">Traditional Filtration:</strong>
+                            Dissolved in spring water, filtered through clean cotton muslin, and slowly evaporated under direct sunlight.
                         </div>
-                        <div class="bg-white/8 border border-white/10 rounded-2xl p-5">
-                            <div class="text-xl font-bold text-brand-300 mb-2 mt-1">Direct</div>
-                            <div class="text-white/70 text-sm">From the Source</div>
-                        </div>
-                        <div class="bg-white/8 border border-white/10 rounded-2xl p-5">
-                            <div class="text-xl font-bold text-brand-300 mb-2 mt-1">Premium</div>
-                            <div class="text-white/70 text-sm">Export Quality</div>
+                    </div>
+                    <div class="p-3.5 bg-white rounded-xl border border-slate-100 flex items-start gap-3">
+                        <i class="fas fa-flask text-slate-400 mt-0.5"></i>
+                        <div>
+                            <strong class="text-slate-900 block">Naturally Occurring Elements:</strong>
+                            Contains fulvic complexes, humic acids, and naturally occurring trace elements common to alpine bedrock.
                         </div>
                     </div>
                 </div>
@@ -81,56 +105,47 @@
     </div>
 </section>
 
-<section class="bg-slate-50 py-24">
-    <div class="container mx-auto px-4 lg:px-8">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <span class="text-brand-600 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Key Benefits</span>
-            <h2 class="font-display text-3xl md:text-4xl text-navy-900 mb-4">Why use our Salajeet?</h2>
-            <p class="text-gray-600 leading-relaxed">
-                Known as the "Conqueror of Mountains," Salajeet offers numerous benefits for your mind and body.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-                <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mb-5">
-                    <i class="fas fa-bolt text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-navy-900 mb-3">Boosts Energy</h3>
-                <p class="text-gray-600 leading-relaxed">Enhances mitochondrial function to naturally increase energy levels and combat chronic fatigue.</p>
+{{-- Comprehensive Medical Disclaimer --}}
+<section class="bg-slate-50 py-16 border-b border-slate-200/70">
+    <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div class="bg-white rounded-3xl border border-slate-200 p-8 md:p-10 shadow-sm space-y-4">
+            <div class="flex items-center gap-3 text-amber-600 mb-2">
+                <i class="fas fa-shield-alt text-2xl"></i>
+                <h3 class="font-display text-xl font-bold text-slate-900">
+                    Mandatory Health & Regulatory Disclaimer
+                </h3>
             </div>
-            <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-                <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mb-5">
-                    <i class="fas fa-brain text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-navy-900 mb-3">Cognitive Health</h3>
-                <p class="text-gray-600 leading-relaxed">Rich in fulvic acid, it acts as an antioxidant to support brain function and memory.</p>
-            </div>
-            <div class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
-                <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center mb-5">
-                    <i class="fas fa-shield-virus text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold text-navy-900 mb-3">Immunity & Aging</h3>
-                <p class="text-gray-600 leading-relaxed">Reduces inflammation, supports immune function, and promotes healthy aging with vital nutrients.</p>
+            <div class="text-xs text-slate-600 space-y-3 leading-relaxed">
+                <p>
+                    <strong>Not a Regulated Pharmaceutical Drug:</strong> Salajeet (Shilajit) referenced on this site has not been evaluated, tested, or registered as a drug or medicine by the Drug Regulatory Authority of Pakistan (DRAP), the United States Food and Drug Administration (FDA), the European Medicines Agency (EMA), or any other regulatory health authority.
+                </p>
+                <p>
+                    <strong>No Therapeutic Claims:</strong> This product or substance is <em>not intended to diagnose, treat, cure, mitigate, or prevent any illness, chronic condition, or disease</em>. Karakorum Crown Expeditions explicitly disclaims all unproven medical claims, including claims regarding chronic fatigue, testosterone, memory enhancement, immune curing, or anti-aging properties.
+                </p>
+                <p>
+                    <strong>Medical Supervision Required:</strong> Raw or unpurified mountain resins can contain heavy metal traces or impurities if improperly processed. Anyone considering consuming traditional dietary resins must seek advice from a licensed medical practitioner, especially individuals who are pregnant, nursing, suffering from gout, kidney disorders, high iron levels, or taking prescription pharmaceuticals.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="bg-white py-24">
-    <div class="container mx-auto px-4 lg:px-8 text-center">
-        <h2 class="font-display text-3xl md:text-4xl text-navy-900 mb-4">Ready to Order?</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto mb-8">
-            Contact us directly via WhatsApp or phone to place your order. We deliver pure Gilgit-Baltistan Salajeet nationwide and internationally.
+{{-- Contact Section --}}
+<section class="bg-white py-16">
+    <div class="container mx-auto px-4 lg:px-8 text-center max-w-2xl">
+        <h2 class="font-display text-2xl md:text-3xl text-navy-950 font-bold mb-3">General Inquiries</h2>
+        <p class="text-slate-600 text-sm mb-6">
+            For questions regarding local Balti mountain heritage, traditional crafts, or trekking logistics in Gilgit-Baltistan:
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://wa.me/923131562859" target="_blank" class="btn-primary inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-white">
-                <i class="fab fa-whatsapp text-lg mr-2"></i> Order via WhatsApp
+        <div class="inline-flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="https://wa.me/923425343629" target="_blank" rel="noopener noreferrer" class="btn-primary inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-xs font-bold text-white shadow-sm">
+                <i class="fab fa-whatsapp text-sm mr-2"></i> WhatsApp Support: +92 3425343629
             </a>
-            <a href="tel:+923131562859" class="inline-flex items-center justify-center rounded-xl px-7 py-4 font-semibold text-navy-900 bg-slate-100 hover:bg-slate-200 transition-colors">
-                <i class="fas fa-phone mr-2"></i> Call Us Directly
+            <a href="{{ route('home') }}" class="inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-xs font-bold text-slate-800 bg-slate-100 hover:bg-slate-200 transition-colors">
+                <i class="fas fa-home mr-2"></i> Return to Homepage
             </a>
         </div>
     </div>
 </section>
+
 @endsection
