@@ -117,6 +117,9 @@
                 <li>
                     <a href="/how-to-apply" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">Visa Guide</a>
                 </li>
+                <li>
+                    <a href="/salajeet" class="nav-link text-white/80 hover:text-white px-2 py-7 block text-sm font-medium tracking-wide whitespace-nowrap">Salajeet</a>
+                </li>
                 <li class="dropdown relative">
                     <a href="#" class="nav-link text-white/80 hover:text-white px-2 py-7 flex items-center gap-1.5 text-sm font-medium tracking-wide whitespace-nowrap">
                         <i class="fas fa-globe text-brand-400"></i> Language <i class="fas fa-chevron-down text-[10px] opacity-50"></i>
@@ -180,6 +183,7 @@
             <li><a href="/blog" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Blog</a></li>
             <li><a href="/about-us" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">About Us</a></li>
             <li><a href="/how-to-apply" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Visa Guide</a></li>
+            <li><a href="/salajeet" class="text-white/80 block py-3 px-3 text-sm font-medium hover:text-white">Salajeet</a></li>
             
             <!-- Language Selection -->
             <li>

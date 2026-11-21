@@ -32,6 +32,7 @@
                     <li><a href="/" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Home</a></li>
                     <li><a href="/about-us" class="text-white/50 hover:text-brand-400 transition-colors text-sm">About Us</a></li>
                     <li><a href="/how-to-apply" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Visa Guide</a></li>
+                    <li><a href="/salajeet" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Himalayan Salajeet</a></li>
                     <li><a href="{{ route('privacy-policy') }}" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Privacy Policy</a></li>
                     <li><a href="{{ route('terms-of-service') }}" class="text-white/50 hover:text-brand-400 transition-colors text-sm">Terms & Conditions</a></li>
                 </ul>
